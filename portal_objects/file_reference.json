@@ -1,11 +1,11 @@
 [
   {
-    "uuid": "a1d504ee-a313-4064-b6ae-65fed9738980",
+    "uuid": "9f787f86-0d6c-4929-b8fd-665469f25cc2",
     "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
     "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
     "file_format": "txt",
-    "description": "hg38 chromosomes Yfirst",
-    "aliases": ["cgap:hg38-chromosomes-Yfirst"],
+    "description": "hg38 vcf header contig fields",
+    "aliases": ["cgap:hg38-vcf-header-contig-fields"],
     "extra_files": [],
     "status": "uploading"
   }
