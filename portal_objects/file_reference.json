@@ -1,0 +1,12 @@
+[
+  {
+    "uuid": "a1d504ee-a313-4064-b6ae-65fed9738980",
+    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+    "file_format": "txt",
+    "description": "hg38 chromosomes Yfirst",
+    "aliases": ["cgap:hg38-chromosomes-Yfirst"],
+    "extra_files": [],
+    "status": "uploading"
+  }
+]
