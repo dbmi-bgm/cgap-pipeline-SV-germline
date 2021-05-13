@@ -36,12 +36,23 @@ RUN pip install granite-suite==0.1.11
 
 RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd cgap-annotations && \
-    git checkout 5c7331d && \
+    git checkout f953587 && \
     cd .. && \
-    cp -r cgap-annotations/sv/scripts/ .
-    #chmod +x reformat_SV_vcf.py && \
-    #chmod +x test/test_reformat_SV_vcf.py
-    #rm -rf cgap-annoations
+    cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
+    chmod +x reformat_SV_vcf.py && \
+    rm -rf cgap-annotations
+
+# vcftools
+RUN git clone https://github.com/vcftools/vcftools.git && \
+    mv vcftools vcftools_tmp && \
+    cd vcftools_tmp && \
+    git checkout 954e607 && \
+    ./autogen.sh && \
+    ./configure && \
+    make && \
+    make install && \
+    cd ..
+
 
 # supporting UTF-8
 RUN locale-gen "en_US.UTF-8" && update-locale LC_ALL="en_US.UTF-8"
