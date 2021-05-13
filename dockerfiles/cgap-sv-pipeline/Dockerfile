@@ -32,8 +32,7 @@ WORKDIR /usr/local/bin
 # granite
 RUN pip install granite-suite==0.1.11
 
-# cgap-annotations scripts
-
+# cgap-annotations scripts: reformat_SV_vcf.py
 RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd cgap-annotations && \
     git checkout f953587 && \
@@ -41,6 +40,15 @@ RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
     chmod +x reformat_SV_vcf.py && \
     rm -rf cgap-annotations
+
+# cgap-pipeline scripts: vcf-integrity-check.sh
+RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
+    cd cgap-pipeline && \
+    git checkout 17b4249 && \
+    cd .. && \ 
+    cp cgap-pipeline/dockerfiles/cgap-docker/vcf-integrity-check.sh . && \
+    chmod +x vcf-integrity-check.sh && \ 
+    rm -rf cgap-pipeline
 
 # vcftools
 RUN git clone https://github.com/vcftools/vcftools.git && \
@@ -52,7 +60,6 @@ RUN git clone https://github.com/vcftools/vcftools.git && \
     make && \
     make install && \
     cd ..
-
 
 # supporting UTF-8
 RUN locale-gen "en_US.UTF-8" && update-locale LC_ALL="en_US.UTF-8"
