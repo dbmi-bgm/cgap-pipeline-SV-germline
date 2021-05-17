@@ -49,12 +49,12 @@
                       "cardinality": "single",
                       "file_format": "txt",
                       "global": true,
-                      "type": "reference file"
+                      "type": "data file"
                   },
-                  "name": "contig_file",
+                  "name": "input_vcf",
                   "source": [
                       {
-                          "name": "contig_file"
+                          "name": "input_vcf"
                       }
                   ]
               },
@@ -63,12 +63,12 @@
                       "cardinality": "single",
                       "file_format": "vcf_gz",
                       "global": true,
-                      "type": "data file"
+                      "type": "reference file"
                   },
-                  "name": "input_vcf",
+                  "name": "contig_file",
                   "source": [
                       {
-                          "name": "input_vcf"
+                          "name": "contig_file"
                       }
                   ]
               }
