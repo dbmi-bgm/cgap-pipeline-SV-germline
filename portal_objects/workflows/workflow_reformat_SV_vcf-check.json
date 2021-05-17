@@ -47,7 +47,7 @@
               {
                   "meta": {
                       "cardinality": "single",
-                      "file_format": "txt",
+                      "file_format": "vcf_gz",
                       "global": true,
                       "type": "data file"
                   },
@@ -61,7 +61,7 @@
               {
                   "meta": {
                       "cardinality": "single",
-                      "file_format": "vcf_gz",
+                      "file_format": "txt",
                       "global": true,
                       "type": "reference file"
                   },
