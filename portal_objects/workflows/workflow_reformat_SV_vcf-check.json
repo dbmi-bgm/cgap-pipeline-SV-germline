@@ -1,6 +1,6 @@
 {
   "accession": "GAPWFL8DOB5R",
-  "app_name": "workflow_dbSNP_ID_fixer-check",
+  "app_name": "workflow_reformat_SV_vcf-check",
   "app_version": "v1",
   "arguments": [
       {
