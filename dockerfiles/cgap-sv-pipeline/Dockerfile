@@ -34,8 +34,7 @@ RUN apt-get update -y && apt-get install -y \
 WORKDIR /usr/local/bin
 
 # python maybe
-RUN conda install -c bioconda -y gatk4==4.1.2.0 picard==2.20.2 \
-    pysam==0.15.3 bitarray==1.2.1 pytabix==0.0.2 h5py==2.10.0 numpy==1.18.1 pyfaidx==0.5.8 tqdm==4.48.2 python=3.6.8 && \
+RUN conda install pysam==0.15.3 python=3.6.8 && \
     conda clean -a -y -f
 
 # granite
