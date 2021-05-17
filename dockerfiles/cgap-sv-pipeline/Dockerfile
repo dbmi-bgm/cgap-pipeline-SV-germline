@@ -25,7 +25,8 @@ RUN apt-get update -y && apt-get install -y \
     autogen \
     pkg-config \
     nano \
-    tabix
+    tabix \
+    libboost-all-dev
 
 WORKDIR /usr/local/bin
 
@@ -60,6 +61,16 @@ RUN git clone https://github.com/vcftools/vcftools.git && \
     make && \
     make install && \
     cd ..
+
+# sansa
+RUN git clone --recursive https://github.com/dellytools/sansa.git && \
+    cd sansa/ && \
+    make all && \
+    cd ..
+
+# env paths
+#ENV PATH=/usr/local/bin/ensembl-vep/:$PATH
+ENV PATH=/usr/local/bin/sansa/src/:$PATH
 
 # supporting UTF-8
 RUN locale-gen "en_US.UTF-8" && update-locale LC_ALL="en_US.UTF-8"
