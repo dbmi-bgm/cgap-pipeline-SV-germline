@@ -2,10 +2,10 @@
 
 # variables from command line
 input_vcf='sorted_manta.vcf.gz'
-reference='/mnt/mydata/GAPFIXRDPDK5.fa'
+reference='GAPFIXRDPDK5.fa'
 
 # data sources
-vep_tar_gz='/mnt/mydata/GAPFIPK4VGWV.vep.tar.gz'
+vep_tar_gz='GAPFIPK4VGWV.vep.tar.gz'
 version='101'
 assembly='GRCh38'
 
