@@ -40,13 +40,15 @@ RUN conda install pysam==0.15.3 python=3.6.8 && \
 # granite
 RUN pip install granite-suite==0.1.11
 
-# cgap-annotations scripts: reformat_SV_vcf.py
+# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py
 RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd cgap-annotations && \
-    git checkout f953587 && \
+    git checkout 0450c79 && \
     cd .. && \
     cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
     chmod +x reformat_SV_vcf.py && \
+    cp cgap-annotations/sv/scripts/combine_sansa_and_VEP_vcf.py . && \
+    chmod +x combine_sansa_and_VEP_vcf.py . && \
     rm -rf cgap-annotations
 
 # cgap-pipeline scripts: vcf-integrity-check.sh
@@ -61,6 +63,10 @@ RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
 # sansa script
 COPY sansa.sh .
 RUN chmod +x sansa.sh
+
+# VEP script
+COPY vep-annot_SV.sh .
+RUN chmod +x vep-annot_SV.sh
 
 # bcftools
 RUN wget https://github.com/samtools/bcftools/releases/download/1.11/bcftools-1.11.tar.bz2 && \
