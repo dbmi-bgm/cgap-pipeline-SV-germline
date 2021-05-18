@@ -1,9 +1,12 @@
 # inputs
-inputVCF=$1
+inputVCF_path=$1
 gnomAD=$2
 
+# variables - need to strip path 
+inputVCF=${inputVCF_path##*/}
+
 # decompress the vcf and sort it
-bgzip -d -c $inputVCF > temp_vcf
+bgzip -d -c $inputVCF_path > temp_vcf
 cat temp_vcf | vcf-sort -c > sorted_${inputVCF%.*}
 rm temp_vcf
 
