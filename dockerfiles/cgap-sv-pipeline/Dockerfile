@@ -33,7 +33,7 @@ RUN apt-get update -y && apt-get install -y \
 
 WORKDIR /usr/local/bin
 
-# python maybe
+# python and pysam (required for VEP)
 RUN conda install pysam==0.15.3 python=3.6.8 && \
     conda clean -a -y -f
 
@@ -58,7 +58,21 @@ RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
     chmod +x vcf-integrity-check.sh && \ 
     rm -rf cgap-pipeline
 
-# vcftools
+# sansa script
+COPY sansa.sh .
+RUN chmod +x sansa.sh
+
+# bcftools
+RUN wget https://github.com/samtools/bcftools/releases/download/1.11/bcftools-1.11.tar.bz2 && \
+    tar -xjf bcftools-1.11.tar.bz2 && \
+    rm -rf bcftools-1.11.tar.bz2 && \
+    cd bcftools-1.11 && \
+    ./configure && \
+    make && \
+    cd .. && \
+    ln -s bcftools-1.11 bcftools
+
+# vcf tools
 RUN git clone https://github.com/vcftools/vcftools.git && \
     mv vcftools vcftools_tmp && \
     cd vcftools_tmp && \
@@ -85,6 +99,7 @@ RUN git clone https://github.com/Ensembl/ensembl-vep.git && \
 # env paths
 ENV PATH=/usr/local/bin/ensembl-vep/:$PATH
 ENV PATH=/usr/local/bin/sansa/src/:$PATH
+ENV PATH=/usr/local/bin/bcftools/:$PATH
 
 # supporting UTF-8
 RUN locale-gen "en_US.UTF-8" && update-locale LC_ALL="en_US.UTF-8"
