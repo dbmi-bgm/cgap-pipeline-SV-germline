@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # variables from command line
-input_vcf='sorted_manta.vcf.gz'
-reference='GAPFIXRDPDK5.fa'
+input_vcf=$1 #'sorted_manta.vcf.gz'
+reference=$2 #'GAPFIXRDPDK5.fa'
 
 # data sources
-vep_tar_gz='GAPFIPK4VGWV.vep.tar.gz'
-version='101'
-assembly='GRCh38'
+vep_tar_gz=$3 #'GAPFIPK4VGWV.vep.tar.gz'
+version=$4 #'101'
+assembly=$5 #'GRCh38'
 
 # self variables
 directory=VCFS/
