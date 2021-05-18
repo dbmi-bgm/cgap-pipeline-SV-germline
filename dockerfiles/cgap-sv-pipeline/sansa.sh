@@ -1,8 +1,10 @@
+#!/bin/bash
+
 # inputs
 inputVCF_path=$1
 gnomAD=$2
 
-# variables - need to strip path 
+# variables - need to strip path
 inputVCF=${inputVCF_path##*/}
 
 # decompress the vcf and sort it
