@@ -8,5 +8,20 @@
     "aliases": ["cgap:hg38-vcf-header-contig-fields"],
     "extra_files": [],
     "status": "uploading"
+  },
+  {
+    "uuid": "07ed6afe-b9e4-44c5-a9ca-99b99c93cbdf",
+    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+    "file_format": "vcf_gz",
+    "description": "gnomAD_SV_liftover_nstd166_GRCh38",
+    "aliases": ["cgap:gnomAD_SV_liftover_nstd166_GRCh38"],
+    "extra_files": [
+        {
+            "file_format": "vcf_gz_tbi",
+            "status": "uploading"
+        }
+    ],
+    "status": "uploading"
   }
 ]

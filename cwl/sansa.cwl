@@ -24,6 +24,8 @@ inputs:
     type: File
     inputBinding:
       position: 2
+    secondaryFiles:
+      - ^.tbi
     doc: expect the path to the gnomADref file
 
 outputs:
