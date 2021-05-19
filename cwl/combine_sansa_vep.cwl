@@ -40,6 +40,8 @@ outputs:
     type: File
     outputBinding:
       glob: 'combined.vcf.gz'
+    secondaryFiles:
+      - .tbi
 
 doc: |
   run combine_sansa_and_VEP_vcf.py to combine sansa and vep annotations into single VCF
