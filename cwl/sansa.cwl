@@ -24,13 +24,13 @@ inputs:
     type: File
     inputBinding:
       position: 2
-    doc: expect the path to the <NAME HERE> file
+    doc: expect the path to the gnomADref file
 
 outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(sansa.txt)
+      glob: 'sansa.txt'
 
 doc: |
   run sansa.sh to add gnomAD-SV information to variants
