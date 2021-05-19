@@ -1,0 +1,298 @@
+{
+  "accession": "GAPWFS4NV3PC",
+  "app_name": "workflow_annotateSV_sansa_vep_vcf-check",
+  "app_version": "v1",
+  "arguments": [
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_vcf"
+      },
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Input file",
+          "workflow_argument_name": "gnomAD_SV"
+      },
+      {
+          "argument_format": "fa",
+          "argument_type": "Input file",
+          "workflow_argument_name": "reference"
+      },
+      {
+          "argument_format": "vep_tar",
+          "argument_type": "Input file",
+          "workflow_argument_name": "vep"
+      },
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Output processed file",
+          "workflow_argument_name": "final_vcf",
+          "secondary_file_formats": ["vcf_gz_tbi"]
+      }
+  ],
+  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "category": ["processing"],
+  "cwl_child_filenames": ["sansa.cwl", "vep-annot_SV.cwl", "combine_sansa_vep.cwl", "vcf-integrity-check.cwl"],
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
+  "cwl_main_filename": "workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl",
+  "cwl_pointer": "",
+  "description": "Annotate SV VCF with Sansa and VEP, then combine results. An integrity check is performed on the output file",
+  "docker_image_name": "cgap/cnv:v1",
+  "docker_registry_url": "https://hub.docker.com/",
+  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "name": "workflow_annotateSV_sansa_vep_vcf-check_v1",
+  "aliases": ["cgap:workflow_annotateSV_sansa_vep_vcf-check_v1"],
+  "steps": [
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "input_vcf",
+                  "source": [
+                      {
+                          "name": "input_vcf"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "reference file"
+                  },
+                  "name": "gnomAD_SV",
+                  "source": [
+                      {
+                          "name": "gnomAD_SV"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run Sansa SV Annotation"
+              ],
+              "software_used": [
+                 "/softwares/UUID"
+              ]
+          },
+          "name": "sansa_annotate",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "sansa_txt",
+                  "target": [
+                      {
+                          "name": "sansa_txt",
+                          "step": "combine_sansa_vep"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "sorted_vcf",
+                  "target": [
+                      {
+                          "name": "sorted_vcf",
+                          "step": "vep-annot_SV"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "sorted_vcf",
+                  "source": [
+                      {
+                          "name": "sorted_vcf",
+                          "step": "sansa_annotate"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "fa",
+                      "global": true,
+                      "type": "reference file"
+                  },
+                  "name": "reference",
+                  "source": [
+                      {
+                          "name": "reference"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vep_tar",
+                      "global": true,
+                      "type": "reference file"
+                  },
+                  "name": "vep",
+                  "source": [
+                      {
+                          "name": "vep"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run VEP SV Annotation"
+              ],
+              "software_used": [
+                 "/softwares/85041e50-a7fc-4633-a83b-983b8ebbc48e"
+              ]
+          },
+          "name": "vep-annot_SV",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "vep_vcf",
+                  "target": [
+                      {
+                          "name": "vep_vcf",
+                          "step": "combine_sansa_vep"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "vep_vcf",
+                  "source": [
+                      {
+                          "name": "vep_vcf",
+                          "step": "vep-annot_SV"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "sansa_txt",
+                  "source": [
+                      {
+                          "name": "sansa_txt",
+                          "step": "sansa_annotate"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run combine_sana_vep to generate final annotated VCF"
+              ],
+              "software_used": [
+                 "/softwares/UUID"
+              ]
+          },
+          "name": "combine_sansa_vep",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "vcf",
+                  "target": [
+                      {
+                          "name": "vcf",
+                          "step": "vcf-integrity-check"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": false,
+                      "type": "data file"
+                  },
+                  "name": "vcf",
+                  "source": [
+                      {
+                          "name": "vcf",
+                          "step": "reformat_SV_vcf"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Check integrity of vcf output file"
+              ],
+              "software_used": [
+                 "/softwares/f7ac2c5f-9203-49fa-b918-cede02bf46f7"
+              ]
+          },
+          "name": "vcf-integrity-check",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "QC"
+                  },
+                  "name": "vcf-check",
+                  "target": [
+                      {
+                          "name": "vcf-check"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "Run annotation with sansa and VEP, combine output, plus output integrity-check",
+  "uuid": "ff568408-056c-4450-86d4-2037b3e01bfb"
+}
