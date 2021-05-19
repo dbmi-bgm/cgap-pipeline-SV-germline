@@ -39,6 +39,7 @@ inputs:
 
   - id: output
     type: string
+    default: 'combined.vcf'
     doc: expect the path to the combined vcf gz file
 
 outputs:

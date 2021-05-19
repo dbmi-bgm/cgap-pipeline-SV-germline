@@ -29,7 +29,6 @@ inputs:
     doc: expect the path to the sansa-annotated txt file
 
   - id: output
-    default: 'combined.vcf'
     type: string
     inputBinding:
       position: 3

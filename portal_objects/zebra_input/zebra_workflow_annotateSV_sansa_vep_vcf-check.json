@@ -1,0 +1,40 @@
+{
+    "parameters": {},
+    "workflow_uuid": "ff568408-056c-4450-86d4-2037b3e01bfb",
+    "input_files" : [
+       {
+           "workflow_argument_name": "input_vcf",
+           "uuid": "3eb99abd-db7d-4976-8535-ee87c2f8f429",
+           "mount": true
+       },
+       {
+           "workflow_argument_name": "gnomAD_SV",
+           "uuid": "07ed6afe-b9e4-44c5-a9ca-99b99c93cbdf",
+           "mount": true
+       },
+       {
+           "workflow_argument_name": "reference",
+           "uuid": "1936f246-22e1-45dc-bb5c-9cfd55537fe7",
+           "mount": true
+       },
+       {
+           "workflow_argument_name": "vep",
+           "uuid": "4ff30e10-aa8b-4ebf-87ac-20c7bfc15a46",
+           "mount": true
+       }
+    ],
+    "config": {
+      "instance_type": "t3.large",
+      "ebs_size": "1x",
+      "EBS_optimized": true,
+      "spot_instance": true,
+      "log_bucket": "tibanna-output",
+      "run_name": "run_workflow_annotateSV_sansa_vep_vcf-check",
+      "behavior_on_capacity_limit": "wait_and_retry"
+    },
+    "_tibanna": {
+      "run_type": "workflow_annotateSV_sansa_vep_vcf-check",
+      "env": "fourfront-cgapwolf"
+    },
+    "app_name": "workflow_annotateSV_sansa_vep_vcf-check"
+}
