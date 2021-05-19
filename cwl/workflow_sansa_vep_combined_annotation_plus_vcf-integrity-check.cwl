@@ -44,7 +44,7 @@ inputs:
 outputs:
   sorted_vcf:
     type: File
-    outputSource: sansa_annotate/sorted_vcf
+    outputSource: sansa/sorted_vcf
 
   final_vcf:
     type: File
@@ -55,20 +55,20 @@ outputs:
     outputSource: integrity-check/output
 
 steps:
-  sansa_annotate:
+  sansa:
     run: sansa.cwl
     in:
       input:
         source: input_vcf
       gnomAD_SV:
         source: gnomAD_SV
-    out: [output]
+    out: [output, sorted_vcf]
 
-  vep_annotate:
+  vep-annot_SV:
     run: vep-annot_SV.cwl
     in:
       input:
-        source: sansa_annotate/sorted_vcf
+        source: sansa/sorted_vcf
       reference:
         source: reference
       vep:
@@ -77,15 +77,15 @@ steps:
         source: version
       assembly:
         source: assembly
-      out: [output]
+    out: [output]
 
   combine_sansa_vep:
     run: combine_sansa_vep.cwl
     in:
       vep_vcf:
-        source: vep_annotate/output
+        source: vep-annot_SV/output
       sansa_txt:
-        source: sansa_annotate/output
+        source: sansa/output
       output:
         source: output
     out: [output]

@@ -18,8 +18,6 @@ inputs:
     type: File
     inputBinding:
       position: 1
-    secondaryFiles:
-      - .tbi
     doc: expect the path to the vcf gz file
 
   - id: reference
