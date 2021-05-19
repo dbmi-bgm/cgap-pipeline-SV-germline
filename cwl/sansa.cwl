@@ -25,7 +25,7 @@ inputs:
     inputBinding:
       position: 2
     secondaryFiles:
-      - ^.gz.tbi
+      - .tbi
     doc: expect the path to the gnomADref file
 
 outputs:
