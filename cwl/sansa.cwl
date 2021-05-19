@@ -32,5 +32,10 @@ outputs:
     outputBinding:
       glob: 'sansa.txt'
 
+  - id: sorted_vcf
+    type: File
+    outputBinding:
+      glob: 'sorted*gz'
+
 doc: |
   run sansa.sh to add gnomAD-SV information to variants
