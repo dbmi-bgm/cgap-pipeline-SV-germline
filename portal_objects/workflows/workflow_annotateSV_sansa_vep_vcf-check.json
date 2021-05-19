@@ -79,7 +79,7 @@
                   "Run Sansa SV Annotation"
               ],
               "software_used": [
-                 "/softwares/UUID"
+                 "/softwares/1b1101b6-90f2-4dfe-ae80-5dd1cec5e76a"
               ]
           },
           "name": "sansa_annotate",
@@ -227,7 +227,7 @@
                   "Run combine_sana_vep to generate final annotated VCF"
               ],
               "software_used": [
-                 "/softwares/UUID"
+                 "/softwares/5d272932-1543-40d0-9089-6e0913aabf8a"
               ]
           },
           "name": "combine_sansa_vep",
