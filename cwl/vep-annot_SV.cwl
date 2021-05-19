@@ -60,4 +60,4 @@ outputs:
       - .tbi
 
 doc: |
-  run vep SV
+  run vep-annot_SV.sh to annotate SVs with Ensembl transcripts
