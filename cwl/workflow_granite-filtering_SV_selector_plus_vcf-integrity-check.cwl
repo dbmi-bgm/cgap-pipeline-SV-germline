@@ -10,10 +10,6 @@ inputs:
     type: File
     doc: expect the path to the vcf file
 
-  - id: genes
-    type: File
-    doc: expect the path to the tsv file with list of genes to apply
-
   - id: VEPsep
     type: string
     default: null
@@ -24,64 +20,14 @@ inputs:
     default: null
     doc: VEP tag to use
 
-  - id: outputfile-genes
-    type: string
-    default: "output-genes.vcf"
-    doc: name of the output file
-
-  - id: outputfile-CLI
-    type: string
-    default: "output-CLI.vcf"
-    doc: name of the output file
-
-  - id: outputfile-VEP-SpAI
-    type: string
-    default: "output-VEP-SpAI.vcf"
-    doc: name of the output file
-
-  - id: outputfile-VEP-SpAI_clean
-    type: string
-    default: "output-VEP-SpAI_clean.vcf"
-    doc: name of the output file
-
-  - id: outputfile-BL
-    type: string
-    default: "output-BL.vcf"
-    doc: name of the output file
-
-  - id: CLINVARonly
-    type: string[]
-    default: ["Pathogenic", "risk_factor"]
-    doc: only terms and keywords to be saved for CLINVAR
-
-  - id: SpliceAI
-    type: float
-    default: 0.2
-    doc: threshold to whitelist variants by SpliceAI value
-
   - id: VEPrescue
     type: string[]
     default: ["splice_region_variant"]
     doc: terms to overrule removed flags and/or to rescue and whitelist variants
 
-  - id: VEPremove
-    type: string[]
-    default: null
-    doc: additional terms to be removed
-
-  - id: BEDfile
-    type: File
-    default: null
-    doc: expect the path to bed file with positions to whitelist
-
-  - id: bigfile
-    type: File
-    default: null
-    doc: expect the path to big file with positions set for blacklist
-
   - id: aftag
     type: string
-    default: "gnomADg_AF"
+    default: "AF"
     doc: TAG to be used to filter by population allele frequency
 
   - id: afthr
@@ -89,143 +35,61 @@ inputs:
     default: 0.01
     doc: threshold to filter by population allele frequency
 
-  - id: float_null
-    type: float
-    default: null
-    doc: null float argument
-
-  - id: boolean_true
-    type: boolean
-    default: true
-    doc: true boolean argument
-
-  - id: boolean_null
-    type: boolean
-    default: null
-    doc: null boolean argument
-
-  - id: str_array_null
+  - id: SV_types
     type: string[]
-    default: null
-    doc: null string array argument
+    default: ["DEL", "DUP", "INV"]
+    doc: list of SVTYPE classes to retain in the final VCF
 
-  - id: file_null
-    type: File
-    default: null
-    doc: null file argument
-
-  - id: string_null
+  - id: outputfile-whiteList_SV
     type: string
-    default: null
-    doc: null string argument
+    default: "output-whiteList_SV.vcf"
+    doc: name of the output file
+
+  - id: outputfile-blackList_SV
+    type: string
+    default: "output-blackList_SV.vcf"
+    doc: name of the output file
+
+  - id: outputfile-SV_type_selector
+    type: string
+    default: "output-SV_type_selector.vcf"
+    doc: name of the output file
 
 outputs:
-  merged_vcf:
+  vcf:
     type: File
-    outputSource: merge-sort-vcf/output
+    outputSource: SV_type_selector/output
 
-  merged_vcf-check:
+  vcf-check:
     type: File
     outputSource: integrity-check/output
 
 steps:
-  granite-geneList:
-    run: granite-geneList.cwl
+
+  granite-whiteList_SV:
+    run: granite-whiteList_SV.cwl
     in:
       input:
         source: input_vcf
       outputfile:
-        source: outputfile-genes
-      genes:
-        source: genes
-      VEPtag:
-        source: VEPtag
-    out: [output]
-
-  granite-whiteList-CLI:
-    run: granite-whiteList.cwl
-    in:
-      input:
-        source: granite-geneList/output
-      outputfile:
-        source: outputfile-CLI
-      CLINVAR:
-        source: boolean_true
-      CLINVARonly:
-        source: CLINVARonly
-      SpliceAI:
-        source: float_null
-      VEP:
-        source: boolean_null
-      VEPrescue:
-        source: str_array_null
-      VEPremove:
-        source: str_array_null
-      BEDfile:
-        source: BEDfile
-      VEPsep:
-        source: string_null
-      VEPtag:
-        source: string_null
-    out: [output]
-
-  granite-whiteList-VEP-SpAI:
-    run: granite-whiteList.cwl
-    in:
-      input:
-        source: granite-geneList/output
-      outputfile:
-        source: outputfile-VEP-SpAI
-      CLINVAR:
-        source: boolean_null
-      CLINVARonly:
-        source: str_array_null
-      SpliceAI:
-        source: SpliceAI
+        source: outputfile-whiteList_SV
       VEP:
         source: boolean_true
       VEPrescue:
         source: VEPrescue
-      VEPremove:
-        source: VEPremove
-      BEDfile:
-        source: file_null
       VEPsep:
         source: VEPsep
       VEPtag:
         source: VEPtag
     out: [output]
 
-  granite-cleanVCF:
-    run: granite-cleanVCF.cwl
-    in:
-      input_vcf:
-        source: granite-whiteList-VEP-SpAI/output
-      outputfile:
-        source: outputfile-VEP-SpAI_clean
-      SpliceAI:
-        source: SpliceAI
-      VEP:
-        source: boolean_true
-      VEPrescue:
-        source: VEPrescue
-      VEPremove:
-        source: VEPremove
-      VEPsep:
-        source: VEPsep
-      VEPtag:
-        source: VEPtag
-      filter_VEP:
-        source: boolean_true
-    out: [output]
-
-  granite-blackList:
-    run: granite-blackList.cwl
+  granite-blackList_SV:
+    run: granite-blackList_SV.cwl
     in:
       input:
         source: granite-cleanVCF/output
       outputfile:
-        source: outputfile-BL
+        source: output-blackList_SV
       bigfile:
         source: bigfile
       aftag:
@@ -234,25 +98,26 @@ steps:
         source: afthr
     out: [output]
 
-  merge-sort-vcf:
-    run: merge-sort-vcf.cwl
+  SV_type_selector:
+    run: SV_type_selector.cwl
     in:
-      input_vcf_1:
-        source: granite-whiteList-CLI/output
-      input_vcf_2:
-        source: granite-blackList/output
+      input:
+        source: granite-blackList_SV/output
+      SV_types:
+        source: SV_types
+      outputfile:
+        source: outputfile-SV_type_selector
     out: [output]
 
   integrity-check:
     run: vcf-integrity-check.cwl
     in:
       input:
-        source: merge-sort-vcf/output
+        source: SV_type_selector/output
     out: [output]
 
 doc: |
-  run granite geneList |
-  run granite whiteList CLINVAR |
-  run granite whiteList VEP-SpAI with cleanVCF, run blackList |
-  run merge-sort-vcf.sh to merge and sort the two vcf files |
+  run granite whiteList SV |
+  run granite blackList SV |
+  run SV_type_selector |
   run an integrity check on the output vcf
