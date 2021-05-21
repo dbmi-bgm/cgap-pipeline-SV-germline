@@ -37,7 +37,7 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(inputs.outputfile)
+      glob: $(inputs.outputfile).gz
 
 doc: |
   run SV_type_selector.py to filter VCF for specific SV classes

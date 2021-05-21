@@ -10,6 +10,12 @@ inputs:
     type: File
     doc: expect the path to the vcf file
 
+  - id: VEP
+    type: boolean
+    doc: use VEP annotations to whitelist exonic and functional relevant variants |
+         removed by default intron_variant, intergenic_variant, downstream_gene_variant, |
+         upstream_gene_variant, regulatory_region_variant
+
   - id: VEPsep
     type: string
     default: null
@@ -74,7 +80,7 @@ steps:
       outputfile:
         source: outputfile-whiteList_SV
       VEP:
-        source: boolean_true
+        source: VEP
       VEPrescue:
         source: VEPrescue
       VEPsep:
@@ -87,11 +93,9 @@ steps:
     run: granite-blackList_SV.cwl
     in:
       input:
-        source: granite-cleanVCF/output
+        source: granite-whiteList_SV/output
       outputfile:
-        source: output-blackList_SV
-      bigfile:
-        source: bigfile
+        source: outputfile-blackList_SV
       aftag:
         source: aftag
       afthr:
