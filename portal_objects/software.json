@@ -2,18 +2,6 @@
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
         "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-        "name": "reformat_SV_vcf",
-        "software_type": [
-            "annotator"
-        ],
-        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "reformat_SV_vcf_23b0c39",
-        "uuid": "65b72063-c053-45c4-b807-08dc79fb92f3",
-        "commit": "23b0c39"
-    },
-    {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
         "name": "sansa",
         "software_type": [
             "annotator"
@@ -26,13 +14,37 @@
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
         "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "name": "reformat_SV_vcf",
+        "software_type": [
+            "annotator"
+        ],
+        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
+        "title": "reformat_SV_vcf_10ff97b",
+        "uuid": "65b72063-c053-45c4-b807-08dc79fb92f3",
+        "commit": "10ff97b"
+    },
+    {
+        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
         "name": "combine_sansa_and_VEP_vcf",
         "software_type": [
             "annotator"
         ],
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "combine_sansa_and_VEP_vcf_23b0c39",
+        "title": "combine_sansa_and_VEP_vcf_10ff97b",
         "uuid": "5d272932-1543-40d0-9089-6e0913aabf8a",
-        "commit": "23b0c39"
+        "commit": "10ff97b"
+    },
+    {
+        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "name": "SV_type_selector",
+        "software_type": [
+            "annotator"
+        ],
+        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
+        "title": "SV_type_selector_10ff97b",
+        "uuid": "2edb3df5-d147-4efe-8c57-8301c9604f5f",
+        "commit": "10ff97b"
     }
 ]
