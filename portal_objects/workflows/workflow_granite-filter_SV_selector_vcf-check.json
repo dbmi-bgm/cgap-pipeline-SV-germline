@@ -55,16 +55,16 @@
   ],
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
-  "cwl_child_filenames": ["sansa.cwl", "vep-annot_SV.cwl", "combine_sansa_vep.cwl", "vcf-integrity-check.cwl"],
+  "cwl_child_filenames": ["granite-whiteList_SV.cwl", "granite-blackList_SV.cwl", "SV_type_selector.cwl", "vcf-integrity-check.cwl"],
   "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
-  "cwl_main_filename": "workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl",
+  "cwl_main_filename": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Annotate SV VCF with Sansa and VEP, then combine results. An integrity check is performed on the output file",
   "docker_image_name": "cgap/cnv:v1",
   "docker_registry_url": "https://hub.docker.com/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-  "name": "workflow_annotateSV_sansa_vep_vcf-check_v1",
-  "aliases": ["cgap:workflow_annotateSV_sansa_vep_vcf-check_v1"],
+  "name": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_v1",
+  "aliases": ["cgap:workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_v1"],
   "steps": [
       {
           "inputs": [
@@ -336,5 +336,5 @@
       }
   ],
   "title": "SV filtering Run granite whiteList and blackList, select SV variant types, plus output integrity-check",
-  "uuid": "96374af8-6a73-43be-ba62-3bc2c62f0ad5"
+  "uuid": "6970f75a-6836-4e8e-a487-96ad158d21cf"
 }
