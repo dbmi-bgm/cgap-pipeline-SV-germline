@@ -37,37 +37,6 @@ WORKDIR /usr/local/bin
 RUN conda install pysam==0.15.3 python=3.6.8 && \
     conda clean -a -y -f
 
-# granite
-RUN pip install granite-suite==0.1.11
-
-# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py
-RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
-    cd cgap-annotations && \
-    git checkout 23b0c39 && \
-    cd .. && \
-    cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
-    chmod +x reformat_SV_vcf.py && \
-    cp cgap-annotations/sv/scripts/combine_sansa_and_VEP_vcf.py . && \
-    chmod +x combine_sansa_and_VEP_vcf.py . && \
-    rm -rf cgap-annotations
-
-# cgap-pipeline scripts: vcf-integrity-check.sh
-RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
-    cd cgap-pipeline && \
-    git checkout 17b4249 && \
-    cd .. && \ 
-    cp cgap-pipeline/dockerfiles/cgap-docker/vcf-integrity-check.sh . && \
-    chmod +x vcf-integrity-check.sh && \ 
-    rm -rf cgap-pipeline
-
-# sansa script
-COPY sansa.sh .
-RUN chmod +x sansa.sh
-
-# VEP script
-COPY vep-annot_SV.sh .
-RUN chmod +x vep-annot_SV.sh
-
 # bcftools
 RUN wget https://github.com/samtools/bcftools/releases/download/1.11/bcftools-1.11.tar.bz2 && \
     tar -xjf bcftools-1.11.tar.bz2 && \
@@ -101,6 +70,39 @@ RUN git clone https://github.com/Ensembl/ensembl-vep.git && \
     git checkout release/101 && \
     perl INSTALL.pl --AUTO a --NO_UPDATE && \
     cd ..
+
+# granite
+RUN pip install granite-suite==0.1.11
+
+# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py
+RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
+    cd cgap-annotations && \
+    git checkout 10ff97b && \
+    cd .. && \
+    cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
+    chmod +x reformat_SV_vcf.py && \
+    cp cgap-annotations/sv/scripts/combine_sansa_and_VEP_vcf.py . && \
+    chmod +x combine_sansa_and_VEP_vcf.py . && \
+    cp cgap-annotations/sv/scripts/SV_type_selector.py . && \
+    chmod +x SV_type_selector.py && \
+    rm -rf cgap-annotations
+
+# cgap-pipeline scripts: vcf-integrity-check.sh
+RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
+    cd cgap-pipeline && \
+    git checkout 17b4249 && \
+    cd .. && \ 
+    cp cgap-pipeline/dockerfiles/cgap-docker/vcf-integrity-check.sh . && \
+    chmod +x vcf-integrity-check.sh && \ 
+    rm -rf cgap-pipeline
+
+# sansa script
+COPY sansa.sh .
+RUN chmod +x sansa.sh
+
+# VEP script
+COPY vep-annot_SV.sh .
+RUN chmod +x vep-annot_SV.sh
 
 # env paths
 ENV PATH=/usr/local/bin/ensembl-vep/:$PATH
