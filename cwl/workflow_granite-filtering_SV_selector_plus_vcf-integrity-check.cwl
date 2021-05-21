@@ -12,6 +12,7 @@ inputs:
 
   - id: VEP
     type: boolean
+    default: TRUE
     doc: use VEP annotations to whitelist exonic and functional relevant variants |
          removed by default intron_variant, intergenic_variant, downstream_gene_variant, |
          upstream_gene_variant, regulatory_region_variant
