@@ -74,10 +74,10 @@ RUN git clone https://github.com/Ensembl/ensembl-vep.git && \
 # granite
 RUN pip install granite-suite==0.1.11
 
-# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py
+# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py SV_type_selector.py
 RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd cgap-annotations && \
-    git checkout 10ff97b && \
+    git checkout 59d6537 && \
     cd .. && \
     cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
     chmod +x reformat_SV_vcf.py && \
