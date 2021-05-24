@@ -38,6 +38,8 @@ outputs:
     type: File
     outputBinding:
       glob: $(inputs.outputfile).gz
+    secondaryFiles:
+      - .tbi
 
 doc: |
   run SV_type_selector.py to filter VCF for specific SV classes
