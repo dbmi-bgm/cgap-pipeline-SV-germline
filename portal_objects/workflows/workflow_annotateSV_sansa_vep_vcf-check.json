@@ -272,7 +272,7 @@
                   "source": [
                       {
                           "name": "vcf",
-                          "step": "reformat_SV_vcf"
+                          "step": "combine_sansa_vep"
                       }
                   ]
               }
