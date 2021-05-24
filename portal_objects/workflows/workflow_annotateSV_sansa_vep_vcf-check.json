@@ -28,6 +28,16 @@
           "argument_type": "Output processed file",
           "workflow_argument_name": "final_vcf",
           "secondary_file_formats": ["vcf_gz_tbi"]
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "vcf-check",
+          "argument_to_be_attached_to": "vcf",
+          "qc_zipped": false,
+          "qc_html": false,
+          "qc_json": false,
+          "qc_table": true,
+          "qc_type": "quality_metric_vcfcheck"
       }
   ],
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
