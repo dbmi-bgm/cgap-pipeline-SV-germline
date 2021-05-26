@@ -1,0 +1,361 @@
+{
+  "accession": "GAPWFP4K9D2R",
+  "app_name": "workflow_parliament2_vcf-check",
+  "app_version": "v1",
+  "arguments": [
+      {
+          "argument_format": "bam",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_bam",
+          "secondary_file_formats": ["bai"]
+      },
+      {
+          "argument_format": "fa",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_fasta",
+          "secondary_file_formats": ["fa_fai"]
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "filter_short_contigs"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_breakdancer"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_breakseq"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_manta"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_cnvnator"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_lumpy"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_delly_deletion"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_delly_insertion"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_delly_inversion"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_delly_duplication"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "run_genotype_candidates"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "sample_name"
+      },
+      {
+          "argument_format": "zip",
+          "argument_type": "Output processed file",
+          "workflow_argument_name": "final_zip"
+      },
+      {
+        "argument_format": "vcf_gz",
+        "argument_type": "Output processed file",
+        "workflow_argument_name": "final_vcf",
+        "secondary_file_formats": ["vcf_gz_tbi"]
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "vcf-check",
+          "argument_to_be_attached_to": "vcf",
+          "qc_zipped": false,
+          "qc_html": false,
+          "qc_json": false,
+          "qc_table": true,
+          "qc_type": "quality_metric_vcfcheck"
+      }
+  ],
+  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "category": ["processing"],
+  "cwl_child_filenames": ["parliament2.cwl", "vcf-integrity-check.cwl"],
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
+  "cwl_main_filename": "workflow_parliament2_integrity-check.cwl",
+  "cwl_pointer": "",
+  "description": "Run parliament2 to call stuructural variants. An integrity check is performed on the output file",
+  "docker_image_name": "aveit/parliament2:v1",
+  "docker_registry_url": "https://hub.docker.com/",
+  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "name": "workflow_parliament2_vcf-check_v1",
+  "aliases": ["cgap:workflow_parliament2_vcf-check_v1"],
+  "steps": [
+      {
+          "inputs": [
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "file_format": "bam",
+                        "global": true,
+                        "type": "data file"
+                    },
+                    "name": "input_bam",
+                    "source": [
+                        {
+                            "name": "input_bam"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "file_format": "fa",
+                        "global": true,
+                        "type": "reference file"
+                    },
+                    "name": "input_fasta",
+                    "source": [
+                        {
+                            "name": "input_fasta"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "filter_short_contigs",
+                    "source": [
+                        {
+                            "name": "filter_short_contigs"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_breakdancer",
+                    "source": [
+                        {
+                            "name": "run_breakdancer"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_breakseq",
+                    "source": [
+                        {
+                            "name": "run_breakseq"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_manta",
+                    "source": [
+                        {
+                            "name": "run_manta"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_cnvnator",
+                    "source": [
+                        {
+                            "name": "run_cnvnator"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_lumpy",
+                    "source": [
+                        {
+                            "name": "run_lumpy"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_delly_deletion",
+                    "source": [
+                        {
+                            "name": "run_delly_deletion"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_delly_insertion",
+                    "source": [
+                        {
+                            "name": "run_delly_insertion"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_delly_inversion",
+                    "source": [
+                        {
+                            "name": "run_delly_inversion"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_delly_duplication",
+                    "source": [
+                        {
+                            "name": "run_delly_duplication"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "run_genotype_candidates",
+                    "source": [
+                        {
+                            "name": "run_genotype_candidates"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "parameter"
+                    },
+                    "name": "sample_name",
+                    "source": [
+                        {
+                            "name": "sample_name"
+                        }
+                    ]
+                }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run parliament2"
+              ],
+              "software_used": [
+                 "/softwares/4aa9020d-c2bb-48d8-8e0e-f84fa6620f06"
+              ]
+          },
+          "name": "parliament2",
+          "outputs": [
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "file_format": "vcf_gz",
+                        "global": true,
+                        "type": "data file"
+                    },
+                    "name": "final_vcf",
+                    "target": [
+                        {
+                            "name": "final_vcf",
+                            "step": "vcf-integrity-check"
+                        }
+                    ]
+                }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": false,
+                      "type": "data file"
+                  },
+                  "name": "final_vcf",
+                  "source": [
+                      {
+                          "name": "final_vcf",
+                          "step": "parliament2"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Check integrity of vcf output file"
+              ],
+              "software_used": [
+                 "/softwares/f7ac2c5f-9203-49fa-b918-cede02bf46f7"
+              ]
+          },
+          "name": "vcf-integrity-check",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "QC"
+                  },
+                  "name": "vcf-check",
+                  "target": [
+                      {
+                          "name": "vcf-check"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "Run parliament2 plus output integrity-check",
+  "uuid": "2853578b-b1f3-45f9-974b-5f1f23f64820"
+}
