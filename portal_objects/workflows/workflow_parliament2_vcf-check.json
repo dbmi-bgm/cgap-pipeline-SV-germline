@@ -64,20 +64,23 @@
           "workflow_argument_name": "sample_name"
       },
       {
-          "argument_format": "zip",
-          "argument_type": "Output processed file",
-          "workflow_argument_name": "final_zip"
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "final_zip",
+          "qc_zipped": true,
+          "argument_to_be_attached_to": "input_bam",
+          "qc_acl": "private",
+          "qc_unzip_from_ec2": false
       },
       {
-        "argument_format": "vcf_gz",
-        "argument_type": "Output processed file",
-        "workflow_argument_name": "final_vcf",
-        "secondary_file_formats": ["vcf_gz_tbi"]
+          "argument_format": "vcf_gz",
+          "argument_type": "Output processed file",
+          "workflow_argument_name": "final_vcf",
+          "secondary_file_formats": ["vcf_gz_tbi"]
       },
       {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
-          "argument_to_be_attached_to": "vcf",
+          "argument_to_be_attached_to": "final_vcf",
           "qc_zipped": false,
           "qc_html": false,
           "qc_json": false,
@@ -307,6 +310,19 @@
                         {
                             "name": "final_vcf",
                             "step": "vcf-integrity-check"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "QC"
+                    },
+                    "name": "final_zip",
+                    "target": [
+                        {
+                            "name": "final_zip"
                         }
                     ]
                 }

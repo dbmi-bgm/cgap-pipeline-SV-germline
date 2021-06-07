@@ -48,7 +48,7 @@ inputs:
 
   - id: run_delly_insertion
     type: string
-    default: "True"
+    default: "False"
 
   - id: run_delly_inversion
     type: string
