@@ -5,7 +5,7 @@
        {
            "workflow_argument_name": "input_vcf",
            "uuid": "e19e239a-645e-45f1-88a9-1d5f7c065856",
-           "mount": true
+           "mount": false
        }
     ],
     "config": {

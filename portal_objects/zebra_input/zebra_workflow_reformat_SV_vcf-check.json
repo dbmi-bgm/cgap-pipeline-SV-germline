@@ -5,12 +5,12 @@
        {
            "workflow_argument_name": "input_vcf",
            "uuid": "3eb99abd-db7d-4976-8535-ee87c2f8f429",
-           "mount": true
+           "mount": false
        },
        {
            "workflow_argument_name": "contig_file",
            "uuid": "9f787f86-0d6c-4929-b8fd-665469f25cc2",
-           "mount": true
+           "mount": false
        }
     ],
     "config": {
