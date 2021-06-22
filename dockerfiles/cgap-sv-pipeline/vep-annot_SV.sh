@@ -28,7 +28,7 @@ command="vep -i $input_vcf -o ${directory}test.vep.vcf $options"
 echo "Running VEP"
 $command
 
-cp ${directory}test.vep.vcf sv_annotated_vep.vcf
+cp ${directory}test.vep.vcf sv_annotated_vep.vcf || exit 1
 
 bgzip sv_annotated_vep.vcf || exit 1
 tabix -p vcf sv_annotated_vep.vcf.gz || exit 1
