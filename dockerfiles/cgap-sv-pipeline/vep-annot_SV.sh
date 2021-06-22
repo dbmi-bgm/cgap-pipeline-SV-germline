@@ -26,7 +26,7 @@ options="--fasta $reference --assembly $assembly --use_given_ref --offline --ove
 command="vep -i $input_vcf -o ${directory}test.vep.vcf $options"
 
 echo "Running VEP"
-$command
+$command || exit 1
 
 cp ${directory}test.vep.vcf sv_annotated_vep.vcf || exit 1
 
