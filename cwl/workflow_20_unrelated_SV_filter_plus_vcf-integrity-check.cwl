@@ -35,7 +35,7 @@ inputs:
     doc: expect path zip directory containing 20 unrelated VCFs
 
 outputs:
-  vcf:
+  output_vcf:
     type: File
     outputSource: 20_unrelated_SV_filter/output
 
