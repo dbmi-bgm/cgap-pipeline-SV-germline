@@ -58,5 +58,16 @@
         "title": "SV_type_selector_10ff97b",
         "uuid": "2edb3df5-d147-4efe-8c57-8301c9604f5f",
         "commit": "10ff97b"
+    },
+    {
+        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "name": "20_unrelated_SV_filter",
+        "software_type": [
+            "filter"
+        ],
+        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
+        "uuid": "50434084-115c-4da7-a5b7-7dae3d658e35",
+        "commit": "c214b30"
     }
 ]

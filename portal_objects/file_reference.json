@@ -23,5 +23,15 @@
         }
     ],
     "status": "uploading"
+  },
+  {
+    "uuid": "3819698f-d587-4971-a8ca-bf96151c4296",
+    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+    "file_format": "vcf_tar",
+    "description": "tar archive of 20 unrelated SV vcf_gz files",
+    "aliases": ["cgap:SV-20-unrelated-tar"],
+    "extra_files": [],
+    "status": "uploading"
   }
 ]
