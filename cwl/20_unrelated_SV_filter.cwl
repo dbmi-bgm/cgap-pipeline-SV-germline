@@ -61,6 +61,8 @@ outputs:
     type: File
     outputBinding:
       glob: $(inputs.output + ".gz")
+    secondaryFiles:
+      - .tbi
 
 doc: |
   run 20_unrelated_SV_filter.py to create a filtered VCF file
