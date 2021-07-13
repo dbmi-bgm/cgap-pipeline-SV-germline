@@ -60,7 +60,7 @@
   ],
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
-  "cwl_child_filenames": ["granite-geneList.cwl", "granite-whiteList_SV.cwl", "granite-blackList_SV.cwl", "SV_type_selector.cwl", "vcf-integrity-check.cwl"],
+  "cwl_child_filenames": ["granite-geneList_SV.cwl", "granite-whiteList_SV.cwl", "granite-blackList_SV.cwl", "SV_type_selector.cwl", "vcf-integrity-check.cwl"],
   "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
   "cwl_main_filename": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",

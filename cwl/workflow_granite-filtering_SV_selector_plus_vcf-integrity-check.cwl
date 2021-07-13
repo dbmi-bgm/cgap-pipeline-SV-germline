@@ -143,7 +143,7 @@ steps:
         source: SV_type_selector/output
     out: [output]
 
-doc: |
+doc: run granite geneList SV |
   run granite whiteList SV |
   run granite blackList SV |
   run SV_type_selector |
