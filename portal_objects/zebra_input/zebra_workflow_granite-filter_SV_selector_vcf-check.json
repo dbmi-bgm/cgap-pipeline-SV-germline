@@ -6,6 +6,11 @@
            "workflow_argument_name": "input_vcf",
            "uuid": "e19e239a-645e-45f1-88a9-1d5f7c065856",
            "mount": false
+       },
+       {
+           "workflow_argument_name": "genes",
+           "uuid": "84f2bb24-edd7-459b-ab89-0a21866d7826",
+           "mount": false
        }
     ],
     "config": {

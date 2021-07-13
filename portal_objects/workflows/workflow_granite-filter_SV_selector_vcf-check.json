@@ -9,6 +9,11 @@
           "workflow_argument_name": "input_vcf"
       },
       {
+          "argument_format": "txt",
+          "argument_type": "Input file",
+          "workflow_argument_name": "genes"
+      },
+      {
           "argument_format": "vcf_gz",
           "argument_type": "Output processed file",
           "workflow_argument_name": "vcf",
@@ -55,11 +60,11 @@
   ],
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
-  "cwl_child_filenames": ["granite-whiteList_SV.cwl", "granite-blackList_SV.cwl", "SV_type_selector.cwl", "vcf-integrity-check.cwl"],
+  "cwl_child_filenames": ["granite-geneList.cwl", "granite-whiteList_SV.cwl", "granite-blackList_SV.cwl", "SV_type_selector.cwl", "vcf-integrity-check.cwl"],
   "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
   "cwl_main_filename": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
-  "description": "Annotate SV VCF with Sansa and VEP, then combine results. An integrity check is performed on the output file",
+  "description": "Filter the annotated input SV VCF using granite (geneList, whiteList, blackList) and select SV types to be maintained. An integrity check is performed on the output file",
   "docker_image_name": "cgap/cnv:v1",
   "docker_registry_url": "https://hub.docker.com/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
@@ -79,6 +84,78 @@
                   "source": [
                       {
                           "name": "input_vcf"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "reference file"
+                  },
+                  "name": "genes",
+                  "source": [
+                      {
+                          "name": "genes"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "parameter"
+                  },
+                  "name": "VEPtag",
+                  "source": [
+                      {
+                          "name": "VEPtag"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run geneList SV"
+              ],
+              "software_used": [
+                 "/softwares/071647ab-d344-4489-8a6b-7d911908ed2b"
+              ]
+          },
+          "name": "geneList_SV",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "geneList_VCF",
+                  "target": [
+                      {
+                          "name": "geneList_VCF",
+                          "step": "whiteList_VCF"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "geneList_VCF",
+                  "source": [
+                      {
+                          "name": "geneList_VCF",
+                          "step": "geneList_SV"
                       }
                   ]
               },
@@ -335,6 +412,6 @@
           ]
       }
   ],
-  "title": "SV filtering Run granite whiteList and blackList, select SV variant types, plus output integrity-check",
+  "title": "SV filtering run granite geneList, whiteList and blackList, select SV variant types, plus output integrity-check",
   "uuid": "6970f75a-6836-4e8e-a487-96ad158d21cf"
 }

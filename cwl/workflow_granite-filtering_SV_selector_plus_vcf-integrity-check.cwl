@@ -10,6 +10,15 @@ inputs:
     type: File
     doc: expect the path to the vcf file
 
+  - id: genes
+    type: File
+    doc: expect the path to the tsv file with list of genes to apply
+
+  - id: outputfile-geneList_SV
+    type: string
+    default: "output-genes.vcf"
+    doc: name of the output file
+
   - id: VEP
     type: boolean
     default: TRUE
@@ -73,11 +82,24 @@ outputs:
 
 steps:
 
+  granite-geneList_SV:
+    run: granite-geneList_SV.cwl
+    in:
+      input:
+        source: input_vcf
+      outputfile:
+        source: outputfile-geneList_SV
+      genes:
+        source: genes
+      VEPtag:
+        source: VEPtag
+    out: [output]
+
   granite-whiteList_SV:
     run: granite-whiteList_SV.cwl
     in:
       input:
-        source: input_vcf
+        source: granite-geneList_SV/output
       outputfile:
         source: outputfile-whiteList_SV
       VEP:
