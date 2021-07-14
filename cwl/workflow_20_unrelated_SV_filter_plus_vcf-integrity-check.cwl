@@ -63,6 +63,8 @@ steps:
         source: recip
       dirPath20vcf:
         source: dirPath20vcf
+      SV_types:
+        source: SV_types
     out: [output]
 
   integrity-check:
