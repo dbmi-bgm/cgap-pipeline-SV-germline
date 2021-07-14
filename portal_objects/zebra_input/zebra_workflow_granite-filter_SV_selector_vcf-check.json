@@ -1,5 +1,5 @@
 {
-    "parameters": {},
+    "parameters": {"SV_types": ["DEL", "DUP"]},
     "workflow_uuid": "6970f75a-6836-4e8e-a487-96ad158d21cf",
     "input_files" : [
        {

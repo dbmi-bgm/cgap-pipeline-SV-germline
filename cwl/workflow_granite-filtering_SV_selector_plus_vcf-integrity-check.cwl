@@ -53,7 +53,6 @@ inputs:
 
   - id: SV_types
     type: string[]
-    default: ["DEL", "DUP", "INV"]
     doc: list of SVTYPE classes to retain in the final VCF
 
   - id: outputfile-whiteList_SV

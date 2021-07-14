@@ -32,7 +32,11 @@ inputs:
 
   - id: dirPath20vcf
     type: File
-    doc: expect path zip directory containing 20 unrelated VCFs
+    doc: expect path to tar directory containing 20 unrelated VCFs
+
+  - id: SV_types
+    type: string[]
+    doc: list of SVTYPE classes to consider in the 20 unrelated VCFs
 
 outputs:
   output_vcf:

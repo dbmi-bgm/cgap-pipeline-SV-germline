@@ -33,6 +33,10 @@
           "workflow_argument_name": "dirPath20vcf"
       },
       {
+          "argument_type": "parameter",
+          "workflow_argument_name": "SV_types"
+      },
+      {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
           "argument_to_be_attached_to": "output_vcf",
@@ -122,6 +126,19 @@
                   "source": [
                       {
                           "name": "dirPath20vcf"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "parameter"
+                  },
+                  "name": "SV_types",
+                  "source": [
+                      {
+                          "name": "SV_types"
                       }
                   ]
               }
