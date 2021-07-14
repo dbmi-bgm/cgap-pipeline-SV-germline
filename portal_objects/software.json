@@ -14,6 +14,18 @@
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
         "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "name": "manta",
+        "software_type": [
+            "variant caller"
+        ],
+        "source_url": "https://github.com/Illumina/manta",
+        "title": "manta_1.6.0",
+        "uuid": "441d3be4-f5fe-4b54-921f-b0a49dd2613f",
+        "commit": "1.6.0 "
+    },
+    {
+        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
         "name": "sansa",
         "software_type": [
             "annotator"
