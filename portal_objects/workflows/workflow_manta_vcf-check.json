@@ -1,0 +1,172 @@
+{
+  "accession": "GAPWFP20LPNF",
+  "app_name": "workflow_manta_vcf-check",
+  "app_version": "v1",
+  "arguments": [
+      {
+          "argument_format": "bam",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_bams",
+          "secondary_file_formats": ["bai"]
+      },
+      {
+          "argument_format": "fa",
+          "argument_type": "Input file",
+          "workflow_argument_name": "ref_fasta",
+          "secondary_file_formats": ["fa_fai"]
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "final_zip",
+          "qc_zipped": true,
+          "argument_to_be_attached_to": "input_bams",
+          "qc_acl": "private",
+          "qc_unzip_from_ec2": false
+      },
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Output processed file",
+          "workflow_argument_name": "final_vcf"
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "vcf-check",
+          "argument_to_be_attached_to": "final_vcf",
+          "qc_zipped": false,
+          "qc_html": false,
+          "qc_json": false,
+          "qc_table": true,
+          "qc_type": "quality_metric_vcfcheck"
+      }
+  ],
+  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "category": ["processing"],
+  "cwl_child_filenames": ["manta.cwl", "vcf-integrity-check-manta.cwl"],
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
+  "cwl_main_filename": "workflow_manta_integrity-check.cwl",
+  "cwl_pointer": "",
+  "description": "Run Manta to call stuructural variants. An integrity check is performed on the output file",
+  "docker_image_name": "aveit/cgap-manta:v1",
+  "docker_registry_url": "https://hub.docker.com/",
+  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "name": "workflow_manta_vcf-check_v1",
+  "aliases": ["cgap:workflow_manta_vcf-check_v1"],
+  "steps": [
+      {
+          "inputs": [
+                {
+                    "meta": {
+                        "cardinality": "array",
+                        "file_format": "bam",
+                        "global": true,
+                        "type": "data file"
+                    },
+                    "name": "input_bams",
+                    "source": [
+                        {
+                            "name": "input_bams"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "file_format": "fa",
+                        "global": true,
+                        "type": "reference file"
+                    },
+                    "name": "ref_fasta",
+                    "source": [
+                        {
+                            "name": "ref_fasta"
+                        }
+                    ]
+                }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run Manta"
+              ],
+              "software_used": [
+                 "/softwares/441d3be4-f5fe-4b54-921f-b0a49dd2613f"
+              ]
+          },
+          "name": "manta",
+          "outputs": [
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "file_format": "vcf_gz",
+                        "global": true,
+                        "type": "data file"
+                    },
+                    "name": "final_vcf",
+                    "target": [
+                        {
+                            "name": "final_vcf",
+                            "step": "vcf-integrity-check"
+                        }
+                    ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "QC"
+                    },
+                    "name": "final_zip",
+                    "target": [
+                        {
+                            "name": "final_zip"
+                        }
+                    ]
+                }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": false,
+                      "type": "data file"
+                  },
+                  "name": "final_vcf",
+                  "source": [
+                      {
+                          "name": "final_vcf",
+                          "step": "manta"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Check integrity of vcf output file"
+              ],
+              "software_used": [
+                 "/softwares/f7ac2c5f-9203-49fa-b918-cede02bf46f7"
+              ]
+          },
+          "name": "vcf-integrity-check",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "QC"
+                  },
+                  "name": "vcf-check",
+                  "target": [
+                      {
+                          "name": "vcf-check"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "Run Manta plus output integrity-check",
+  "uuid": "c2a6344d-c4c0-49c0-b5fc-1df2024c62ab"
+}
