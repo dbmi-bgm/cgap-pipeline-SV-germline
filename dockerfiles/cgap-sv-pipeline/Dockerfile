@@ -88,7 +88,7 @@ RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cp cgap-annotations/sv/scripts/20_unrelated_SV_filter.py . && \
     chmod +x 20_unrelated_SV_filter.py && \
     cp cgap-annotations/sv/scripts/SV_length_filter.py . && \
-    chmod +x SV_length_filter.py
+    chmod +x SV_length_filter.py && \
     rm -rf cgap-annotations
 
 # cgap-pipeline scripts: vcf-integrity-check.sh
