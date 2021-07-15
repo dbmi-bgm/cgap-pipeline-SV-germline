@@ -92,5 +92,16 @@
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
         "uuid": "8933a673-1c0d-4d0c-98d5-eb2aa892cb02",
         "commit": "8583408"
+    },
+    {
+        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "name": "SV_annotation_VCF_cleaner",
+        "software_type": [
+            "filter"
+        ],
+        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
+        "uuid": "c7998aa6-62ae-4e8c-bfa9-1aa9340b8cb0",
+        "commit": "395b463"
     }
 ]

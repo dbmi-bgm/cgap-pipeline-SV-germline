@@ -1,0 +1,135 @@
+{
+  "accession": "GAPWFJYN46L2",
+  "app_name": "workflow_SV_annotation_cleaner_vcf-check",
+  "app_version": "v1",
+  "arguments": [
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_vcf"
+      },
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Output processed file",
+          "workflow_argument_name": "output_vcf",
+          "secondary_file_formats": ["vcf_gz_tbi"]
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "max_length"
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "vcf-check",
+          "argument_to_be_attached_to": "output_vcf",
+          "qc_zipped": false,
+          "qc_html": false,
+          "qc_json": false,
+          "qc_table": true,
+          "qc_type": "quality_metric_vcfcheck"
+      }
+  ],
+  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "category": ["processing"],
+  "cwl_child_filenames": ["SV_annotation_VCF_cleaner.cwl", "vcf-integrity-check.cwl"],
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
+  "cwl_main_filename": "workflow_SV_annotation_VCF_cleaner_plus_vcf-integrity-check.cwl",
+  "cwl_pointer": "",
+  "description": "Clean unnecessary data from the annotated SV VCF for faster visualization. An integrity check is performed on the output file",
+  "docker_image_name": "cgap/cnv:v1",
+  "docker_registry_url": "https://hub.docker.com/",
+  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "name": "workflow_SV_annotation_cleaner_vcf-check_v1",
+  "aliases": ["cgap:workflow_SV_annotation_cleaner_vcf-check_v1"],
+  "steps": [
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "input_vcf",
+                  "source": [
+                      {
+                          "name": "input_vcf"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run SV annotation VCF cleaner"
+              ],
+              "software_used": [
+                 "/softwares/c7998aa6-62ae-4e8c-bfa9-1aa9340b8cb0"
+              ]
+          },
+          "name": "SV_annotation_VCF_cleaner",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "output_vcf",
+                  "target": [
+                      {
+                          "name": "output_vcf",
+                          "step": "vcf-integrity-check"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": false,
+                      "type": "data file"
+                  },
+                  "name": "output_vcf",
+                  "source": [
+                      {
+                          "name": "output_vcf",
+                          "step": "SV_annotation_VCF_cleaner"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Check integrity of vcf output file"
+              ],
+              "software_used": [
+                 "/softwares/f7ac2c5f-9203-49fa-b918-cede02bf46f7"
+              ]
+          },
+          "name": "vcf-integrity-check",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "QC"
+                  },
+                  "name": "vcf-check",
+                  "target": [
+                      {
+                          "name": "vcf-check"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "SV length filtering plus output integrity-check",
+  "uuid": "6aacb350-323f-4f3c-abf5-bc82cbe0779e"
+}
