@@ -77,7 +77,7 @@ RUN pip install granite-suite==0.1.11
 # cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py SV_type_selector.py 20_unrelated_SV_filter.py SV_length_filter.py
 RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd cgap-annotations && \
-    git checkout 8583408 && \
+    git checkout 395b463 && \
     cd .. && \
     cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
     chmod +x reformat_SV_vcf.py && \
@@ -89,6 +89,8 @@ RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     chmod +x 20_unrelated_SV_filter.py && \
     cp cgap-annotations/sv/scripts/SV_length_filter.py . && \
     chmod +x SV_length_filter.py && \
+    cp cgap-annotations/sv/scripts/SV_annotation_VCF_cleaner.py . && \
+    chmod +x SV_annotation_VCF_cleaner.py && \
     rm -rf cgap-annotations
 
 # cgap-pipeline scripts: vcf-integrity-check.sh
