@@ -1,0 +1,25 @@
+{
+    "parameters": {"max_length": 10000000},
+    "workflow_uuid": "5913925a-9f34-4df2-b44a-2865482e8fad",
+    "input_files" : [
+       {
+           "workflow_argument_name": "input_vcf",
+           "uuid": "6950db82-5517-4a81-95f0-98f1121206d5",
+           "mount": false
+       }
+    ],
+    "config": {
+      "instance_type": "t3.micro",
+      "ebs_size": 10,
+      "EBS_optimized": true,
+      "spot_instance": true,
+      "log_bucket": "tibanna-output",
+      "run_name": "run_workflow_SV_length_filter_vcf-check",
+      "behavior_on_capacity_limit": "wait_and_retry"
+    },
+    "_tibanna": {
+      "run_type": "workflow_SV_length_filter_vcf-check",
+      "env": "fourfront-cgapwolf"
+    },
+    "app_name": "workflow_SV_length_filter_vcf-check"
+}
