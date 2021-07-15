@@ -22,7 +22,6 @@ inputs:
 
   - id: outputfile
     type: string
-    default: "output.vcf"
     inputBinding:
       prefix: -o
     doc: name of the output file

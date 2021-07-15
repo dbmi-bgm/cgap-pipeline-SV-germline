@@ -12,6 +12,7 @@ inputs:
 
   - id: output_vcf
     type: string
+    default: "output.vcf"
     doc: base name of output vcf gz file
 
   - id: max_length
