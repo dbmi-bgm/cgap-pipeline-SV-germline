@@ -34,7 +34,7 @@ steps:
     in:
       input:
         source: input_vcf
-      outputfile:
+      output:
         source: output_vcf
       max_length:
         source: max_length

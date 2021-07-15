@@ -20,7 +20,7 @@ inputs:
       prefix: -i
     doc: expect the path to the vcf file
 
-  - id: outputfile
+  - id: output
     type: string
     inputBinding:
       prefix: -o
