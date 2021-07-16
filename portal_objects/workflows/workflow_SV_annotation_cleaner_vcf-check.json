@@ -15,10 +15,6 @@
           "secondary_file_formats": ["vcf_gz_tbi"]
       },
       {
-          "argument_type": "parameter",
-          "workflow_argument_name": "max_length"
-      },
-      {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
           "argument_to_be_attached_to": "output_vcf",
@@ -130,6 +126,6 @@
           ]
       }
   ],
-  "title": "SV length filtering plus output integrity-check",
+  "title": "SV annotation VCF cleaner plus output integrity-check",
   "uuid": "6aacb350-323f-4f3c-abf5-bc82cbe0779e"
 }
