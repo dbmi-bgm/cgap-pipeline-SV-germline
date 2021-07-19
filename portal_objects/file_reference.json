@@ -7,7 +7,8 @@
     "description": "hg38 vcf header contig fields",
     "aliases": ["cgap:hg38-vcf-header-contig-fields"],
     "extra_files": [],
-    "status": "uploading"
+    "status": "uploading",
+    "accession": "GAPFIQ9ALGRA"
   },
   {
     "uuid": "07ed6afe-b9e4-44c5-a9ca-99b99c93cbdf",
@@ -22,7 +23,8 @@
             "status": "uploading"
         }
     ],
-    "status": "uploading"
+    "status": "uploading",
+    "accession": "GAPFISOK6J2J"
   },
   {
     "uuid": "3819698f-d587-4971-a8ca-bf96151c4296",
@@ -32,7 +34,8 @@
     "description": "tar archive of 20 unrelated SV vcf_gz files",
     "aliases": ["cgap:SV-20-unrelated-tar"],
     "extra_files": [],
-    "status": "uploading"
+    "status": "uploading",
+    "accession": "GAPFI49H8IN1"
   },
   {
     "uuid": "1155cd5e-24ed-4ee1-89cd-83484f2c1dea",
@@ -42,7 +45,8 @@
     "description": "tar archive of 20 unrelated SV UDN vcf_gz files from Manta",
     "aliases": ["cgap:SV-20-unrelated-UDN-MANTA-tar"],
     "extra_files": [],
-    "status": "uploading"
+    "status": "uploading",
+    "accession": "GAPFINC7TX57"
   },
   {
     "uuid": "8799ffec-1b39-4696-9a7c-e38488f98697",
@@ -52,6 +56,7 @@
     "description": "tar archive of 20 unrelated SV UGRP vcf_gz files from Manta",
     "aliases": ["cgap:SV-20-unrelated-UGRP-MANTA-tar"],
     "extra_files": [],
-    "status": "uploading"
+    "status": "uploading",
+    "accession": "GAPFIDP4S5BW"
   }
 ]
