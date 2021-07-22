@@ -39,7 +39,7 @@ inputs:
     doc: list of SVTYPE classes to consider in the 20 unrelated VCFs
 
 outputs:
-  output_vcf:
+  20_unrelated_filtered_SV_vcf:
     type: File
     outputSource: 20_unrelated_SV_filter/output
 

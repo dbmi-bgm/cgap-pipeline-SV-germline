@@ -16,7 +16,7 @@ inputs:
     doc: base name of output vcf gz file
 
 outputs:
-  output_vcf:
+  higlass_SV_vcf:
     type: File
     outputSource: SV_annotation_VCF_cleaner/output
 

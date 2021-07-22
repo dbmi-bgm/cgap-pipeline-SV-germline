@@ -26,7 +26,7 @@ outputs:
     type: File
     outputSource: manta/result
 
-  final_vcf:
+  manta_vcf:
     type: File
     outputSource: manta/variants
 

@@ -20,7 +20,7 @@ inputs:
     doc: expect int for maximum length (in bp) for an SV to pass filter
 
 outputs:
-  output_vcf:
+  length_filtered_SV_vcf:
     type: File
     outputSource: SV_length_filter/output
 

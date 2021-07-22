@@ -49,7 +49,7 @@ outputs:
     type: File
     outputSource: sansa/sorted_vcf
 
-  final_vcf:
+  annotated_SV_vcf:
     type: File
     outputSource: combine_sansa_vep/output
 

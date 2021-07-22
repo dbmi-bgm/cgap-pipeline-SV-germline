@@ -26,12 +26,12 @@
       {
           "argument_format": "vcf_gz",
           "argument_type": "Output processed file",
-          "workflow_argument_name": "final_vcf"
+          "workflow_argument_name": "manta_vcf"
       },
       {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
-          "argument_to_be_attached_to": "final_vcf",
+          "argument_to_be_attached_to": "manta_vcf",
           "qc_zipped": false,
           "qc_html": false,
           "qc_json": false,
@@ -100,10 +100,10 @@
                         "global": true,
                         "type": "data file"
                     },
-                    "name": "final_vcf",
+                    "name": "manta_vcf",
                     "target": [
                         {
-                            "name": "final_vcf",
+                            "name": "manta_vcf",
                             "step": "vcf-integrity-check"
                         }
                     ]
@@ -132,10 +132,10 @@
                       "global": false,
                       "type": "data file"
                   },
-                  "name": "final_vcf",
+                  "name": "manta_vcf",
                   "source": [
                       {
-                          "name": "final_vcf",
+                          "name": "manta_vcf",
                           "step": "manta"
                       }
                   ]

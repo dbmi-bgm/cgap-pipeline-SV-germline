@@ -16,13 +16,13 @@
       {
           "argument_format": "vcf_gz",
           "argument_type": "Output processed file",
-          "workflow_argument_name": "vcf",
+          "workflow_argument_name": "granite_filtered_SV_vcf",
           "secondary_file_formats": ["vcf_gz_tbi"]
       },
       {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
-          "argument_to_be_attached_to": "vcf",
+          "argument_to_be_attached_to": "granite_filtered_SV_vcf",
           "qc_zipped": false,
           "qc_html": false,
           "qc_json": false,
@@ -358,10 +358,10 @@
                       "global": true,
                       "type": "data file"
                   },
-                  "name": "vcf",
+                  "name": "granite_filtered_SV_vcf",
                   "target": [
                       {
-                          "name": "vcf",
+                          "name": "granite_filtered_SV_vcf",
                           "step": "vcf-integrity-check"
                       }
                   ]
@@ -377,10 +377,10 @@
                       "global": false,
                       "type": "data file"
                   },
-                  "name": "vcf",
+                  "name": "granite_filtered_SV_vcf",
                   "source": [
                       {
-                          "name": "vcf",
+                          "name": "granite_filtered_SV_vcf",
                           "step": "SV_type_selector"
                       }
                   ]
