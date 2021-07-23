@@ -220,7 +220,7 @@
         },
         {
           "argument_type": "parameter",
-          "workflow_argument_name": "SV_types"
+          "argument_name": "SV_types"
         }
       ]
     },
