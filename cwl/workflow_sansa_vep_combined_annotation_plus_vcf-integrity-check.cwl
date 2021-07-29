@@ -39,9 +39,8 @@ inputs:
     default: "GRCh38"
     doc: genome assembly version
 
-  - id: output
+  - id: outputfile
     type: string
-    default: "combined.vcf"
     doc: expect the path to the combined vcf gz file
 
 outputs:
@@ -89,8 +88,8 @@ steps:
         source: vep-annot_SV/output
       sansa_txt:
         source: sansa/output
-      output:
-        source: output
+      outputfile:
+        source: outputfile
     out: [output]
 
   integrity-check:

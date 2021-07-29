@@ -28,7 +28,7 @@ inputs:
       prefix: -s
     doc: expect the path to the sansa-annotated txt file
 
-  - id: output
+  - id: outputfile
     type: string
     inputBinding:
       position: 3
@@ -39,7 +39,7 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: 'combined.vcf.gz'
+      glob: $(inputs.outputfile + ".gz")
     secondaryFiles:
       - .tbi
 
