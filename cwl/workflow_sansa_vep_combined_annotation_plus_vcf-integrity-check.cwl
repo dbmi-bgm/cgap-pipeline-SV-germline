@@ -14,7 +14,7 @@ inputs:
     type: File
     secondaryFiles:
       - .tbi
-    doc: expect the path to the hg38-vcf-header-contig-fields file
+    doc: expect the path to gnomAD SV reference file
 
   - id: reference
     type: File
