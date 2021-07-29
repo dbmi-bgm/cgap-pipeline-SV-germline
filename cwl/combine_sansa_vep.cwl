@@ -30,6 +30,7 @@ inputs:
 
   - id: outputfile
     type: string
+    default: "combined.vcf"
     inputBinding:
       position: 3
       prefix: -o
