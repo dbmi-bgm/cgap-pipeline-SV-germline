@@ -20,8 +20,9 @@ inputs:
       prefix: -i
     doc: expect the path to the vcf file
 
-  - id: output
+  - id: outputfile
     type: string
+    default: "output.vcf"
     inputBinding:
       prefix: -o
     doc: name of the output file
@@ -36,7 +37,7 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(inputs.output + ".gz")
+      glob: $(inputs.outputfile + ".gz")
     secondaryFiles:
       - .tbi
 
