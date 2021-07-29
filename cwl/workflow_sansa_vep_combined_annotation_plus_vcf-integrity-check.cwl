@@ -40,6 +40,7 @@ inputs:
     doc: genome assembly version
 
   - id: outputfile
+    default: "combined.vcf"
     type: string
     doc: expect the path to the combined vcf gz file
 
