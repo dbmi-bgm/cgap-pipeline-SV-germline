@@ -20,7 +20,6 @@ RUN apt-get update -y && apt-get install -y \
     libbz2-dev \
     liblzma-dev \
     locales \
-    parallel \
     autoconf \
     autogen \
     pkg-config \
@@ -61,6 +60,7 @@ RUN git clone https://github.com/vcftools/vcftools.git && \
 # sansa
 RUN git clone --recursive https://github.com/dellytools/sansa.git && \
     cd sansa/ && \
+    git checkout a30e1a7 && \
     make all && \
     cd ..
 
