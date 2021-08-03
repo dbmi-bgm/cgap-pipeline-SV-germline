@@ -35,6 +35,6 @@ outputs:
       glob: variants.vcf.gz
       
 hints:
-  - dockerPull: aveit/cgap-manta:v1
+  - dockerPull: cgap/cgap-manta:v1
     class: DockerRequirement
 class: CommandLineTool

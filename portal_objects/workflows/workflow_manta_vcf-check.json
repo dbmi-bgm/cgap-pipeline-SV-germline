@@ -46,7 +46,7 @@
   "cwl_main_filename": "workflow_manta_integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Run Manta to call stuructural variants. An integrity check is performed on the output file",
-  "docker_image_name": "aveit/cgap-manta:v1",
+  "docker_image_name": "cgap/cgap-manta:v1",
   "docker_registry_url": "https://hub.docker.com/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
   "name": "workflow_manta_vcf-check_v1",
