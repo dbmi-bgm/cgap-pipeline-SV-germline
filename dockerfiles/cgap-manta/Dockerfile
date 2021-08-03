@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Alexander Veit (alexander_veit@hms.harvard.edu)
+MAINTAINER Soo Lee (duplexa@gmail.com), Alexander Veit (alexander_veit@hms.harvard.edu), Michele Berselli (berselli.michele@gmail.com), Phil Grayson (phil.d.grayson@gmail.com)
 
 RUN apt-get update -y && apt-get install -y curl wget
 
@@ -50,11 +50,9 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y --force-yes \
     xvfb \
     zlib1g-dev
 
-
 RUN conda config --add channels bioconda
-RUN conda install -c bioconda bcftools -y
-RUN conda install -c bioconda samtools
-RUN conda install -c bioconda manta
+RUN conda install -c bioconda -y bcftools==1.9 samtools==1.7 manta==1.6.0 && \
+    conda clean -a -y -f
 
 WORKDIR /
 
