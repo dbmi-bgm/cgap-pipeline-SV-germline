@@ -35,9 +35,10 @@ This image contains (but is not limited to) the following software packages:
 SV Pipeline Flow
 ################
 
-The overall flow of the pipeline is shown below:
+The overall flow and duration of the CGAP SV Pipeline is shown below:
 
-
+.. image:: images/cgap-SV-pipeline-v1.png
+  :target: _images/cgap-SV-pipeline-v1.png
 
 SV Pipeline Parts and Runtimes
 ##############################
