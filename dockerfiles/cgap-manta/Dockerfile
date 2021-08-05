@@ -109,8 +109,5 @@ cp resources/getContigs.py /home/cgap_manta/ && \
 cd .. && \
 rm -rf parliament2
 
-#COPY getContigs.py .
-#COPY convertInversionManta.py .
-
 # default command
 CMD ["manta.sh"]
