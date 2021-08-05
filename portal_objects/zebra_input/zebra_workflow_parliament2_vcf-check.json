@@ -4,7 +4,7 @@
     "input_files" : [
        {
            "workflow_argument_name": "input_bam",
-           "uuid": "0eadbe82-ae79-4d49-ad85-501b0573c2ce",
+           "uuid": "",
            "mount": false
        },
        {

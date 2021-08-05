@@ -4,7 +4,7 @@
     "input_files" : [
        {
            "workflow_argument_name": "input_vcf",
-           "uuid": "02bd6a1e-9e82-4d85-98af-1e97c9ed24fb",
+           "uuid": "",
            "mount": false
        }
     ],
