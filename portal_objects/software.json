@@ -43,9 +43,9 @@
             "annotator"
         ],
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "reformat_SV_vcf_10ff97b",
+        "title": "reformat_SV_vcf_395b463",
         "uuid": "65b72063-c053-45c4-b807-08dc79fb92f3",
-        "commit": "10ff97b"
+        "commit": "395b463"
     },
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
@@ -55,9 +55,9 @@
             "annotator"
         ],
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "combine_sansa_and_VEP_vcf_10ff97b",
+        "title": "combine_sansa_and_VEP_vcf_395b463",
         "uuid": "5d272932-1543-40d0-9089-6e0913aabf8a",
-        "commit": "10ff97b"
+        "commit": "395b463"
     },
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
@@ -67,9 +67,9 @@
             "annotator"
         ],
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "SV_type_selector_10ff97b",
+        "title": "SV_type_selector_395b463",
         "uuid": "2edb3df5-d147-4efe-8c57-8301c9604f5f",
-        "commit": "10ff97b"
+        "commit": "395b463"
     },
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
@@ -79,8 +79,9 @@
             "filter"
         ],
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
+        "title": "20_unrelated_SV_filter_395b463",
         "uuid": "50434084-115c-4da7-a5b7-7dae3d658e35",
-        "commit": "c214b30"
+        "commit": "395b463"
     },
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
@@ -90,8 +91,9 @@
             "filter"
         ],
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
+        "title": "SV_length_filter_395b463",
         "uuid": "8933a673-1c0d-4d0c-98d5-eb2aa892cb02",
-        "commit": "8583408"
+        "commit": "395b463"
     },
     {
         "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
@@ -101,6 +103,7 @@
             "filter"
         ],
         "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
+        "title": "SV_annotation_VCF_cleaner_395b463",
         "uuid": "c7998aa6-62ae-4e8c-bfa9-1aa9340b8cb0",
         "commit": "395b463"
     }
