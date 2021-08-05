@@ -2,11 +2,15 @@
 CGAP SV pipeline
 ================
 
-CGAP SV pipeline identifies, annotates, and filters structural variants (SVs) starting from short read sequencing alignment files (``bam``) and produces ``vcf`` files as output.
+CGAP SV pipeline identifies, annotates, and filters structural variants (SVs) starting from short read sequencing alignment files (``bam``) and produces ``vcf`` files as output.  SVs are a class of large genomic variants that include deletions, duplications, translocations, inversions and other complex events, generally with a size of 50 bp or longer.
 
-The pipeline is designed for proband-only or trio analysis, with proband diagnosed with a likely monogenic disease. It receives the initial ``bam`` file(s) from the `CGAP WGS Pipeline <https://cgap-pipeline.readthedocs.io/en/latest/wgs.html>`_, which is optimized for data with 30x coverage and has been tested with data up to 80-90x coverage.
+The pipeline is mostly based on ``Manta`` (https://github.com/Illumina/manta), ``ensembl-vep`` (https://github.com/Ensembl/ensembl-vep), ``sansa`` (https://github.com/dellytools/sansa), and ``granite`` (https://github.com/dbmi-bgm/granite).
 
-The pipeline is mostly based on ``Manta`` (https://github.com/Illumina/manta), ``ensembl-vep`` (https://github.com/Ensembl/ensembl-vep), ``sansa`` (https://github.com/dellytools/sansa), and ``granite`` (https://github.com/dbmi-bgm/granite). The pipeline performs joint-sample SV calling when more than one ``bam`` file is provided (i.e., for a family), generating a ``vcf`` file.  It then performs annotation and filtering of SVs in that ``vcf`` file. ``vcf`` files are checked for integrity using ``vcftools`` ``vcf-validator`` at the end of any step during which they are created or modified. 
+The CGAP SV pipeline is designed for proband-only or trio analysis, with proband diagnosed with a likely monogenic disease. It receives the initial ``bam`` file(s) from the `CGAP WGS Pipeline <https://cgap-pipeline.readthedocs.io/en/latest/wgs.html>`_, which is optimized for data with 30x coverage and has been tested with data up to 80-90x coverage.
+
+For proband-only analysis, a single ``bam`` file is provided to ``Manta`` and ``Single Diploid Sample Analysis`` is carried out, resulting in a ``vcf`` file containing SVs with genotypes for the proband.  For trio analysis, three ``bam`` files are provided to ``Manta`` and ``Joint Diploid Sample Analysis`` is carried out, resulting in a single ``vcf`` file containing SVs with genotypes for all three individuals.
+
+The pipeline then performs annotation and filtering of SVs from that ``vcf`` file. ``vcf`` files are checked for integrity using ``vcftools`` ``vcf-validator`` at the end of any step during which they are created or modified.
 
 
 Docker Images
