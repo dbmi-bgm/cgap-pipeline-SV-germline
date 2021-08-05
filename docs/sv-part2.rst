@@ -28,7 +28,7 @@ Some additional bash commands convert the ``sansa`` output into ``txt`` format f
 VEP
 ---
 
-Next, ``VEP`` is run using ``vep-annot_SV.sh`` (https://github.com/dbmi-bgm/cgap-sv-pipeline/) to annotate genes onto the SVs. A maximum SV size slightly larger than chr1 in the hg38 genome ``--max_sv_size 250000000`` is used in the ``VEP`` command in order to avoid unwanted filtering of large SVs at this step. The ``--overlaps`` option is also included to provide the bp overlap between the ``VEP`` feature and the SV (reported in bp and percentage). ``VEP`` outputs an annotated ``vcf`` containing all variants.
+Next, ``VEP`` is run using ``vep-annot_SV.sh`` (https://github.com/dbmi-bgm/cgap-sv-pipeline/) to annotate the SVs with genes and transcripts. A maximum SV size slightly larger than chr1 in the hg38 genome ``--max_sv_size 250000000`` is used in the ``VEP`` command in order to avoid unwanted filtering of large SVs at this step. The ``--overlaps`` option is also included to provide the bp overlap between the ``VEP`` feature and the SV (reported in bp and percentage). ``VEP`` outputs an annotated ``vcf`` containing all variants.
 
 Combine sansa and VEP
 ---------------------
@@ -41,6 +41,6 @@ Finally, the outputs from ``sansa`` and ``VEP`` are combined using ``combine_san
 
 Note: CNV is a variant class in gnomAD SV, but not in the ``Manta`` output. Since DELs and DUPs are types of CNVs, we prioritize as follows: we first search for type-matches between DEL and DEL or DUP and DUP.  If a type-match is not found for the variant, we then search for type-matches between DEL and CNV or DUP and CNV. All other combinations (e.g., INV and CNV, or DEL and DUP) are considered to **not** be type-matched.
 
-These rules were set given limitations on the number of values the gnomAD SV fields can have for filtering in the portal and to avoid loss of rare variants in the upcoming filtering steps. The final output is a ``vcf`` file with annotations for both gene/transcript and gnomAD SV population frequencies. The resulting ``vcf`` file is checked for integrity.
+These rules were set given limitations on the number of values the gnomAD SV fields can have for filtering in the CGAP Portal and to avoid loss of rare variants in the upcoming filtering steps. The final output is a ``vcf`` file with annotations for both gene/transcript and gnomAD SV population frequencies. The resulting ``vcf`` file is checked for integrity.
 
 * CWL: workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl

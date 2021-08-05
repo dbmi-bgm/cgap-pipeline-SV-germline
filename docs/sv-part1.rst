@@ -15,7 +15,7 @@ Running Manta
 
 This step carries out SV identification using ``Manta`` through the script ``manta.sh`` (https://github.com/dbmi-bgm/cgap-sv-pipeline).
 
-``manta.sh`` carries out joint diploid sample analysis when more than one sample is provided and single diploid sample analysis when run with only the proband.
+``manta.sh`` carries out ``Joint Diploid Sample Analysis`` when more than one sample is provided and ``Single Diploid Sample Analysis `` when run with only the proband.
 
 ``manta.sh`` identifies Deletions (SVTYPE=DEL), Duplications (SVTYPE=DUP), Insertions (SVTYPE=INS), and Inversion/Translocations (SVTYPE=BND).
 

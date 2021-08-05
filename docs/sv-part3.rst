@@ -68,7 +68,7 @@ When comparing variants from the sample SV ``vcf`` file to an unrelated SV ``vcf
 The matching step is carried out as follows:
 
   1. The sample SV ``vcf`` file is compared pair-wise to each of 20 unrelated SV ``vcf`` reference files and SVs that match between are written out from the sample SV ``vcf`` file.
-  2. This results in 20 "matched" SV ``vcf`` files that each contain the subset of SVs from the sample file that overlapped a single individual from the 20 unrelated references.
+  2. This results in 20 "matched" SV ``vcf`` files, where each file contains the subset of SVs from the sample file that overlapped a single individual from the 20 unrelated references.
   3. The "matched" SV ``vcf`` files are read into a dictionary that counts the number of times each sample SV is found (max of 1 time per 20 files = 20 matches).
 
 The filtering step reads through the sample SV ``vcf`` file a final time and writes a filtered SV ``vcf`` file that only contains SVs that matched a maximum of n individuals.  The default is currently n = 1, such that sample SVs that match 2 or more of the 20 unrelated individuals are filtered out.
@@ -94,14 +94,14 @@ A single, annotated SV ``vcf`` file is expected as input alongside a maximum len
 Filtering
 ---------
 
-Based on the maximum length provided, this step filters the longest SVs from the sample SV ``vcf`` file.  This is currently done to remove nearly chromosome-sized SVs that we believe to be artefactual, which result in very long gene lists during ingestion.
+Based on the maximum length provided, this step filters the longest SVs from the sample SV ``vcf`` file.  This is currently done to remove nearly chromosome-sized SVs that we believe to be artefactual, which result in very long gene lists during ingestion to the CGAP Portal.
 
 Output
 ------
 
 The output is a filtered ``vcf`` file containing slightly fewer entries.  No additional information is added or removed for remaining variants. The resulting ``vcf`` file is checked for integrity.  This is the **Full Annotated VCF** that is ingested into the CGAP Portal.
 
-* CWL: workflow_20_unrelated_SV_filter_plus_vcf-integrity-check.cwl
+* CWL: workflow_SV_length_filter_plus_vcf-integrity-check.cwl
 
 VCF Annotation Cleaning
 +++++++++++++++++++++++
