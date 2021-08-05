@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# this script is based on components of scripts from the Parliament2 github (https://github.com/dnanexus/parliament2/) including parliament2.sh and runManta
+# it also makes use of an unmodified copy of the getContigs.py script from the Parliament2 github (https://github.com/dnanexus/parliament2/)
 
 bam_files=()
 bai_files=()
@@ -86,11 +88,11 @@ if [[ ! -f manta/results/variants/diploidSV.vcf.gz || ! -f manta/results/stats/a
     cat /tmp/output/log_files/manta_logs/"${prefix}".manta.stderr.log
     echo "Exiting"
     exit 1
-else  
+else
     cp manta/results/variants/diploidSV.vcf.gz /tmp/output/sv_caller_results/"${prefix}".manta.diploidSV.vcf.gz
     mv manta/results/variants/diploidSV.vcf.gz .
     gunzip diploidSV.vcf.gz
-    python /home/cgap_manta/convertInversionManta.py /miniconda/bin/samtools ${ref_fasta} diploidSV.vcf > diploidSV_inv.vcf || exit 1
+    python /miniconda/share/manta-1.6.0-1/libexec/convertInversion.py /miniconda/bin/samtools ${ref_fasta} diploidSV.vcf > diploidSV_inv.vcf || exit 1
     bgzip -c diploidSV_inv.vcf > diploidSV_inv.vcf.gz || exit 1
     cp diploidSV_inv.vcf.gz /tmp/output/sv_caller_results/"${prefix}".manta.diploidSV.convertedInv.vcf.gz
     cp manta/results/stats/alignmentStatsSummary.txt /tmp/output/sv_caller_results/"${prefix}".manta.alignmentStatsSummary.txt
@@ -109,5 +111,3 @@ zip -r result_tmp.zip .
 cd $WRITEABLEDIR
 cp /tmp/output/result_tmp.zip result.zip
 cp /tmp/output/sv_caller_results/"${prefix}".manta.diploidSV.convertedInv.vcf.gz variants.vcf.gz
-
-
