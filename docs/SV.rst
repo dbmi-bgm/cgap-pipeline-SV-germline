@@ -6,7 +6,7 @@ CGAP SV pipeline identifies, annotates, and filters structural variants (SVs) st
 
 The pipeline is designed for proband-only or trio analysis, with proband diagnosed with a likely monogenic disease. It receives the initial ``bam`` file(s) from the `CGAP WGS Pipeline <https://cgap-pipeline.readthedocs.io/en/latest/wgs.html>`_, which is optimized for data with 30x coverage and has been tested with data up to 80-90x coverage.
 
-The pipeline is mostly based on ``Manta`` (https://github.com/Illumina/manta), ``ensembl-vep`` (https://github.com/Ensembl/ensembl-vep), ``sansa`` (https://github.com/dellytools/sansa), and ``granite`` (https://github.com/dbmi-bgm/granite). The pipeline performs joint-sample SV calling when more than one ``bam`` file is provided (i.e., for a family), then performs annotation and filtering of SVs.
+The pipeline is mostly based on ``Manta`` (https://github.com/Illumina/manta), ``ensembl-vep`` (https://github.com/Ensembl/ensembl-vep), ``sansa`` (https://github.com/dellytools/sansa), and ``granite`` (https://github.com/dbmi-bgm/granite). The pipeline performs joint-sample SV calling when more than one ``bam`` file is provided (i.e., for a family), generating a ``vcf`` file.  It then performs annotation and filtering of SVs in that ``vcf`` file. ``vcf`` files are checked for integrity using ``vcftools`` ``vcf-validator`` at the end of any step during which they are created or modified. 
 
 
 Docker Images
