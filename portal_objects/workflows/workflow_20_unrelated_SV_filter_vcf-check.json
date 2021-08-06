@@ -50,7 +50,7 @@
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
   "cwl_child_filenames": ["20_unrelated_SV_filter.cwl", "vcf-integrity-check.cwl"],
-  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v1/cwl/",
   "cwl_main_filename": "workflow_20_unrelated_SV_filter_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter out common and artefactual SVs through comparison to 20 unrelated files. An integrity check is performed on the output file",

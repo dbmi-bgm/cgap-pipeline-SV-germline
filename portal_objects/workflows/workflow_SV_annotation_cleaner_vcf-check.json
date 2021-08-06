@@ -28,7 +28,7 @@
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
   "cwl_child_filenames": ["SV_annotation_VCF_cleaner.cwl", "vcf-integrity-check.cwl"],
-  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/main/cwl/",
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v1/cwl/",
   "cwl_main_filename": "workflow_SV_annotation_VCF_cleaner_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Clean unnecessary data from the annotated SV VCF for faster visualization. An integrity check is performed on the output file",
