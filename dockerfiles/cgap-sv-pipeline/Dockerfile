@@ -79,8 +79,6 @@ RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd cgap-annotations && \
     git checkout 395b463 && \
     cd .. && \
-    cp cgap-annotations/sv/scripts/reformat_SV_vcf.py . && \
-    chmod +x reformat_SV_vcf.py && \
     cp cgap-annotations/sv/scripts/combine_sansa_and_VEP_vcf.py . && \
     chmod +x combine_sansa_and_VEP_vcf.py . && \
     cp cgap-annotations/sv/scripts/SV_type_selector.py . && \
@@ -97,9 +95,9 @@ RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
 RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
     cd cgap-pipeline && \
     git checkout 17b4249 && \
-    cd .. && \ 
+    cd .. && \
     cp cgap-pipeline/dockerfiles/cgap-docker/vcf-integrity-check.sh . && \
-    chmod +x vcf-integrity-check.sh && \ 
+    chmod +x vcf-integrity-check.sh && \
     rm -rf cgap-pipeline
 
 # sansa script
