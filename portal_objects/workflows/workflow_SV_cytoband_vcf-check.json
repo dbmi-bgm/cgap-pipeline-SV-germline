@@ -11,7 +11,7 @@
       {
           "argument_format": "vcf_gz",
           "argument_type": "Output processed file",
-          "workflow_argument_name": "cytoband_VCF",
+          "workflow_argument_name": "cytoband_SV_vcf",
           "secondary_file_formats": ["vcf_gz_tbi"]
       },
       {
@@ -22,7 +22,7 @@
       {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
-          "argument_to_be_attached_to": "cytoband_VCF",
+          "argument_to_be_attached_to": "cytoband_SV_vcf",
           "qc_zipped": false,
           "qc_html": false,
           "qc_json": false,
@@ -91,10 +91,10 @@
                       "global": true,
                       "type": "data file"
                   },
-                  "name": "cytoband_VCF",
+                  "name": "cytoband_SV_vcf",
                   "target": [
                       {
-                          "name": "cytoband_VCF",
+                          "name": "cytoband_SV_vcf",
                           "step": "vcf-integrity-check"
                       }
                   ]
@@ -110,10 +110,10 @@
                       "global": false,
                       "type": "data file"
                   },
-                  "name": "cytoband_VCF",
+                  "name": "cytoband_SV_vcf",
                   "source": [
                       {
-                          "name": "cytoband_VCF",
+                          "name": "cytoband_SV_vcf",
                           "step": "SV_cytoband"
                       }
                   ]
