@@ -1,7 +1,7 @@
 {
   "accession": "GAPWFALD8VR3",
   "app_name": "workflow_SV_cytoband_vcf-check",
-  "app_version": "v1",
+  "app_version": "v2",
   "arguments": [
       {
           "argument_format": "vcf_gz",
