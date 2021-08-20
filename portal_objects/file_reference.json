@@ -53,7 +53,7 @@
     "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
     "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
     "file_format": "txt",
-    "description": "UCSC cytoband reference file for hg38 - cytoBands.txt",
+    "description": "UCSC cytoband reference file for hg38 - cytoBand.txt",
     "aliases": ["cgap:SV-cytoband-UCSC-hg38"],
     "extra_files": [],
     "status": "uploading",
