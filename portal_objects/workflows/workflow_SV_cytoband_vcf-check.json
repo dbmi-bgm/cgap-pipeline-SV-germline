@@ -1,0 +1,150 @@
+{
+  "accession": "GAPWFALD8VR3",
+  "app_name": "workflow_SV_cytoband_vcf-check",
+  "app_version": "v1",
+  "arguments": [
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_vcf"
+      },
+      {
+          "argument_format": "vcf_gz",
+          "argument_type": "Output processed file",
+          "workflow_argument_name": "cytoband_VCF",
+          "secondary_file_formats": ["vcf_gz_tbi"]
+      },
+      {
+          "argument_format": "txt",
+          "argument_type": "Input file",
+          "workflow_argument_name": "cytoband"
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "vcf-check",
+          "argument_to_be_attached_to": "length_filtered_SV_vcf",
+          "qc_zipped": false,
+          "qc_html": false,
+          "qc_json": false,
+          "qc_table": true,
+          "qc_type": "quality_metric_vcfcheck"
+      }
+  ],
+  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "category": ["processing"],
+  "cwl_child_filenames": ["SV_cytoband.cwl", "vcf-integrity-check.cwl"],
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v2/cwl/",
+  "cwl_main_filename": "workflow_SV_cytoband_plus_vcf-integrity-check.cwl",
+  "cwl_pointer": "",
+  "description": "Annotate SV breakpoints with relevant cytobands. An integrity check is performed on the output file",
+  "docker_image_name": "cgap/cnv:v2",
+  "docker_registry_url": "https://hub.docker.com/",
+  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "name": "workflow_SV_cytoband_plus_vcf-integrity-check_v2",
+  "aliases": ["cgap:workflow_SV_cytoband_plus_vcf-integrity-check_v2"],
+  "steps": [
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "input_vcf",
+                  "source": [
+                      {
+                          "name": "input_vcf"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "cytoband",
+                  "source": [
+                      {
+                          "name": "cytoband"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run cytoband annotation"
+              ],
+              "software_used": [
+                 "/softwares/dd2f0064-5c35-4883-962d-c6cc5fda25cb"
+              ]
+          },
+          "name": "SV_cytoband",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "cytoband_VCF",
+                  "target": [
+                      {
+                          "name": "cytoband_VCF",
+                          "step": "vcf-integrity-check"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf_gz",
+                      "global": false,
+                      "type": "data file"
+                  },
+                  "name": "cytoband_VCF",
+                  "source": [
+                      {
+                          "name": "cytoband_VCF",
+                          "step": "SV_cytoband"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Check integrity of vcf output file"
+              ],
+              "software_used": [
+                 "/softwares/f7ac2c5f-9203-49fa-b918-cede02bf46f7"
+              ]
+          },
+          "name": "vcf-integrity-check",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "QC"
+                  },
+                  "name": "vcf-check",
+                  "target": [
+                      {
+                          "name": "vcf-check"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "SV cytoband annotation plus output integrity-check",
+  "uuid": "8d3cbd3a-f43a-4b59-b717-16a600ad1078"
+}
