@@ -22,7 +22,7 @@
       {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
-          "argument_to_be_attached_to": "length_filtered_SV_vcf",
+          "argument_to_be_attached_to": "cytoband_VCF",
           "qc_zipped": false,
           "qc_html": false,
           "qc_json": false,
