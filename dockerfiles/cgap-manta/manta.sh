@@ -5,13 +5,16 @@
 bam_files=()
 bai_files=()
 
-while getopts ":f:b:" opt; do
+while getopts ":f:b:r:" opt; do
   case $opt in
     f) ref_fasta="$OPTARG"
        ref_index="$OPTARG.fai"
     ;;
     b) bam_files+=("$OPTARG")
        bai_files+=("$OPTARG.bai")
+    ;;
+    r) bed_regions+=("$OPTARG")
+       bed_index+=("$OPTARG.tbi")
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     ;;
@@ -22,7 +25,7 @@ prefix="result" #(Optional) If provided, all output files will start with this. 
 
 mkdir -p /tmp/output
 
-if [[ ${#bam_files[@]} == 0 ]] || [[ ! -f "${ref_fasta}" ]]; then
+if [[ ${#bam_files[@]} == 0 ]] || [[ ! -f "${ref_fasta}" ]] || [[ ! -f "${bed_regions}" ]]; then
     echo "ERROR: An invalid (nonexistent) input file has been specified."
     exit 1
 fi
@@ -43,10 +46,26 @@ do
    fi
 done
 
-if [[ ! -f "${ref_index}" ]]; then
+if [[ ! -f "${ref_fasta}" ]]; then
     echo "ERROR: The reference fasta file is missing"
     exit 1
 fi
+
+if [[ ! -f "${ref_index}" ]]; then
+    echo "ERROR: The reference fasta index file is missing"
+    exit 1
+fi
+
+if [[ ! -f "${bed_regions}" ]]; then
+    echo "ERROR: The bed regions reference file is missing"
+    exit 1
+fi
+
+if [[ ! -f "${bed_index}" ]]; then
+    echo "ERROR: The bed regions index file is missing"
+    exit 1
+fi
+
 
 threads="$(nproc)"
 threads=$((threads - 1))
@@ -54,8 +73,8 @@ threads=$((threads - 1))
 wait
 
 # We don't want to run Manta on aux chromosomes. Get the big ones.
-echo "Generate contigs"
-samtools view -H ${bam_files[0]} | python /home/cgap_manta/getContigs.py "True" > contigs || exit 1
+#echo "Generate contigs"
+#samtools view -H ${bam_files[0]} | python /home/cgap_manta/getContigs.py "True" > contigs || exit 1
 
 mkdir -p /tmp/output/log_files/
 
@@ -68,14 +87,15 @@ do
    bam_string="$bam_string --bam=$bam_file"
 done
 
-region_string=
-
-while read line; do
-    region_string="$region_string --region=$line"
-done < contigs
+# region_string=
+#
+# while read line; do
+#     region_string="$region_string --region=$line"
+# done < contigs
 
 mkdir -p /tmp/output/log_files/manta_logs/
-python /miniconda/bin/configManta.py --referenceFasta ${ref_fasta} ${bam_string} --runDir manta ${region_string} || exit 1
+python /miniconda/bin/configManta.py --referenceFasta ${ref_fasta} ${bam_string} --runDir manta --callRegions ${bed_regions} || exit 1
+#python /miniconda/bin/configManta.py --referenceFasta ${ref_fasta} ${bam_string} --runDir manta ${region_string} || exit 1
 python ./manta/runWorkflow.py -m local -j ${threads} 1> /tmp/output/log_files/manta_logs/"${prefix}".manta.stdout.log 2> /tmp/output/log_files/manta_logs/"${prefix}".manta.stderr.log || exit 1 &
 
 wait
