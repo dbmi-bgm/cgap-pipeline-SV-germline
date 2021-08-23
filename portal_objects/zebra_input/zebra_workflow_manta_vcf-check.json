@@ -11,11 +11,16 @@
            "workflow_argument_name": "ref_fasta",
            "uuid": "1936f246-22e1-45dc-bb5c-9cfd55537fe7",
            "mount": false
+       },
+       {
+           "workflow_argument_name": "callRegions",
+           "uuid": "6512e951-8fd6-4e58-8de4-135e814de175",
+           "mount": false
        }
     ],
     "config": {
       "instance_type": "c5.4xlarge",
-      "ebs_size": 300,
+      "ebs_size": "1.2x",
       "ebs_type": "gp3",
       "EBS_optimized": true,
       "spot_instance": false,
