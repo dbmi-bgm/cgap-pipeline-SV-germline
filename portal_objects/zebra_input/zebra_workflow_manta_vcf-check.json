@@ -15,7 +15,7 @@
     ],
     "config": {
       "instance_type": "c5.4xlarge",
-      "ebs_size": 300,
+      "ebs_size": "1.2x",
       "ebs_type": "gp3",
       "EBS_optimized": true,
       "spot_instance": false,
