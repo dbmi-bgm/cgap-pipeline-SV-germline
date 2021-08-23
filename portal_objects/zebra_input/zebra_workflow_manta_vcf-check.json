@@ -1,6 +1,6 @@
 {
     "parameters": {},
-    "workflow_uuid": "c2a6344d-c4c0-49c0-b5fc-1df2024c62ab",
+    "workflow_uuid": "10c6c057-07f3-4c3f-974c-e280add5af58",
     "input_files" : [
        {
            "workflow_argument_name": "input_bams",
