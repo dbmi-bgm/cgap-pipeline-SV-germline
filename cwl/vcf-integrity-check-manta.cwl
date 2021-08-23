@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: cgap/cgap-manta:v1
+    dockerPull: cgap/cgap-manta:v2
 
 baseCommand: [vcf-integrity-check.sh]
 
