@@ -58,5 +58,21 @@
     "extra_files": [],
     "status": "uploading",
     "accession": "GAPFIMKD2V9W"
+  },
+  {
+    "uuid": "6512e951-8fd6-4e58-8de4-135e814de175",
+    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+    "file_format": "bed_gz",
+    "description": "bed file for Manta callRegions option - hg38 main chromsomes, no mito",
+    "aliases": ["cgap:manta_callRegions_hg38_noMito"],
+    "extra_files": [
+        {
+            "file_format": "bed_gz_tbi",
+            "status": "uploading"
+        }
+    ],
+    "status": "uploading",
+    "accession": "GAPFICK59SC3"
   }
 ]
