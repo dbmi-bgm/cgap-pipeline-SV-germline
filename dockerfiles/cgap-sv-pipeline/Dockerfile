@@ -113,6 +113,10 @@ RUN chmod +x sansa.sh
 COPY vep-annot_SV.sh .
 RUN chmod +x vep-annot_SV.sh
 
+# qc variant line count
+COPY qc_variant_line_count.sh .
+RUN chmod +x qc_variant_line_count.sh
+
 # env paths
 ENV PATH=/usr/local/bin/ensembl-vep/:$PATH
 ENV PATH=/usr/local/bin/sansa/src/:$PATH
