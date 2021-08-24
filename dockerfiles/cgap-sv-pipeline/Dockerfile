@@ -94,7 +94,7 @@ RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd .. && \
     cp cgap-annotations/sv/scripts/SV_cytoband.py . && \
     chmod +x SV_cytoband.py && \
-    rm -rf cgap-annotations && \
+    rm -rf cgap-annotations
 
 # cgap-pipeline scripts: vcf-integrity-check.sh
 RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
