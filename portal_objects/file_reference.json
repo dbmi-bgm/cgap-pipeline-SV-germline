@@ -74,5 +74,16 @@
     ],
     "status": "uploading",
     "accession": "GAPFICK59SC3"
+  },
+  {
+    "uuid": "cd647c0c-ac11-46db-9c51-bfe238e9ac13",
+    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+    "file_format": "vcf_tar",
+    "description": "tar archive of 20 unrelated SV UGRP (v24 alt index) vcf_gz files from Manta",
+    "aliases": ["cgap:SV-20-unrelated-UGRP-v24-MANTA-tar"],
+    "extra_files": [],
+    "status": "uploading",
+    "accession": "GAPFIH794KXC"
   }
 ]
