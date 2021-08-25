@@ -1,0 +1,78 @@
+{
+  "accession": "GAPWFQ84MJV2",
+  "app_name": "workflow_SV_qc_variant_lines",
+  "app_version": "v2",
+  "arguments": [
+      {
+          "argument_format": "vcf",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_vcf"
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "variant_lines",
+          "argument_to_be_attached_to": "input_vcf",
+          "qc_zipped": false,
+          "qc_html": false,
+          "qc_json": true,
+          "qc_table": false,
+          "qc_type": "quality_metric_vcfqc"
+      }
+  ],
+  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "category": ["QC"],
+  "cwl_child_filenames": ["qc_variant_lines_vcf.cwl"],
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-pipeline/v24/cwl",
+  "cwl_main_filename": "workflow_granite-qcVCF_plus_uniq_variants.cwl",
+  "cwl_pointer": "",
+  "description": "Run qc_variant_lines_vcf. Produce a json report for quality metrics",
+  "docker_image_name": "cgap/cnv:v2",
+  "docker_registry_url": "https://hub.docker.com/",
+  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "name": "workflow_granite-qcVCF_v24",
+  "aliases": ["cgap:workflow_granite-qcVCF_v24",
+              "cgap:workflow_granite-qcVCF_v23"],
+  "steps": [
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "input_vcf",
+                  "source": [
+                      {
+                          "name": "input_vcf"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run SV qc variant lines vcf"
+              ]
+          },
+          "name": "SV_variant_lines",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "QC"
+                  },
+                  "name": "variant_lines",
+                  "target": [
+                      {
+                          "name": "variant_lines"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "Run SV qc variant lines",
+  "uuid": "5bb3e74b-e109-4332-be59-d0503343e5c1"
+}
