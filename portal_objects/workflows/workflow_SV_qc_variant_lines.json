@@ -23,7 +23,7 @@
   "category": ["QC"],
   "cwl_child_filenames": ["qc_variant_lines_vcf.cwl"],
   "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v2/cwl/",
-  "cwl_main_filename": "workflow_granite-qcVCF_plus_uniq_variants.cwl",
+  "cwl_main_filename": "workflow_SV_qc_variant_lines_vcf.cwl",
   "cwl_pointer": "",
   "description": "Run qc_variant_lines_vcf. Produce a json report for quality metrics",
   "docker_image_name": "cgap/cnv:v2",
