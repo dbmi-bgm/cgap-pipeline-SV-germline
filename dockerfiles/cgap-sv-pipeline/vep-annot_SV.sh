@@ -21,7 +21,7 @@ mkdir -p $directory
 
 # command line VEP
 
-options="--fasta $reference --assembly $assembly --use_given_ref --offline --overlaps --format vcf --max_sv_size 250000000 --cache_version $version --dir_cache . --force_overwrite --vcf"
+options="--fasta $reference --assembly $assembly --use_given_ref --offline --overlaps --canonical --format vcf --max_sv_size 250000000 --cache_version $version --dir_cache . --force_overwrite --vcf"
 
 command="vep -i $input_vcf -o ${directory}test.vep.vcf $options"
 
