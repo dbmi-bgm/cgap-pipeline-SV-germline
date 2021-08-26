@@ -1,7 +1,7 @@
 {
   "accession": "GAPWFS4NV3PC",
   "app_name": "workflow_annotateSV_sansa_vep_vcf-check",
-  "app_version": "v1",
+  "app_version": "v2",
   "arguments": [
       {
           "argument_format": "vcf_gz",
@@ -43,7 +43,7 @@
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
   "cwl_child_filenames": ["sansa.cwl", "vep-annot_SV.cwl", "combine_sansa_vep.cwl", "vcf-integrity-check.cwl"],
-  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v1/cwl/",
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v2/cwl/",
   "cwl_main_filename": "workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Annotate SV VCF with Sansa and VEP, then combine results. An integrity check is performed on the output file",
@@ -304,5 +304,7 @@
       }
   ],
   "title": "Run annotation with sansa and VEP, combine output, plus output integrity-check",
-  "uuid": "ff568408-056c-4450-86d4-2037b3e01bfb"
+  "uuid": "e81aab17-6b79-4fa9-a0b7-b8f883af55f3",
+  "previous_version": ["ff568408-056c-4450-86d4-2037b3e01bfb"],
+  "version_upgrade_log": "added canonical option to vep-annot_SV.sh"
 }
