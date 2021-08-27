@@ -237,7 +237,8 @@
                   "Run combine_sana_vep to generate final annotated VCF"
               ],
               "software_used": [
-                 "/softwares/5d272932-1543-40d0-9089-6e0913aabf8a"
+                 "/softwares/5d272932-1543-40d0-9089-6e0913aabf8a",
+                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
               ]
           },
           "name": "combine_sansa_vep",
@@ -306,5 +307,5 @@
   "title": "Run annotation with sansa and VEP, combine output, plus output integrity-check",
   "uuid": "e81aab17-6b79-4fa9-a0b7-b8f883af55f3",
   "previous_version": ["ff568408-056c-4450-86d4-2037b3e01bfb"],
-  "version_upgrade_log": "added canonical option to vep-annot_SV.sh"
+  "version_upgrade_log": "added canonical option to vep-annot_SV.sh. upgrade granite."
 }
