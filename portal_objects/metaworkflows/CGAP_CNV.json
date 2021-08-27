@@ -1,10 +1,13 @@
 {
   "name": "CNV",
-  "title": "CNV v1",
-  "version": "v1",
-  "uuid": "65d9918d-320a-4ea4-b91d-2e4d43fc33d7",
+  "title": "CNV v2",
+  "version": "v2",
+  "accession": "GAPMWF15HCPD",
+  "uuid": "9da76c35-732a-40e8-b55e-7f929a636dc2",
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "previous_version": ["65d9918d-320a-4ea4-b91d-2e4d43fc33d7"],
+  "version_upgrade_log": "Updated workflows. callRegions in Manta, Canonical transcript in VEP, SVqcVCF, cytoband annotation, UGRP v24 for 20 unrelated",
   "input": [
     {
       "argument_name": "input_bams",
@@ -15,9 +18,23 @@
       "argument_type": "file"
     },
     {
+      "argument_name": "sample_names_proband_first_if_trio",
+      "argument_type": "parameter"
+    },
+    {
       "argument_name": "ref_fasta",
       "argument_type": "file",
       "files": [{"file": "1936f246-22e1-45dc-bb5c-9cfd55537fe7"}]
+    },
+    {
+      "argument_name": "callRegions",
+      "argument_type": "file",
+      "files": [{"file": "6512e951-8fd6-4e58-8de4-135e814de175"}]
+    },
+    {
+      "argument_name": "cytoband",
+      "argument_type": "file",
+      "files": [{"file": "3986849e-c96a-4add-82f8-eab605f193fd"}]
     },
     {
       "argument_name": "vep",
@@ -37,7 +54,7 @@
     {
       "argument_name": "dirPath20vcf",
       "argument_type": "file",
-      "files": [{"file": "1155cd5e-24ed-4ee1-89cd-83484f2c1dea"}]
+      "files": [{"file": "cd647c0c-ac11-46db-9c51-bfe238e9ac13"}]
     },
     {
       "argument_name": "recip",
@@ -73,7 +90,7 @@
   "workflows": [
     {
       "name": "workflow_manta_vcf-check",
-      "workflow": "c2a6344d-c4c0-49c0-b5fc-1df2024c62ab",
+      "workflow": "10c6c057-07f3-4c3f-974c-e280add5af58",
       "config": {
         "instance_type": "c5.4xlarge",
         "ebs_size": "1.2x",
@@ -96,6 +113,10 @@
            "argument_type": "file"
          },
          {
+           "argument_name": "callRegions",
+           "argument_type": "file"
+         },
+         {
            "argument_name": "ref_fasta",
            "argument_type": "file",
            "source_argument_name": "ref_fasta"
@@ -103,8 +124,33 @@
       ]
     },
     {
+      "name": "workflow_granite-SVqcVCF",
+      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_granite-SVqcVCF",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_manta_vcf-check",
+          "source_argument_name": "manta_vcf"
+        },
+        {
+          "argument_name": "samples",
+          "argument_type": "parameter",
+          "source_argument_name": "sample_names_proband_first_if_trio"
+        }
+      ]
+    },
+    {
       "name": "workflow_annotateSV_sansa_vep_vcf-check",
-      "workflow": "ff568408-056c-4450-86d4-2037b3e01bfb",
+      "workflow": "e81aab17-6b79-4fa9-a0b7-b8f883af55f3",
       "config": {
         "instance_type": "t3.large",
         "ebs_size": "2x",
@@ -139,6 +185,31 @@
         {
           "argument_name": "gnomAD_SV",
           "argument_type": "file"
+        }
+      ]
+    },
+    {
+      "name": "workflow_granite-SVqcVCF-1",
+      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_granite-SVqcVCF",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_annotateSV_sansa_vep_vcf-check",
+          "source_argument_name": "annotated_SV_vcf"
+        },
+        {
+          "argument_name": "samples",
+          "argument_type": "parameter",
+          "source_argument_name": "sample_names_proband_first_if_trio"
         }
       ]
     },
@@ -225,6 +296,87 @@
       ]
     },
     {
+      "name": "workflow_granite-SVqcVCF-2",
+      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_granite-SVqcVCF",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_20_unrelated_SV_filter_vcf-check",
+          "source_argument_name": "20_unrelated_filtered_SV_vcf"
+        },
+        {
+          "argument_name": "samples",
+          "argument_type": "parameter",
+          "source_argument_name": "sample_names_proband_first_if_trio"
+        }
+      ]
+    },
+    {
+      "name": "workflow_SV_cytoband_vcf-check",
+      "workflow": "8d3cbd3a-f43a-4b59-b717-16a600ad1078",
+      "config": {
+        "instance_type": "t3.micro",
+        "ebs_size": 10,
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_SV_cytoband_vcf-check",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "custom_pf_fields": {
+          "cytoband_SV_vcf": {
+              "variant_type": "SV",
+              "file_type": "intermediate file",
+              "description": "Intermediate VCF file"
+          }
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_20_unrelated_SV_filter_vcf-check",
+          "source_argument_name": "20_unrelated_filtered_SV_vcf"
+        },
+        {
+          "argument_type": "file",
+          "argument_name": "cytoband"
+        }
+      ]
+    },
+    {
+      "name": "workflow_granite-SVqcVCF-3",
+      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_granite-SVqcVCF",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_SV_cytoband_vcf-check",
+          "source_argument_name": "cytoband_SV_vcf"
+        },
+        {
+          "argument_name": "samples",
+          "argument_type": "parameter",
+          "source_argument_name": "sample_names_proband_first_if_trio"
+        }
+      ]
+    },
+    {
       "name": "workflow_SV_length_filter_vcf-check",
       "workflow": "5913925a-9f34-4df2-b44a-2865482e8fad",
       "config": {
@@ -246,12 +398,37 @@
         {
           "argument_name": "input_vcf",
           "argument_type": "file",
-          "source": "workflow_20_unrelated_SV_filter_vcf-check",
-          "source_argument_name": "20_unrelated_filtered_SV_vcf"
+          "source": "workflow_SV_cytoband_vcf-check",
+          "source_argument_name": "cytoband_SV_vcf"
         },
         {
           "argument_name": "max_length",
           "argument_type": "parameter"
+        }
+      ]
+    },
+    {
+      "name": "workflow_granite-SVqcVCF-4",
+      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_granite-SVqcVCF",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_SV_length_filter_vcf-check",
+          "source_argument_name": "length_filtered_SV_vcf"
+        },
+        {
+          "argument_name": "samples",
+          "argument_type": "parameter",
+          "source_argument_name": "sample_names_proband_first_if_trio"
         }
       ]
     },
@@ -283,6 +460,31 @@
         {
           "argument_name": "max_length",
           "argument_type": "parameter"
+        }
+      ]
+    },
+    {
+      "name": "workflow_granite-SVqcVCF-5",
+      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_granite-SVqcVCF",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_SV_annotation_cleaner_vcf-check",
+          "source_argument_name": "higlass_SV_vcf"
+        },
+        {
+          "argument_name": "samples",
+          "argument_type": "parameter",
+          "source_argument_name": "sample_names_proband_first_if_trio"
         }
       ]
     }
