@@ -94,5 +94,17 @@
         "title": "SV_cytoband_1703317",
         "uuid": "dd2f0064-5c35-4883-962d-c6cc5fda25cb",
         "commit": "1703317"
+    },
+    {
+        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "name": "granite",
+        "software_type": [
+            "filter"
+        ],
+        "source_url": "https://github.com/dbmi-bgm/granite",
+        "title": "granite_0.1.13",
+        "uuid": "c90c46d8-a981-4f85-9625-92096610d811",
+        "commit": "0.1.13"
     }
 ]
