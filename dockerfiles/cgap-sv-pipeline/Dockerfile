@@ -72,7 +72,7 @@ RUN git clone https://github.com/Ensembl/ensembl-vep.git && \
     cd ..
 
 # granite
-RUN pip install granite-suite==0.1.11
+RUN pip install granite-suite==0.1.13
 
 # cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py SV_type_selector.py 20_unrelated_SV_filter.py SV_length_filter.py SV_cytoband.py
 RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
