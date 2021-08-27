@@ -1,0 +1,97 @@
+{
+  "accession": "GAPWFR8V3KNG",
+  "app_name": "workflow_granite-SVqcVCF",
+  "app_version": "v2",
+  "arguments": [
+      {
+          "argument_format": "vcf",
+          "argument_type": "Input file",
+          "workflow_argument_name": "input_vcf"
+      },
+      {
+          "argument_type": "Output QC file",
+          "workflow_argument_name": "qc_json",
+          "argument_to_be_attached_to": "input_vcf",
+          "qc_zipped": false,
+          "qc_html": false,
+          "qc_json": true,
+          "qc_table": false,
+          "qc_type": "quality_metric_vcfqc"
+      },
+      {
+          "argument_type": "parameter",
+          "workflow_argument_name": "samples"
+      }
+  ],
+  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "category": ["QC"],
+  "cwl_child_filenames": ["granite-SVqcVCF.cwl"],
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v2/cwl/",
+  "cwl_main_filename": "workflow_granite-SVqcVCF.cwl",
+  "cwl_pointer": "",
+  "description": "Run granite SVqcVCF on vcf input file. Produce a json report for quality metrics",
+  "docker_image_name": "cgap/cnv:v2",
+  "docker_registry_url": "https://hub.docker.com/",
+  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "name": "workflow_granite-SVqcVCF_v2",
+  "aliases": ["cgap:workflow_granite-SVqcVCF_v2"],
+  "steps": [
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "vcf",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "input_vcf",
+                  "source": [
+                      {
+                          "name": "input_vcf"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "parameter"
+                  },
+                  "name": "samples",
+                  "source": [
+                      {
+                          "name": "samples"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run granite SVqcVCF"
+              ],
+              "software_used": [
+                  "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+              ]
+          },
+          "name": "granite",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "global": true,
+                      "type": "QC"
+                  },
+                  "name": "qc_json",
+                  "target": [
+                      {
+                          "name": "qc_json"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "Run granite SVqcVCF",
+  "uuid": "56e70cab-6a4f-4501-9827-b87c751af8fd"
+}
