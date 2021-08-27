@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: cgap/cnv:v1
+    dockerPull: cgap/cnv:v2
 
 baseCommand: [python3, /usr/local/bin/SV_type_selector.py]
 
