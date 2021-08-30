@@ -72,10 +72,6 @@ threads=$((threads - 1))
 
 wait
 
-# We don't want to run Manta on aux chromosomes. Get the big ones.
-#echo "Generate contigs"
-#samtools view -H ${bam_files[0]} | python /home/cgap_manta/getContigs.py "True" > contigs || exit 1
-
 mkdir -p /tmp/output/log_files/
 
 echo "Running Manta"
@@ -87,15 +83,8 @@ do
    bam_string="$bam_string --bam=$bam_file"
 done
 
-# region_string=
-#
-# while read line; do
-#     region_string="$region_string --region=$line"
-# done < contigs
-
 mkdir -p /tmp/output/log_files/manta_logs/
 python /miniconda/bin/configManta.py --referenceFasta ${ref_fasta} ${bam_string} --runDir manta --callRegions ${bed_regions} || exit 1
-#python /miniconda/bin/configManta.py --referenceFasta ${ref_fasta} ${bam_string} --runDir manta ${region_string} || exit 1
 python ./manta/runWorkflow.py -m local -j ${threads} 1> /tmp/output/log_files/manta_logs/"${prefix}".manta.stdout.log 2> /tmp/output/log_files/manta_logs/"${prefix}".manta.stderr.log || exit 1 &
 
 wait
