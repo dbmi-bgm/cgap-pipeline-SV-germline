@@ -101,13 +101,5 @@ RUN git clone https://github.com/vcftools/vcftools.git && \
 COPY manta.sh .
 RUN chmod +x manta.sh
 
-# retrieve getContigs.py from parliament2 github
-RUN git clone https://github.com/dnanexus/parliament2.git && \
-cd parliament2 && \
-git checkout 6183038 && \
-cp resources/getContigs.py /home/cgap_manta/ && \
-cd .. && \
-rm -rf parliament2
-
 # default command
 CMD ["manta.sh"]

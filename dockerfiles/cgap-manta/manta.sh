@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # this script is based on components of scripts from the Parliament2 github (https://github.com/dnanexus/parliament2/) including parliament2.sh and runManta
-# it also makes use of an unmodified copy of the getContigs.py script from the Parliament2 github (https://github.com/dnanexus/parliament2/)
 
 bam_files=()
 bai_files=()
