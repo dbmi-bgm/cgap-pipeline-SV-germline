@@ -16,7 +16,7 @@ The pipeline then performs annotation and filtering of SVs from that ``vcf`` fil
 Docker Images
 #############
 
-The current docker image for **SV calling** is ``cgap/cgap-manta:v1``
+The current docker image for **SV calling** is ``cgap/cgap-manta:v2``
 
 This image contains (but is not limited to) the following software packages:
 
@@ -25,11 +25,11 @@ This image contains (but is not limited to) the following software packages:
 - bcftools (1.9)
 - vcftools (0.1.17)
 
-The current docker image for **annotation and filtering** is ``cgap/cnv:v1``
+The current docker image for **annotation and filtering** is ``cgap/cnv:v2``
 
 This image contains (but is not limited to) the following software packages:
 
-- granite (0.1.10)
+- granite (0.1.13)
 - bcftools (1.11)
 - vep (101)
 - sansa (0.0.8)
@@ -41,8 +41,8 @@ SV Pipeline Flow
 
 The overall flow and duration of the CGAP SV Pipeline is shown below:
 
-.. image:: images/cgap-SV-pipeline-v1.png
-  :target: _images/cgap-SV-pipeline-v1.png
+.. image:: images/cgap-SV-pipeline-v2.png
+  :target: _images/cgap-SV-pipeline-v2.png
 
 SV Pipeline Parts and Runtimes
 ##############################

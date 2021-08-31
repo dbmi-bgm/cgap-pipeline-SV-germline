@@ -17,26 +17,22 @@ The filtering step is composed of multiple steps and the output ``vcf`` file is 
 Genelist
 ---------
 
-The genelist step uses ``granite geneList`` to clean VEP annotations for transcripts that are not mapping to any gene of interest. This step does not remove any variants, but only modifies the VEP annotation.
-
+The genelist step uses ``granite geneList`` to clean VEP annotations for transcripts that are not mapping to any gene of interest (not present on the CGAP Portal). This step does not remove any variants, but only modifies the VEP annotation.
 
 Whitelist
 ---------
 
 The whitelist steps use ``granite whiteList`` to filter-in exonic and functionally relevant variant based on VEP annotations. This step removes a large number of SVs from the initial call set.
 
-
 Blacklist
 ---------
 
 The blacklist step uses ``granite blackList`` to filter-out common variants based on gnomAD SV population allele frequency (AF <= 0.01 retained). Variants without gnomAD SV annotations are also retained.
 
-
 SV Type Selection
 -----------------
 
 This step uses ``SV_type_selector.py`` (https://github.com/dbmi-bgm/cgap-annotations) to filter out unwanted SV types.  Currently only DEL and DUP are retained.
-
 
 Output
 ------
@@ -45,10 +41,13 @@ The output is a filtered ``vcf`` file containing a lot fewer entries compared to
 
 * CWL: workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl
 
+
 20 Unrelated Filtering
 ++++++++++++++++++++++
 
-This step usese ``20_unrelated_SV_filter.py`` (https://github.com/dbmi-bgm/cgap-annotations) to assess common and artefactual SVs in 20 unrelated samples and allows us to filter them from our sample ``vcf`` file. The 20 unrelated reference files (SV ``vcf`` files) were generated using Manta for a single diploid individual as described in ``Part 1`` of the CGAP SV Pipeline.
+This step uses ``20_unrelated_SV_filter.py`` (https://github.com/dbmi-bgm/cgap-annotations) to assess common and artefactual SVs in 20 unrelated samples and allows us to filter them from our sample ``vcf`` file. The 20 unrelated reference files (SV ``vcf`` files) were each generated using Manta for a single diploid individual as described in ``Part 1`` of the CGAP SV Pipeline.
+
+Currently, the 20 unrelated samples are from UGRP and have been run through ``v24`` of the ``CGAP Pipeline`` to generate the input ``bam`` files, before being run through ``Manta`` in ``v2`` of the ``CGAP SV Pipeline``.
 
 Requirements
 ------------
@@ -81,6 +80,29 @@ The output is a filtered ``vcf`` file containing a lot fewer entries compared to
 * CWL: workflow_20_unrelated_SV_filter_plus_vcf-integrity-check.cwl
 
 
+Cytoband Annotation
++++++++++++++++++++
+
+This step uses ``SV_cytoband.py`` (https://github.com/dbmi-bgm/cgap-annotations) to generate two new annotations, ``Cyto1`` and ``Cyto2``, which correspond to the cytoband(s) at breakpoint 1 and breakpoint 2 for the SV.
+
+Requirements
+------------
+
+Although not technically a filtering step, this step is present in Part 3 because the ``SV_cytoband.py`` script is not currently designed to run on variants that do not have an ``END`` tag in their ``INFO`` field, namely INV and BND. This step requires a single SV ``vcf`` file that has undergone **Initial Annotation Filtering Step** (which selects for DELs and DUPs) and the hg38 cytoband reference file from UCSC (http://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/cytoBand.txt.gz).
+
+Annotation
+----------
+
+Each variant in the ``vcf`` file will receive a ``Cyto1`` annotation which corresponds to the cytoband position of breakpoint 1 (which is ``POS`` in the ``vcf``), and a ``Cyto2`` annotation which corresponds to the cytoband position of breakpoint 2 (which is ``END`` in the ``INFO`` field).
+
+Output
+------
+
+The output is an annotated SV ``vcf`` file.  No variants are removed, but all variants should receive the ``Cyto1`` and ``Cyto2`` annotations.
+
+* CWL: workflow_SV_cytoband_plus_vcf-integrity-check.cwl
+
+
 Length Filtering
 ++++++++++++++++
 
@@ -102,6 +124,7 @@ Output
 The output is a filtered ``vcf`` file containing slightly fewer entries.  No additional information is added or removed for remaining variants. The resulting ``vcf`` file is checked for integrity.  This is the **Full Annotated VCF** that is ingested into the CGAP Portal.
 
 * CWL: workflow_SV_length_filter_plus_vcf-integrity-check.cwl
+
 
 VCF Annotation Cleaning
 +++++++++++++++++++++++

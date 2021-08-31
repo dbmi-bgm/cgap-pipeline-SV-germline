@@ -7,7 +7,7 @@
 Overview
 ============================================
 
-This is a documentation for CGAP Structural Variant (SV) pipeline ``v1``
+This is a documentation for CGAP Structural Variant (SV) pipeline ``v2``
 
 (https://github.com/dbmi-bgm/cgap-sv-pipeline)
 
@@ -23,3 +23,5 @@ Contents
   :maxdepth: 1
 
   SV
+  qc
+  news

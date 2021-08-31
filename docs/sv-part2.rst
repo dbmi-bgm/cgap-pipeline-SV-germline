@@ -28,7 +28,7 @@ Some additional bash commands convert the ``sansa`` output into ``txt`` format f
 VEP
 ---
 
-Next, ``VEP`` is run using ``vep-annot_SV.sh`` (https://github.com/dbmi-bgm/cgap-sv-pipeline/) to annotate the SVs with genes and transcripts. A maximum SV size slightly larger than chr1 in the hg38 genome ``--max_sv_size 250000000`` is used in the ``VEP`` command in order to avoid unwanted filtering of large SVs at this step. The ``--overlaps`` option is also included to provide the bp overlap between the ``VEP`` feature and the SV (reported in bp and percentage). ``VEP`` outputs an annotated ``vcf`` containing all variants.
+Next, ``VEP`` is run using ``vep-annot_SV.sh`` (https://github.com/dbmi-bgm/cgap-sv-pipeline/) to annotate the SVs with genes and transcripts. A maximum SV size slightly larger than chr1 in the hg38 genome ``--max_sv_size 250000000`` is used in the ``VEP`` command in order to avoid unwanted filtering of large SVs at this step. The ``--overlaps`` option is also included to provide the bp overlap between the ``VEP`` feature and the SV (reported in bp and percentage). The ``--canonical`` option is included so that canonical transcripts are flagged for. ``VEP`` outputs an annotated ``vcf`` containing all variants.
 
 Combine sansa and VEP
 ---------------------

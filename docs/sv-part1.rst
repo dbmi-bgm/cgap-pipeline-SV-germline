@@ -19,7 +19,7 @@ This step carries out SV identification using ``Manta`` through the script ``man
 
 ``manta.sh`` identifies Deletions (SVTYPE=DEL), Duplications (SVTYPE=DUP), Insertions (SVTYPE=INS), and Inversion/Translocations (SVTYPE=BND).
 
-The script ``getContigs.py`` (https://github.com/dnanexus/parliament2/) is used to limit the ``Manta`` run to chr1-chr22, chrX and chrY.
+A ``callRegions`` region file containing the main chromosome names limits the ``Manta`` run to chr1-chr22, chrX and chrY.
 
 The script ``convertInversion.py`` (https://github.com/Illumina/manta/) is also called within ``manta.sh`` to separate (SVTYPE=INV) from other translocations (SVTYPE=BND).  The output file is a ``vcf`` file which is checked for integrity.
 
