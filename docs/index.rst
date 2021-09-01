@@ -23,3 +23,4 @@ Contents
   :maxdepth: 1
 
   SV
+  news
