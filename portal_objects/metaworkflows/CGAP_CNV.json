@@ -76,7 +76,7 @@
       "workflow": "c2a6344d-c4c0-49c0-b5fc-1df2024c62ab",
       "config": {
         "instance_type": "c5.4xlarge",
-        "ebs_size": 300,
+        "ebs_size": "1.2x",
         "ebs_type": "gp3",
         "EBS_optimized": true,
         "spot_instance": false,
