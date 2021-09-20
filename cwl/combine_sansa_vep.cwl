@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: cgap/cnv:v2
+    dockerPull: ACCOUNT/cnv:VERSION
 
 baseCommand: [combine_sansa_and_VEP_vcf.py]
 

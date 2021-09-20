@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: cgap/cnv:v2
+    dockerPull: ACCOUNT/cnv:VERSION
 
 baseCommand: [granite, whiteList]
 

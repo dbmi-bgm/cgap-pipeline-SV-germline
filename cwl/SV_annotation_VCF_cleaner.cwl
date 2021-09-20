@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: cgap/cnv:v2
+    dockerPull: ACCOUNT/cnv:VERSION
 
 baseCommand: [python3, /usr/local/bin/SV_annotation_VCF_cleaner.py]
 

@@ -43,6 +43,6 @@ outputs:
       glob: variants.vcf.gz
 
 hints:
-  - dockerPull: cgap/cgap-manta:v2
+  - dockerPull: ACCOUNT/manta:VERSION
     class: DockerRequirement
 class: CommandLineTool
