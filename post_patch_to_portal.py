@@ -237,7 +237,7 @@ def main(ff_env='fourfront-cgapwolf', skip_software=False, skip_file_format=Fals
             if pipeline == 'snv':
                 cmd = snv_images.replace("REGION", region).replace("ACCOUNT", account_region).replace("VERSION", version)
             # replace all variables
-            elif pipeline == 'sv':
+            elif pipeline == 'cnv':
                 cmd = sv_images.replace("REGION", region).replace("ACCOUNT", account_region).replace("VERSION", version)
 
             # push create and push images
