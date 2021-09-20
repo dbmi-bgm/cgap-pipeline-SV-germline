@@ -65,7 +65,7 @@
   "cwl_main_filename": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter the annotated input SV VCF using granite (geneList, whiteList, blackList) and select SV types to be maintained. An integrity check is performed on the output file",
-  "docker_image_name": "cgap/cnv:VERSION",
+  "docker_image_name": "ACCOUNT/cnv:VERSION",
   "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
   "name": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_VERSION",
