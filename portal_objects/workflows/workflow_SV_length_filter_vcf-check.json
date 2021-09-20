@@ -1,7 +1,7 @@
 {
   "accession": "GAPWFOK282BB",
   "app_name": "workflow_SV_length_filter_vcf-check",
-  "app_version": "v2",
+  "app_version": "VERSION",
   "arguments": [
       {
           "argument_format": "vcf_gz",
@@ -32,15 +32,15 @@
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
   "cwl_child_filenames": ["SV_length_filter.cwl", "vcf-integrity-check.cwl"],
-  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v2/cwl/",
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/VERSION/cwl/",
   "cwl_main_filename": "workflow_SV_length_filter_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter the input VCF file to remove large SVs for better perfomance on the portal. An integrity check is performed on the output file",
-  "docker_image_name": "cgap/cnv:v2",
+  "docker_image_name": "cgap/cnv:VERSION",
   "docker_registry_url": "https://hub.docker.com/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-  "name": "workflow_SV_length_filter_plus_vcf-integrity-check_v2",
-  "aliases": ["cgap:workflow_SV_length_filter_plus_vcf-integrity-check_v2"],
+  "name": "workflow_SV_length_filter_plus_vcf-integrity-check_VERSION",
+  "aliases": ["cgap:workflow_SV_length_filter_plus_vcf-integrity-check_VERSION"],
   "steps": [
       {
           "inputs": [

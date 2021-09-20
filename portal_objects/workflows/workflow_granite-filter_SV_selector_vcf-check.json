@@ -1,7 +1,7 @@
 {
   "accession": "GAPWFU878JDQ",
   "app_name": "workflow_granite-filter_SV_selector_vcf-check",
-  "app_version": "v2",
+  "app_version": "VERSION",
   "arguments": [
       {
           "argument_format": "vcf_gz",
@@ -61,15 +61,15 @@
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
   "cwl_child_filenames": ["granite-geneList_SV.cwl", "granite-whiteList_SV.cwl", "granite-blackList_SV.cwl", "SV_type_selector.cwl", "vcf-integrity-check.cwl"],
-  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v2/cwl/",
+  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/VERSION/cwl/",
   "cwl_main_filename": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter the annotated input SV VCF using granite (geneList, whiteList, blackList) and select SV types to be maintained. An integrity check is performed on the output file",
-  "docker_image_name": "cgap/cnv:v2",
+  "docker_image_name": "cgap/cnv:VERSION",
   "docker_registry_url": "https://hub.docker.com/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-  "name": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_v2",
-  "aliases": ["cgap:workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_v2"],
+  "name": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_VERSION",
+  "aliases": ["cgap:workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_VERSION"],
   "steps": [
       {
           "inputs": [
