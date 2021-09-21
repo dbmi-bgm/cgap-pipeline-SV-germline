@@ -16,39 +16,6 @@
     "accession": "GAPFISOK6J2J"
   },
   {
-    "uuid": "3819698f-d587-4971-a8ca-bf96151c4296",
-    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-    "file_format": "vcf_tar",
-    "description": "tar archive of 20 unrelated SV vcf_gz files",
-    "aliases": ["cgap:SV-20-unrelated-tar"],
-    "extra_files": [],
-    "status": "uploading",
-    "accession": "GAPFI49H8IN1"
-  },
-  {
-    "uuid": "1155cd5e-24ed-4ee1-89cd-83484f2c1dea",
-    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-    "file_format": "vcf_tar",
-    "description": "tar archive of 20 unrelated SV UDN vcf_gz files from Manta",
-    "aliases": ["cgap:SV-20-unrelated-UDN-MANTA-tar"],
-    "extra_files": [],
-    "status": "uploading",
-    "accession": "GAPFINC7TX57"
-  },
-  {
-    "uuid": "8799ffec-1b39-4696-9a7c-e38488f98697",
-    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-    "file_format": "vcf_tar",
-    "description": "tar archive of 20 unrelated SV UGRP vcf_gz files from Manta",
-    "aliases": ["cgap:SV-20-unrelated-UGRP-MANTA-tar"],
-    "extra_files": [],
-    "status": "uploading",
-    "accession": "GAPFIDP4S5BW"
-  },
-  {
     "uuid": "3986849e-c96a-4add-82f8-eab605f193fd",
     "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
     "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
