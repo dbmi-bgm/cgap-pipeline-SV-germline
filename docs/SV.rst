@@ -35,10 +35,10 @@ This image contains (but is not limited to) the following software packages:
 - sansa (0.0.8)
 - vcftools (0.1.17)
 
-CGAP is now running on a deployable model. Public docker images are pushed to private ECRs using the ``post_patch_to_portal.py`` script during deployment and/or pipeline updates. 
+CGAP is now running on a deployable model. Public docker images are pushed to private ECRs using the ``post_patch_to_portal.py`` script during deployment and/or pipeline updates.
 
-SV Pipeline Flow
-################
+SV Pipeline Flow and Runtimes
+#############################
 
 The overall flow and duration of the CGAP SV Pipeline is shown below:
 
