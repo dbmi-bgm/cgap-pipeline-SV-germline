@@ -24,6 +24,14 @@ inputs:
       position: 2
     secondaryFiles:
       - .fai
+  callRegions:
+    type: File
+    inputBinding:
+      prefix: -r
+      separate: false
+      position: 3
+    secondaryFiles:
+      - .tbi
 outputs:
   result:
     type: File
@@ -33,8 +41,8 @@ outputs:
     type: File
     outputBinding:
       glob: variants.vcf.gz
-      
+
 hints:
-  - dockerPull: cgap/cgap-manta:v1
+  - dockerPull: ACCOUNT/manta:VERSION
     class: DockerRequirement
 class: CommandLineTool

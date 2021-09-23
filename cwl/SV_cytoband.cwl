@@ -11,7 +11,7 @@ hints:
   - class: DockerRequirement
     dockerPull: ACCOUNT/cnv:VERSION
 
-baseCommand: [python3, /usr/local/bin/SV_type_selector.py]
+baseCommand: [python3, /usr/local/bin/SV_cytoband.py]
 
 inputs:
   - id: input
@@ -27,19 +27,19 @@ inputs:
       prefix: -o
     doc: name of the output file
 
-  - id: SV_types
-    type: string[]
+  - id: cytoband
+    type: File
     inputBinding:
-      prefix: -s
-    doc: list of SVTYPE classes to retain in the final VCF
+      prefix: -c
+    doc: expect the path to the cytoband reference file
 
 outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(inputs.outputfile).gz
+      glob: $(inputs.outputfile + ".gz")
     secondaryFiles:
       - .tbi
 
 doc: |
-  run SV_type_selector.py to filter VCF for specific SV classes
+  run SV_cytoband.py to add cytoband annotations for each SV breakpoint

@@ -21,6 +21,12 @@ inputs:
       - .fai
     doc: expect the path to the reference fasta file
 
+  - id: callRegions
+    type: File
+    secondaryFiles:
+      - .tbi
+    doc: expect the path to the bed file for callRegions
+
 outputs:
   final_zip:
     type: File
@@ -42,6 +48,8 @@ steps:
         source: input_bams
       ref_fasta:
         source: ref_fasta
+      callRegions:
+        source: callRegions
 
     out: [result, variants]
 

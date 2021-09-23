@@ -72,9 +72,9 @@ RUN git clone https://github.com/Ensembl/ensembl-vep.git && \
     cd ..
 
 # granite
-RUN pip install granite-suite==0.1.11
+RUN pip install granite-suite==0.1.13
 
-# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py SV_type_selector.py 20_unrelated_SV_filter.py SV_length_filter.py
+# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py SV_type_selector.py 20_unrelated_SV_filter.py SV_length_filter.py SV_cytoband.py
 RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     cd cgap-annotations && \
     git checkout 395b463 && \
@@ -89,6 +89,11 @@ RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
     chmod +x SV_length_filter.py && \
     cp cgap-annotations/sv/scripts/SV_annotation_VCF_cleaner.py . && \
     chmod +x SV_annotation_VCF_cleaner.py && \
+    cd cgap-annotations && \
+    git checkout 1703317 && \
+    cd .. && \
+    cp cgap-annotations/sv/scripts/SV_cytoband.py . && \
+    chmod +x SV_cytoband.py && \
     rm -rf cgap-annotations
 
 # cgap-pipeline scripts: vcf-integrity-check.sh
@@ -107,6 +112,10 @@ RUN chmod +x sansa.sh
 # VEP script
 COPY vep-annot_SV.sh .
 RUN chmod +x vep-annot_SV.sh
+
+# qc variant line count
+COPY qc_variant_line_count.sh .
+RUN chmod +x qc_variant_line_count.sh
 
 # env paths
 ENV PATH=/usr/local/bin/ensembl-vep/:$PATH

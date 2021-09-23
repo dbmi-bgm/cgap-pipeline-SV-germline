@@ -1,6 +1,6 @@
 {
-  "accession": "GAPWFOK282BB",
-  "app_name": "workflow_SV_length_filter_vcf-check",
+  "accession": "GAPWFALD8VR3",
+  "app_name": "workflow_SV_cytoband_vcf-check",
   "app_version": "VERSION",
   "arguments": [
       {
@@ -11,17 +11,18 @@
       {
           "argument_format": "vcf_gz",
           "argument_type": "Output processed file",
-          "workflow_argument_name": "length_filtered_SV_vcf",
+          "workflow_argument_name": "cytoband_SV_vcf",
           "secondary_file_formats": ["vcf_gz_tbi"]
       },
       {
-          "argument_type": "parameter",
-          "workflow_argument_name": "max_length"
+          "argument_format": "txt",
+          "argument_type": "Input file",
+          "workflow_argument_name": "cytoband"
       },
       {
           "argument_type": "Output QC file",
           "workflow_argument_name": "vcf-check",
-          "argument_to_be_attached_to": "length_filtered_SV_vcf",
+          "argument_to_be_attached_to": "cytoband_SV_vcf",
           "qc_zipped": false,
           "qc_html": false,
           "qc_json": false,
@@ -31,16 +32,16 @@
   ],
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
-  "cwl_child_filenames": ["SV_length_filter.cwl", "vcf-integrity-check.cwl"],
+  "cwl_child_filenames": ["SV_cytoband.cwl", "vcf-integrity-check.cwl"],
   "cwl_directory_url_v1": "http://CWLBUCKET.s3.amazonaws.com/PIPELINE/VERSION",
-  "cwl_main_filename": "workflow_SV_length_filter_plus_vcf-integrity-check.cwl",
+  "cwl_main_filename": "workflow_SV_cytoband_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
-  "description": "Filter the input VCF file to remove large SVs for better perfomance on the portal. An integrity check is performed on the output file",
+  "description": "Annotate SV breakpoints with relevant cytobands. An integrity check is performed on the output file",
   "docker_image_name": "ACCOUNT/cnv:VERSION",
   "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-  "name": "workflow_SV_length_filter_plus_vcf-integrity-check_VERSION",
-  "aliases": ["cgap:workflow_SV_length_filter_plus_vcf-integrity-check_VERSION"],
+  "name": "workflow_SV_cytoband_plus_vcf-integrity-check_VERSION",
+  "aliases": ["cgap:workflow_SV_cytoband_plus_vcf-integrity-check_VERSION"],
   "steps": [
       {
           "inputs": [
@@ -61,27 +62,28 @@
               {
                   "meta": {
                       "cardinality": "single",
+                      "file_format": "txt",
                       "global": true,
-                      "type": "parameter"
+                      "type": "data file"
                   },
-                  "name": "max_length",
+                  "name": "cytoband",
                   "source": [
                       {
-                          "name": "max_length"
+                          "name": "cytoband"
                       }
                   ]
               }
           ],
           "meta": {
               "analysis_step_types": [
-                  "Run SV length filter"
+                  "Run cytoband annotation"
               ],
               "software_used": [
-                 "/softwares/8933a673-1c0d-4d0c-98d5-eb2aa892cb02",
+                 "/softwares/dd2f0064-5c35-4883-962d-c6cc5fda25cb",
                  "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
               ]
           },
-          "name": "SV_length_filter",
+          "name": "SV_cytoband",
           "outputs": [
               {
                   "meta": {
@@ -90,10 +92,10 @@
                       "global": true,
                       "type": "data file"
                   },
-                  "name": "length_filtered_SV_vcf",
+                  "name": "cytoband_SV_vcf",
                   "target": [
                       {
-                          "name": "length_filtered_SV_vcf",
+                          "name": "cytoband_SV_vcf",
                           "step": "vcf-integrity-check"
                       }
                   ]
@@ -109,11 +111,11 @@
                       "global": false,
                       "type": "data file"
                   },
-                  "name": "length_filtered_SV_vcf",
+                  "name": "cytoband_SV_vcf",
                   "source": [
                       {
-                          "name": "length_filtered_SV_vcf",
-                          "step": "SV_length_filter"
+                          "name": "cytoband_SV_vcf",
+                          "step": "SV_cytoband"
                       }
                   ]
               }
@@ -144,8 +146,6 @@
           ]
       }
   ],
-  "title": "SV length filtering plus output integrity-check",
-  "uuid": "aa63c831-f9cc-42b7-bb48-30cfe8592ad6",
-  "previous_version": ["5913925a-9f34-4df2-b44a-2865482e8fad"],
-  "version_upgrade_log": "upgrade granite"
+  "title": "SV cytoband annotation plus output integrity-check",
+  "uuid": "8d3cbd3a-f43a-4b59-b717-16a600ad1078"
 }

@@ -1,7 +1,7 @@
 {
-  "accession": "GAPWFP20LPNF",
+  "accession": "GAPWFLJ28BUA",
   "app_name": "workflow_manta_vcf-check",
-  "app_version": "v1",
+  "app_version": "VERSION",
   "arguments": [
       {
           "argument_format": "bam",
@@ -14,6 +14,12 @@
           "argument_type": "Input file",
           "workflow_argument_name": "ref_fasta",
           "secondary_file_formats": ["fa_fai"]
+      },
+      {
+          "argument_format": "bed_gz",
+          "argument_type": "Input file",
+          "workflow_argument_name": "callRegions",
+          "secondary_file_formats": ["bed_gz_tbi"]
       },
       {
           "argument_type": "Output QC file",
@@ -42,15 +48,15 @@
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
   "cwl_child_filenames": ["manta.cwl", "vcf-integrity-check-manta.cwl"],
-  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v1/cwl/",
+  "cwl_directory_url_v1": "http://CWLBUCKET.s3.amazonaws.com/PIPELINE/VERSION",
   "cwl_main_filename": "workflow_manta_integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Run Manta to call stuructural variants. An integrity check is performed on the output file",
-  "docker_image_name": "cgap/cgap-manta:v1",
-  "docker_registry_url": "https://hub.docker.com/",
+  "docker_image_name": "ACCOUNT/manta:VERSION",
+  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-  "name": "workflow_manta_vcf-check_v1",
-  "aliases": ["cgap:workflow_manta_vcf-check_v1"],
+  "name": "workflow_manta_vcf-check_VERSION",
+  "aliases": ["cgap:workflow_manta_vcf-check_VERSION"],
   "steps": [
       {
           "inputs": [
@@ -81,6 +87,20 @@
                             "name": "ref_fasta"
                         }
                     ]
+                },
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "file_format": "fa",
+                        "global": true,
+                        "type": "reference file"
+                    },
+                    "name": "callRegions",
+                    "source": [
+                        {
+                            "name": "callRegions"
+                        }
+                    ]
                 }
           ],
           "meta": {
@@ -88,7 +108,7 @@
                   "Run Manta"
               ],
               "software_used": [
-                 "/softwares/441d3be4-f5fe-4b54-921f-b0a49dd2613f"
+                 "/softwares/dd5b5985-1d9f-4067-987b-bfcd410c81fc"
               ]
           },
           "name": "manta",
@@ -168,5 +188,7 @@
       }
   ],
   "title": "Run Manta plus output integrity-check",
-  "uuid": "c2a6344d-c4c0-49c0-b5fc-1df2024c62ab"
+  "uuid": "10c6c057-07f3-4c3f-974c-e280add5af58",
+  "previous_version": ["c2a6344d-c4c0-49c0-b5fc-1df2024c62ab"],
+  "version_upgrade_log": "replaced regions flag with callRegions and new bed reference file"
 }

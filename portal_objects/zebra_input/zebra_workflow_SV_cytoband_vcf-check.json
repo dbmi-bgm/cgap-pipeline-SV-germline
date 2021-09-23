@@ -1,6 +1,6 @@
 {
-    "parameters": {"SV_types": ["DEL", "DUP"]},
-    "workflow_uuid": "e8da9016-b459-42ce-b92e-ebc4760a3a07",
+    "parameters": {},
+    "workflow_uuid": "8d3cbd3a-f43a-4b59-b717-16a600ad1078",
     "input_files" : [
        {
            "workflow_argument_name": "input_vcf",
@@ -8,8 +8,8 @@
            "mount": false
        },
        {
-           "workflow_argument_name": "dirPath20vcf",
-           "uuid": "cd647c0c-ac11-46db-9c51-bfe238e9ac13",
+           "workflow_argument_name": "cytoband",
+           "uuid": "3986849e-c96a-4add-82f8-eab605f193fd",
            "mount": false
        }
     ],
@@ -19,12 +19,12 @@
       "EBS_optimized": true,
       "spot_instance": true,
       "log_bucket": "tibanna-output",
-      "run_name": "run_workflow_20_unrelated_SV_filter_vcf-check",
+      "run_name": "run_workflow_SV_cytoband_vcf-check",
       "behavior_on_capacity_limit": "wait_and_retry"
     },
     "_tibanna": {
-      "run_type": "workflow_20_unrelated_SV_filter_vcf-check",
+      "run_type": "workflow_SV_cytoband_vcf-check",
       "env": "fourfront-cgapwolf"
     },
-    "app_name": "workflow_20_unrelated_SV_filter_vcf-check"
+    "app_name": "workflow_SV_cytoband_vcf-check"
 }

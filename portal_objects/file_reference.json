@@ -16,36 +16,41 @@
     "accession": "GAPFISOK6J2J"
   },
   {
-    "uuid": "3819698f-d587-4971-a8ca-bf96151c4296",
+    "uuid": "3986849e-c96a-4add-82f8-eab605f193fd",
     "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
     "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-    "file_format": "vcf_tar",
-    "description": "tar archive of 20 unrelated SV vcf_gz files",
-    "aliases": ["cgap:SV-20-unrelated-tar"],
+    "file_format": "txt",
+    "description": "UCSC cytoband reference file for hg38 - cytoBand.txt",
+    "aliases": ["cgap:SV-cytoband-UCSC-hg38"],
     "extra_files": [],
     "status": "uploading",
-    "accession": "GAPFI49H8IN1"
+    "accession": "GAPFIMKD2V9W"
   },
   {
-    "uuid": "1155cd5e-24ed-4ee1-89cd-83484f2c1dea",
+    "uuid": "6512e951-8fd6-4e58-8de4-135e814de175",
     "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
     "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-    "file_format": "vcf_tar",
-    "description": "tar archive of 20 unrelated SV UDN vcf_gz files from Manta",
-    "aliases": ["cgap:SV-20-unrelated-UDN-MANTA-tar"],
-    "extra_files": [],
+    "file_format": "bed_gz",
+    "description": "bed file for Manta callRegions option - hg38 main chromsomes, no mito",
+    "aliases": ["cgap:manta_callRegions_hg38_noMito"],
+    "extra_files": [
+        {
+            "file_format": "bed_gz_tbi",
+            "status": "uploading"
+        }
+    ],
     "status": "uploading",
-    "accession": "GAPFINC7TX57"
+    "accession": "GAPFICK59SC3"
   },
   {
-    "uuid": "8799ffec-1b39-4696-9a7c-e38488f98697",
+    "uuid": "cd647c0c-ac11-46db-9c51-bfe238e9ac13",
     "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
     "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
     "file_format": "vcf_tar",
-    "description": "tar archive of 20 unrelated SV UGRP vcf_gz files from Manta",
-    "aliases": ["cgap:SV-20-unrelated-UGRP-MANTA-tar"],
+    "description": "tar archive of 20 unrelated SV UGRP (v24 alt index) vcf_gz files from Manta",
+    "aliases": ["cgap:SV-20-unrelated-UGRP-v24-MANTA-tar"],
     "extra_files": [],
     "status": "uploading",
-    "accession": "GAPFIDP4S5BW"
+    "accession": "GAPFIH794KXC"
   }
 ]

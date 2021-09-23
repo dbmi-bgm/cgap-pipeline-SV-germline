@@ -1,7 +1,7 @@
 {
-  "accession": "GAPWFS4NV3PC",
+  "accession": "GAPWFBU491CD",
   "app_name": "workflow_annotateSV_sansa_vep_vcf-check",
-  "app_version": "v1",
+  "app_version": "VERSION",
   "arguments": [
       {
           "argument_format": "vcf_gz",
@@ -43,15 +43,15 @@
   "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
   "category": ["processing"],
   "cwl_child_filenames": ["sansa.cwl", "vep-annot_SV.cwl", "combine_sansa_vep.cwl", "vcf-integrity-check.cwl"],
-  "cwl_directory_url_v1": "https://raw.githubusercontent.com/dbmi-bgm/cgap-sv-pipeline/v1/cwl/",
+  "cwl_directory_url_v1": "http://CWLBUCKET.s3.amazonaws.com/PIPELINE/VERSION",
   "cwl_main_filename": "workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Annotate SV VCF with Sansa and VEP, then combine results. An integrity check is performed on the output file",
-  "docker_image_name": "cgap/cnv:v1",
-  "docker_registry_url": "https://hub.docker.com/",
+  "docker_image_name": "ACCOUNT/cnv:VERSION",
+  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-  "name": "workflow_annotateSV_sansa_vep_vcf-check_v1",
-  "aliases": ["cgap:workflow_annotateSV_sansa_vep_vcf-check_v1"],
+  "name": "workflow_annotateSV_sansa_vep_vcf-check_VERSION",
+  "aliases": ["cgap:workflow_annotateSV_sansa_vep_vcf-check_VERSION"],
   "steps": [
       {
           "inputs": [
@@ -237,7 +237,8 @@
                   "Run combine_sana_vep to generate final annotated VCF"
               ],
               "software_used": [
-                 "/softwares/5d272932-1543-40d0-9089-6e0913aabf8a"
+                 "/softwares/5d272932-1543-40d0-9089-6e0913aabf8a",
+                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
               ]
           },
           "name": "combine_sansa_vep",
@@ -304,5 +305,7 @@
       }
   ],
   "title": "Run annotation with sansa and VEP, combine output, plus output integrity-check",
-  "uuid": "ff568408-056c-4450-86d4-2037b3e01bfb"
+  "uuid": "e81aab17-6b79-4fa9-a0b7-b8f883af55f3",
+  "previous_version": ["ff568408-056c-4450-86d4-2037b3e01bfb"],
+  "version_upgrade_log": "added canonical option to vep-annot_SV.sh. upgrade granite."
 }

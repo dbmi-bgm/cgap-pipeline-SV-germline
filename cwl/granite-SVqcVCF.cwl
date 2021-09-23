@@ -11,35 +11,33 @@ hints:
   - class: DockerRequirement
     dockerPull: ACCOUNT/cnv:VERSION
 
-baseCommand: [python3, /usr/local/bin/SV_type_selector.py]
+baseCommand: [granite, SVqcVCF]
 
 inputs:
-  - id: input
+  - id: input_vcf
     type: File
     inputBinding:
       prefix: -i
-    doc: expect the path to the vcf file
+    doc: expect the path to the vcf gz file
 
   - id: outputfile
     type: string
-    default: "output.vcf"
+    default: "output.json"
     inputBinding:
       prefix: -o
     doc: name of the output file
 
-  - id: SV_types
+  - id: samples
     type: string[]
     inputBinding:
-      prefix: -s
-    doc: list of SVTYPE classes to retain in the final VCF
+      prefix: --samples
+    doc: samples to collect metrics for
 
 outputs:
-  - id: output
+  - id: qc_json
     type: File
     outputBinding:
-      glob: $(inputs.outputfile).gz
-    secondaryFiles:
-      - .tbi
+      glob: $(inputs.outputfile)
 
 doc: |
-  run SV_type_selector.py to filter VCF for specific SV classes
+  run granite SVqcVCF
