@@ -1,4 +1,4 @@
-![cgap_logo](https://github.com/dbmi-bgm/cgap-sv-pipeline/blob/main/docs/images/cgap_logo.png)
+<img src="https://github.com/dbmi-bgm/cgap-sv-pipeline/blob/main/docs/images/cgap_logo.png" width="250">
 
 # CGAP Structural Variant Pipeline
 
