@@ -1,3 +1,5 @@
+![cgap_logo](https://https://github.com/dbmi-bgm/cgap-sv-pipeline/tree/main/docs/images/cgap_logo.png)
+
 # CGAP Structural Variant Pipeline
 
 * This repo contains CGAP SV Pipeline components
