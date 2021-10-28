@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: ACCOUNT/cnv:VERSION
+    dockerPull: ACCOUNT/sv_germline:VERSION
 
 baseCommand: [python3, /usr/local/bin/SV_length_filter.py]
 
