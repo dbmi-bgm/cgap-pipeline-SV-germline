@@ -4,31 +4,17 @@
 
 * This repo contains CGAP SV Pipeline components
   * CWL
-  * Public Docker sources - `cgap/cgap-manta:v2` for Manta and `cgap/cnv:v2` for annotation and filtering
-  * Private ECR sources created dynamically at deployment with `post_patch_to_portal.py`
-  * Example Tibanna input jsons for individual steps
   * CGAP Portal Workflows and Metaworkflow
+  * ECR (Docker) source files, which allow for creation of public Docker images (using `docker build`) or private dynamically-generated ECR images (using `cgap pipeline utils` (https://github.com/dbmi-bgm/cgap-pipeline-utils/) `deploy_pipeline`)
 
 For more detailed documentation : https://cgap-sv-pipeline.readthedocs.io/en/latest/
 
-### Updating portal objects
-The following command patches/posts all portal objects including softwares, file formats and workflows
-```
-python post_patch_to_portal.py [--ff-env=<env_name>] [--del-prev-version]
-                               [--skip-software]
-                               [--skip-file-format] [--skip-file-reference]
-                               [--skip-workflow] [--skip-metaworkflow]
-                               [--skip-cwl] [--skip-ecr] [--cwl-bucket=<cwl_s3_bucket>]
-                               [--account=<account_num>] [--region=<region>]
-                               [--ugrp-unrelated] [--ignore-key-conflict]
-
-# env_name : fourfront-cgapwolf (default), fourfront-cgap
-# cwl_s3_bucket : '' (default); provide s3 cwl bucket name, required for cwl and workflow steps
-# account_num : '' (default); provide aws account number, required for cwl, workflow, and ecr steps
-# region : '' (default); provide aws account region, required for cwl, workflow, and ecr steps
-```
-
 ### Version updates
+
+#### v3
+
+* repo changes carried out to allow for compatibility with `cgap-pipeline-utils` `deploy_pipeline.py` https://github.com/dbmi-bgm/cgap-pipeline-utils
+* renamed pipeline from ``cnv`` to ``sv_germline``
 
 #### v2
 
