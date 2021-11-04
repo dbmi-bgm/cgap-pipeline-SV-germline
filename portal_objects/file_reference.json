@@ -52,5 +52,60 @@
     "extra_files": [],
     "status": "uploading",
     "accession": "GAPFIH794KXC"
+  },
+  {
+      "uuid": "1936f246-22e1-45dc-bb5c-9cfd55537fe7",
+      "institution": "INSTITUTION_UUID",
+      "project": "PROJECT_UUID",
+      "file_format": "fa",
+      "description": "hg38 full reference fasta plus decoy for CGAP",
+      "aliases": [
+          "cgap:hg38-plus-decoy-fasta"
+      ],
+      "extra_files": [
+          {
+              "file_format": "dict",
+              "status": "uploading"
+          },
+          {
+              "file_format": "fa_fai",
+              "status": "uploading"
+          }
+      ],
+      "status": "uploading",
+      "accession": "GAPFIXRDPDK5"
+  },
+  {
+      "uuid": "ea103486-b65a-4439-9d0b-1186f8e59388",
+      "institution": "INSTITUTION_UUID",
+      "project": "PROJECT_UUID",
+      "file_format": "vep_tar",
+      "description": "datasource for VEP v101 plus plugins, including a modified dbNSFP plugin to annotate non-missense variants",
+      "aliases": [
+          "cgap:vep-101b"
+      ],
+      "extra_files": [
+          {
+              "file_format": "plugins_tar",
+              "status": "uploading"
+          }
+      ],
+      "status": "uploading",
+      "file_version": "101b",
+      "accession": "GAPFIL8XMTIV"
+  },
+  {
+      "uuid": "84f2bb24-edd7-459b-ab89-0a21866d7826",
+      "institution": "INSTITUTION_UUID",
+      "project": "PROJECT_UUID",
+      "file_format": "txt",
+      "description": "list of genes",
+      "aliases": [
+          "cgap:genes-0.4.6"
+      ],
+      "extra_files": [],
+      "status": "uploading",
+      "file_version": "0.4.6",
+      "accession": "GAPFI5MKCART"
   }
 ]
