@@ -4,8 +4,8 @@
     "standard_file_extension": "vcf.tar",
     "description": "archive with multiple vcf_gz files",
     "uuid": "3d140fc3-fd0e-4d09-8294-4536e388e665",
-    "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-    "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+    "project": "PROJECT_UUID",
+    "institution": "INSTITUTION_UUID",
     "status": "shared",
     "valid_item_types": ["FileReference"]
   },
@@ -14,8 +14,8 @@
       "standard_file_extension": "bed.gz.tbi",
       "description": "Tabix index file for compressed bed",
       "uuid": "40346690-6359-4436-97ff-562698ab4b31",
-      "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-      "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
       "status": "shared",
       "valid_item_types": ["FileReference","FileProcessed"]
   },
@@ -27,8 +27,8 @@
       "extrafile_formats": [
           "40346690-6359-4436-97ff-562698ab4b31"
       ],
-      "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-      "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
       "status": "shared",
       "valid_item_types": ["FileProcessed", "FileReference"]
   }

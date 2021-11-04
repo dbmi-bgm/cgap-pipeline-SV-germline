@@ -47,7 +47,7 @@
           "qc_type": "quality_metric_vcfcheck"
       }
   ],
-  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "project": "PROJECT_UUID",
   "category": ["processing"],
   "cwl_child_filenames": ["20_unrelated_SV_filter.cwl", "vcf-integrity-check.cwl"],
   "cwl_directory_url_v1": "http://CWLBUCKET.s3.amazonaws.com/PIPELINE/VERSION",
@@ -56,7 +56,7 @@
   "description": "Filter out common and artefactual SVs through comparison to 20 unrelated files. An integrity check is performed on the output file",
   "docker_image_name": "ACCOUNT/cnv:VERSION",
   "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
-  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "institution": "INSTITUTION_UUID",
   "name": "workflow_20_unrelated_SV_filter_vcf-check_VERSION",
   "aliases": ["cgap:workflow_20_unrelated_SV_filter_vcf-check_VERSION"],
   "steps": [
