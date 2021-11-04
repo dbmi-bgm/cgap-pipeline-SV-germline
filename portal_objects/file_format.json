@@ -31,5 +31,168 @@
       "institution": "INSTITUTION_UUID",
       "status": "shared",
       "valid_item_types": ["FileProcessed", "FileReference"]
+  },
+  {
+      "file_format": "vcf",
+      "standard_file_extension": "vcf",
+      "description": "vcf, uncompressed",
+      "uuid": "fcc2647d-301b-4888-8d9d-83ea4270309c",
+      "extrafile_formats": [
+          "ec96f95a-cf13-4633-ab0d-c4a5138bbe0b"
+      ],
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileProcessed", "FileReference"]
+  },
+  {
+      "file_format": "vcf_gz_tbi",
+      "standard_file_extension": "vcf.gz.tbi",
+      "description": "Tabix index file of vcf, compressed",
+      "uuid": "f84f1922-7f4e-4afc-922f-bec620969bf1",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference", "FileProcessed"]
+  },
+  {
+      "file_format": "vcf_gz",
+      "standard_file_extension": "vcf.gz",
+      "description": "vcf, compressed",
+      "uuid": "1b8f525f-aecb-4211-9ae5-a2c998b05599",
+      "extrafile_formats": [
+          "f84f1922-7f4e-4afc-922f-bec620969bf1"
+      ],
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference", "FileProcessed"]
+  },
+  {
+      "status": "shared",
+      "project": "PROJECT_UUID",
+      "description": "This format is used for aligned reads",
+      "file_format": "txt",
+      "institution": "INSTITUTION_UUID",
+      "date_created": "2019-08-27T03:45:40.635467+00:00",
+      "valid_item_types": [
+          "FileProcessed",
+          "FileReference"
+      ],
+      "standard_file_extension": "txt",
+      "uuid": "0cd4e777-a596-4927-95c8-b07716121aa3"
+  },
+  {
+      "file_format": "tsv_gz_tbi",
+      "standard_file_extension": "tsv.gz.tbi",
+      "description": "Tabix index file of tab-separate values (tsv), compressed",
+      "uuid": "829ed303-e427-4d9a-a217-be75ad11317e",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference", "FileProcessed"]
+  },
+  {
+      "file_format": "tsv_gz",
+      "standard_file_extension": "tsv.gz",
+      "description": "tab-separate values (tsv), compressed",
+      "uuid": "11ca3783-db6e-430e-997b-9cf0ca275814",
+      "extrafile_formats": [
+          "829ed303-e427-4d9a-a217-be75ad11317e"
+      ],
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference", "FileProcessed"]
+  },
+  {
+      "file_format": "bai",
+      "standard_file_extension": "bam.bai",
+      "description": "Bam index format",
+      "uuid": "d13d06c1-218e-4f61-aaf0-91f226248b3c",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileProcessed"]
+  },
+  {
+      "file_format": "bam",
+      "standard_file_extension": "bam",
+      "description": "This format is used for aligned reads",
+      "uuid": "d13d06cf-218e-4f61-aaf0-91f226248b3c",
+      "extrafile_formats": [
+          "d13d06c1-218e-4f61-aaf0-91f226248b3c"
+      ],
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileProcessed"]
+  },
+  {
+      "file_format": "dict",
+      "standard_file_extension": "dict",
+      "description": "extra file of genome reference fasta",
+      "uuid": "4ed9f7e0-2b2f-4aca-9533-a0a652b43442",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference"]
+  },
+  {
+      "file_format": "fa_fai",
+      "standard_file_extension": "fa.fai",
+      "description": "extra file of genome reference fasta",
+      "uuid": "fb728bb4-bc56-46d5-8df5-a05562826b9a",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference"]
+  },
+  {
+      "file_format": "fa",
+      "standard_file_extension": "fa",
+      "description": "genome reference fasta",
+      "uuid": "5ced774b-a73e-4d1b-8186-d7fbbde7a3c2",
+      "extrafile_formats": [
+          "4ed9f7e0-2b2f-4aca-9533-a0a652b43442",
+          "fb728bb4-bc56-46d5-8df5-a05562826b9a"
+      ],
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference"]
+  },
+  {
+      "file_format": "bed",
+      "standard_file_extension": "bed",
+      "description": "bed, uncompressed",
+      "uuid": "4c04f6de-89a7-4477-8dc4-811b50c67401",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileProcessed", "FileReference"]
+  },
+  {
+      "file_format": "plugins_tar",
+      "standard_file_extension": "plugins.tar.gz",
+      "description": "archive with VEP plugins, compressed",
+      "uuid": "65ccbf65-80f9-41b4-b002-468500821c62",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference"]
+  },
+  {
+      "file_format": "vep_tar",
+      "standard_file_extension": "vep.tar.gz",
+      "description": "archive with VEP datasource, compressed",
+      "uuid": "d05f9688-0ee1-4a86-83f4-656e6e21352a",
+      "extrafile_formats": [
+          "65ccbf65-80f9-41b4-b002-468500821c62"
+      ],
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference"]
   }
 ]
