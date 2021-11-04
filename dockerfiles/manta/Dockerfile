@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Soo Lee (duplexa@gmail.com), Alexander Veit (alexander_veit@hms.harvard.edu), Michele Berselli (berselli.michele@gmail.com), Phil Grayson (phil.d.grayson@gmail.com)
+MAINTAINER Alexander Veit (alexander_veit@hms.harvard.edu), Phil Grayson (phil.d.grayson@gmail.com), Michele Berselli (berselli.michele@gmail.com)
 
 RUN apt-get update -y && apt-get install -y curl wget
 

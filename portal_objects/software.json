@@ -26,6 +26,42 @@
     {
         "project": "PROJECT_UUID",
         "institution": "INSTITUTION_UUID",
+        "name": "vep",
+        "software_type": [
+            "annotator"
+        ],
+        "source_url": "https://github.com/Ensembl/ensembl-vep",
+        "title": "vep_101",
+        "uuid": "85041e50-a7fc-4633-a83b-983b8ebbc48e",
+        "version": "101"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "bcftools",
+        "software_type": [
+            "file format converter"
+        ],
+        "source_url": "https://github.com/samtools/bcftools",
+        "title": "bcftools_1.11",
+        "uuid": "791a7248-9ba3-44da-bff9-0d9b121eaf5c",
+        "version": "1.11"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "vcf-tools",
+        "software_type": [
+            "quality metric generator"
+        ],
+        "source_url": "https://github.com/vcftools/vcftools",
+        "title": "vcf-tools_954e607",
+        "uuid": "f7ac2c5f-9203-49fa-b918-cede02bf46f7",
+        "commit": "954e607"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
         "name": "granite",
         "software_type": [
             "filter"
