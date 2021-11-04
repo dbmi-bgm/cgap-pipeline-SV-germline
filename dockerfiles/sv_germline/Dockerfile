@@ -1,5 +1,5 @@
 FROM 4dndcic/ubuntu16.04-miniconda-python36:v1
-MAINTAINER Phil Grayson (phil.d.grayson@gmail.com), Michele Berselli (berselli.michele@gmail.com),
+MAINTAINER Phil Grayson (phil.d.grayson@gmail.com), Michele Berselli (berselli.michele@gmail.com)
 
 # general updates & installing necessary Linux components
 RUN apt-get update -y && apt-get install -y \
