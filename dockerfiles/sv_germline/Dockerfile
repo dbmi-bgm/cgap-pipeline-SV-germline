@@ -88,14 +88,9 @@ RUN chmod +x SV_annotation_VCF_cleaner.py
 COPY scripts/SV_cytoband.py .
 RUN chmod +x SV_cytoband.py
 
-# cgap-pipeline scripts: vcf-integrity-check.sh
-RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
-    cd cgap-pipeline && \
-    git checkout 17b4249 && \
-    cd .. && \
-    cp cgap-pipeline/dockerfiles/cgap-docker/vcf-integrity-check.sh . && \
-    chmod +x vcf-integrity-check.sh && \
-    rm -rf cgap-pipeline
+# vcf-integrity-check script
+COPY vcf-integrity-check.sh .
+RUN chmod +x vcf-integrity-check.sh
 
 # sansa script
 COPY sansa.sh .
