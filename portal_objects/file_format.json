@@ -33,6 +33,16 @@
       "valid_item_types": ["FileProcessed", "FileReference"]
   },
   {
+      "file_format": "vcf_idx",
+      "standard_file_extension": "vcf.idx",
+      "description": "GATK/IGV-index of vcf, uncompressed",
+      "uuid": "ec96f95a-cf13-4633-ab0d-c4a5138bbe0b",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileProcessed", "FileReference"]
+  },
+  {
       "file_format": "vcf",
       "standard_file_extension": "vcf",
       "description": "vcf, uncompressed",
