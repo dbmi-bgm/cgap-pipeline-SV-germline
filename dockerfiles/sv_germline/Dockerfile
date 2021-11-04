@@ -1,5 +1,5 @@
 FROM 4dndcic/ubuntu16.04-miniconda-python36:v1
-MAINTAINER Soo Lee (duplexa@gmail.com), Michele Berselli (berselli.michele@gmail.com), Phil Grayson (phil.d.grayson@gmail.com)
+MAINTAINER Phil Grayson (phil.d.grayson@gmail.com), Michele Berselli (berselli.michele@gmail.com),
 
 # general updates & installing necessary Linux components
 RUN apt-get update -y && apt-get install -y \
@@ -74,27 +74,19 @@ RUN git clone https://github.com/Ensembl/ensembl-vep.git && \
 # granite
 RUN pip install granite-suite==0.1.13
 
-# cgap-annotations scripts: reformat_SV_vcf.py combine_sansa_and_VEP_vcf.py SV_type_selector.py 20_unrelated_SV_filter.py SV_length_filter.py SV_cytoband.py
-RUN git clone https://github.com/dbmi-bgm/cgap-annotations.git && \
-    cd cgap-annotations && \
-    git checkout 395b463 && \
-    cd .. && \
-    cp cgap-annotations/sv/scripts/combine_sansa_and_VEP_vcf.py . && \
-    chmod +x combine_sansa_and_VEP_vcf.py . && \
-    cp cgap-annotations/sv/scripts/SV_type_selector.py . && \
-    chmod +x SV_type_selector.py && \
-    cp cgap-annotations/sv/scripts/20_unrelated_SV_filter.py . && \
-    chmod +x 20_unrelated_SV_filter.py && \
-    cp cgap-annotations/sv/scripts/SV_length_filter.py . && \
-    chmod +x SV_length_filter.py && \
-    cp cgap-annotations/sv/scripts/SV_annotation_VCF_cleaner.py . && \
-    chmod +x SV_annotation_VCF_cleaner.py && \
-    cd cgap-annotations && \
-    git checkout 1703317 && \
-    cd .. && \
-    cp cgap-annotations/sv/scripts/SV_cytoband.py . && \
-    chmod +x SV_cytoband.py && \
-    rm -rf cgap-annotations
+# sv_germline scripts: combine_sansa_and_VEP_vcf.py SV_type_selector.py 20_unrelated_SV_filter.py SV_length_filter.py SV_annotation_VCF_cleaner.py SV_cytoband.py
+COPY scripts/combine_sansa_and_VEP_vcf.py .
+RUN chmod +x combine_sansa_and_VEP_vcf.py
+COPY scripts/SV_type_selector.py .
+RUN chmod +x SV_type_selector.py
+COPY scripts/20_unrelated_SV_filter.py .
+RUN chmod +x 20_unrelated_SV_filter.py
+COPY scripts/SV_length_filter.py .
+RUN chmod +x SV_length_filter.py
+COPY scripts/SV_annotation_VCF_cleaner.py .
+RUN chmod +x SV_annotation_VCF_cleaner.py
+COPY scripts/SV_cytoband.py .
+RUN chmod +x SV_cytoband.py
 
 # cgap-pipeline scripts: vcf-integrity-check.sh
 RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \

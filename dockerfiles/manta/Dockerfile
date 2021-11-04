@@ -77,14 +77,9 @@ ENV DYLD_LIBRARY_PATH=/usr/lib/root/lib
 ENV HTSLIB_LIBRARY_DIR=/usr/local/lib
 ENV HTSLIB_INCLUDE_DIR=/usr/local/include
 
-# cgap-pipeline scripts: vcf-integrity-check.sh
-RUN git clone https://github.com/dbmi-bgm/cgap-pipeline.git && \
-    cd cgap-pipeline && \
-    git checkout 17b4249 && \
-    cd .. && \
-    cp cgap-pipeline/dockerfiles/cgap-docker/vcf-integrity-check.sh . && \
-    chmod +x vcf-integrity-check.sh && \
-    rm -rf cgap-pipeline
+# vcf-integrity-check script
+COPY vcf-integrity-check.sh .
+RUN chmod +x vcf-integrity-check.sh
 
 # vcf tools
 RUN git clone https://github.com/vcftools/vcftools.git && \
