@@ -2,7 +2,7 @@
 
 # CGAP Structural Variants Pipeline, Germline
 
-* This repo contains components for CGAP structural variants pipeline for germline mutations
+* This repo contains components for CGAP pipeline for structural germline variants:
  
   * CWL
   * CGAP Portal Workflows and Metaworkflow
