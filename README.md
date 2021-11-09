@@ -1,8 +1,8 @@
 <img src="https://github.com/dbmi-bgm/cgap-pipeline/blob/master/docs/images/cgap_logo.png" width="200" align="right">
 
-# CGAP Structural Variants Pipeline, Germline
+# CGAP Pipeline for Germline Structural Variants
 
-This repository contains components for the CGAP pipeline for structural germline variants:
+This repository contains components for the CGAP pipeline for germline structural variants:
  
   * CWL
   * CGAP Portal Workflows and Metaworkflow
