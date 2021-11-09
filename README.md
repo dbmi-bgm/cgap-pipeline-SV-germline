@@ -3,6 +3,7 @@
 # CGAP Structural Variants Pipeline, Germline
 
 * This repo contains components for CGAP structural variants pipeline for germline mutations
+ 
   * CWL
   * CGAP Portal Workflows and Metaworkflow
   * ECR (Docker) source files, which allow for creation of public Docker images (using `docker build`) or private dynamically-generated ECR images (using `cgap pipeline utils` (https://github.com/dbmi-bgm/cgap-pipeline-utils/) `deploy_pipeline`)
@@ -12,12 +13,10 @@ For more details check [*documentation*](https://cgap-pipeline-master.readthedoc
 ### Version updates
 
 #### v3
-
 * Changes in repo structure to allow for compatibility with new pipeline organization
 * Pipeline renamed from ``cnv`` to ``sv_germline``
 
 #### v2
-
 * The pipeline has been converted to work on private ECR images which are created from our public Docker images
 * Various updates throughout the CGAP SV Pipeline. The current pipeline is outlined below and updates are indicated. A new version of ``granite`` (v0.1.13) is being used for steps 2-13 of the pipeline.
   * Step 1. Manta-based calling of SVs (**Update**: Manta now uses the `callRegions` flag instead of `regions`. We no longer use get_contigs.py from Parliament2 and have removed the Parliament2 github repo from the `cgap-manta:v2` Dockerfile)
@@ -35,7 +34,6 @@ For more details check [*documentation*](https://cgap-pipeline-master.readthedoc
   * Step 13. Granite SVqcVCF is used to count DEL and DUP variants and provide a total number of DEL and DUP variants in each sample (**New Step**)
 
 #### v1
-
 * Created entirely new pipeline - CGAP Structural Variant (SV) Pipeline
   * Step 1. Manta-based SV calling to generate a vcf file containing SVs in proband or trio
   * Step 2. VEP annotation for genes/transcripts and sansa annotation for gnomAD SV population allele frequencies
