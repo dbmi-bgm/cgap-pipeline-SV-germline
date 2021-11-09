@@ -30,7 +30,7 @@
   "cwl_main_filename": "workflow_granite-SVqcVCF.cwl",
   "cwl_pointer": "",
   "description": "Run granite SVqcVCF on vcf input file. Produce a json report for quality metrics",
-  "docker_image_name": "ACCOUNT/cnv:VERSION",
+  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
   "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_granite-SVqcVCF_VERSION",

@@ -36,7 +36,7 @@
   "cwl_main_filename": "workflow_SV_length_filter_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter the input VCF file to remove large SVs for better perfomance on the portal. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/cnv:VERSION",
+  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
   "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_SV_length_filter_plus_vcf-integrity-check_VERSION",

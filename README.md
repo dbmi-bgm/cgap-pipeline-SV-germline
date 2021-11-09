@@ -1,20 +1,20 @@
 <img src="https://github.com/dbmi-bgm/cgap-pipeline/blob/master/docs/images/cgap_logo.png" width="200" align="right">
 
-# CGAP Structural Variant Pipeline
+# CGAP Structural Variants Pipeline, Germline
 
-* This repo contains CGAP SV Pipeline components
+* This repo contains components for CGAP structural variants pipeline for germline mutations
   * CWL
   * CGAP Portal Workflows and Metaworkflow
   * ECR (Docker) source files, which allow for creation of public Docker images (using `docker build`) or private dynamically-generated ECR images (using `cgap pipeline utils` (https://github.com/dbmi-bgm/cgap-pipeline-utils/) `deploy_pipeline`)
 
-For more detailed documentation : https://cgap-sv-pipeline.readthedocs.io/en/latest/
+For more details check [*documentation*](https://cgap-pipeline-master.readthedocs.io/en/latest/Pipelines/Downstream/SV_germline/index-SV_germline.html "SV germline documentation").
 
 ### Version updates
 
 #### v3
 
-* repo changes carried out to allow for compatibility with `cgap-pipeline-utils` `deploy_pipeline.py` https://github.com/dbmi-bgm/cgap-pipeline-utils
-* renamed pipeline from ``cnv`` to ``sv_germline``
+* Changes in repo structure to allow for compatibility with new pipeline organization
+* Pipeline renamed from ``cnv`` to ``sv_germline``
 
 #### v2
 

@@ -1,8 +1,9 @@
 {
-  "name": "CNV",
-  "title": "CNV VERSION",
+  "name": "SV_germline",
+  "title": "SV Germline VERSION",
   "version": "VERSION",
   "accession": "GAPMWF15HCPD",
+  "description": "downstream pipeline for SV for trio, family or proband only",
   "uuid": "9da76c35-732a-40e8-b55e-7f929a636dc2",
   "project": "PROJECT_UUID",
   "institution": "INSTITUTION_UUID",
