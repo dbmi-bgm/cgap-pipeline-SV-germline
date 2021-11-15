@@ -505,6 +505,13 @@ class TestTranscript:
                 cgap_annotations.CGAP_LOCATION_UTR_3,
                 cgap_annotations.CGAP_LOCATION_UTR_3_DOWNSTREAM,
             ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_INDETERMINATE,
+                cgap_annotations.CGAP_LOCATION_INDETERMINATE,
+            ),
         ],
     )
     def test_get_variant_locations(
