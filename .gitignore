@@ -10,4 +10,4 @@ _templates
 **/build
 **/source
 .python-version
-.swp
+*.swp
