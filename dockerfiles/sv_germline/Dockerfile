@@ -46,7 +46,7 @@ RUN wget https://github.com/samtools/bcftools/releases/download/1.11/bcftools-1.
     cd .. && \
     ln -s bcftools-1.11 bcftools
 
-# vcf tools
+# vcftools
 RUN git clone https://github.com/vcftools/vcftools.git && \
     mv vcftools vcftools_tmp && \
     cd vcftools_tmp && \

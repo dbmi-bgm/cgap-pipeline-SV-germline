@@ -11,7 +11,7 @@ This repository contains components for the CGAP pipeline for germline structura
 The pipeline starts from analysis ready `bam` files and produces `vcf` files containing calls for SVs as output.
 For more details check [*documentation*](https://cgap-pipeline-master.readthedocs.io/en/latest/Pipelines/Downstream/SV_germline/index-SV_germline.html "SV germline documentation").
 
-### Version updates
+### Version Updates
 
 #### v3
 * Changes in repo structure to allow for compatibility with new pipeline organization
