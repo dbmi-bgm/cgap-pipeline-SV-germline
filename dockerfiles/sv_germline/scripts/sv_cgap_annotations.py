@@ -15,6 +15,9 @@ Specifically, this script:
     - Filters transcripts by biotype and removes variants from the VCF
       if all transcripts have been filtered out.
 
+NOTE: Script only intended to work/tested on deletions/duplications as
+of November 2021.
+
 NOTE: If additional transcript biotypes are added to include, update
 the variant locations algorithm in Transcript.get_variant_locations()
 to handle such biotypes properly.
@@ -130,6 +133,12 @@ VEP_HEADER_SPLIT_END = '">'
 VEP_HEADER_FIELDS_SPLIT = "|"
 
 
+class CGAPTranscriptAnnotationError(Exception):
+    """Exception class for this script."""
+
+    pass
+
+
 class Transcript:
     """Captures transcript features and calculates new properties.
 
@@ -192,6 +201,8 @@ class Transcript:
 
         :param transcript_annotation: Raw VEP transcript annotation
         :type transcript_annotation: str
+        :raises CGAPTranscriptAnnotationException: Unable to identify required info for
+            the transcript
         :return: Key, value pairs of annotation names with
             corresponding transcript fields
         :rtype: dict
@@ -206,6 +217,11 @@ class Transcript:
         self.intron = annotations.get(VEP_INTRON)
         self.canonical = annotations.get(VEP_CANONICAL)
         self.biotype = annotations.get(VEP_BIOTYPE)
+        if not self.gene or not self.consequence or not self.biotype:
+            raise CGAPTranscriptAnnotationError(
+                "Could not find an expected, required field on the following"
+                " transcript: %s." % transcript_annotation
+            )
         return annotations
 
     def get_worst_consequence(self):
@@ -249,6 +265,9 @@ class Transcript:
 
         The locations are also added to self.annotations if appropriate.
 
+        If/when biotypes included are updated, this method must also be
+        updated appropriately.
+
         NOTE: Best to test any changes on a number of SV VCFs as quite
         difficult to capture all combinations in tests (and then update
         tests for combinations not handled correctly).
@@ -269,6 +288,9 @@ class Transcript:
             VEP_CONSEQUENCE_DOWNSTREAM,
         ]
         coding_region_consequences = [
+            #  NOTE: Not all exons coming in on a transcript are coding; this
+            #  can only be determined by the presence of a corresponding consequence,
+            #  which this list is meant to capture.
             VEP_CONSEQUENCE_CODING_VARIANT,
             VEP_CONSEQUENCE_PROTEIN_ALTERING,
             VEP_CONSEQUENCE_FRAMESHIFT,
@@ -282,6 +304,8 @@ class Transcript:
         if any(
             consequence in consequences for consequence in whole_transcript_consequences
         ):
+            #  No other information required than the consequence here because the
+            #  entire transcript is involved.
             if (
                 VEP_CONSEQUENCE_ABLATION in consequences
                 or VEP_CONSEQUENCE_AMPLIFICATION in consequences
@@ -293,6 +317,11 @@ class Transcript:
             else:
                 five_prime_location = three_prime_location = CGAP_LOCATION_DOWNSTREAM
         else:
+            #  Only a portion of the transcript has been impacted by the SV, so utilize
+            #  the available info to narrow down relative location.
+            #  NOTE: As above, not all exons are coding.
+
+            #  5' location determination
             if VEP_CONSEQUENCE_5_UTR in consequences:
                 five_prime_location = CGAP_LOCATION_UPSTREAM_UTR_5
             elif (introns and not exons) and (
@@ -320,6 +349,8 @@ class Transcript:
                         five_prime_location = CGAP_LOCATION_EXONIC
                     elif VEP_CONSEQUENCE_3_UTR in consequences:
                         five_prime_location = CGAP_LOCATION_UTR_3
+
+            #  3' location determination (~same as 5' but switched accordingly)
             if VEP_CONSEQUENCE_3_UTR in consequences:
                 three_prime_location = CGAP_LOCATION_UTR_3_DOWNSTREAM
             elif (introns and not exons) and (

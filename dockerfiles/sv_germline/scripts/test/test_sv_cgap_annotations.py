@@ -1,12 +1,11 @@
+import gzip
 import os
 import random
-from unittest.mock import call, Mock, mock_open, patch
+from unittest.mock import Mock, call, mock_open, patch
 
-import gzip
 import pytest
 
 from .. import sv_cgap_annotations as cgap_annotations
-
 
 # Test constants
 GENE = "BRCA"
@@ -212,6 +211,22 @@ class TestTranscript:
         assert transcript.biotype == BIOTYPE
 
     @pytest.mark.parametrize(
+        "annotation",
+        [
+            simple_transcript(gene=""),
+            simple_transcript(consequences=""),
+            simple_transcript(biotype=""),
+        ],
+    )
+    def test_get_annotations_error(self, annotation):
+        """Test exception raised for transcripts lacking required
+        fields.
+        """
+        vcf_parser = mock_transcript_vcf_parser()
+        with pytest.raises(cgap_annotations.CGAPTranscriptAnnotationError):
+            cgap_annotations.Transcript(annotation, vcf_parser)
+
+    @pytest.mark.parametrize(
         ("consequences", "worst_consequence"),
         [
             choose_consequences(),
@@ -256,7 +271,7 @@ class TestTranscript:
         "consequences,exons,introns,expected_5_prime,expected_3_prime",
         [
             (
-                "",
+                cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
                 "",
                 "",
                 cgap_annotations.CGAP_LOCATION_INDETERMINATE,
@@ -594,7 +609,6 @@ class TestVariantAnnotator:
     @pytest.mark.parametrize(
         "biotype,expected",
         [
-            ("", False),
             ("some_biotype", False),
             (cgap_annotations.VEP_BIOTYPE_PROTEIN_CODING, True),
             (cgap_annotations.VEP_BIOTYPE_MIRNA, True),
