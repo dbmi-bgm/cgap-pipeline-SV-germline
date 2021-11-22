@@ -1,37 +1,23 @@
-<img src="https://github.com/dbmi-bgm/cgap-sv-pipeline/blob/main/docs/images/cgap_logo.png" width="250">
+<img src="https://github.com/dbmi-bgm/cgap-pipeline/blob/master/docs/images/cgap_logo.png" width="200" align="right">
 
-# CGAP Structural Variant Pipeline
+# CGAP Pipeline for Germline Structural Variants
 
-* This repo contains CGAP SV Pipeline components
-  * CWL
-  * Public Docker sources - `cgap/cgap-manta:v2` for Manta and `cgap/cnv:v2` for annotation and filtering
-  * Private ECR sources created dynamically at deployment with `post_patch_to_portal.py`
-  * Example Tibanna input jsons for individual steps
-  * CGAP Portal Workflows and Metaworkflow
+This repository contains components for the CGAP pipeline for germline structural variants (SVs):
 
-For more detailed documentation : https://cgap-sv-pipeline.readthedocs.io/en/latest/
+  * CWL workflows
+  * CGAP Portal Workflows and MetaWorkflows objects
+  * ECR (Docker) source files, which allow for creation of public Docker images (using `docker build`) or private dynamically-generated ECR images (using [*cgap pipeline utils*](https://github.com/dbmi-bgm/cgap-pipeline-utils/) `deploy_pipeline`)
 
-### Updating portal objects
-The following command patches/posts all portal objects including softwares, file formats and workflows
-```
-python post_patch_to_portal.py [--ff-env=<env_name>] [--del-prev-version]
-                               [--skip-software]
-                               [--skip-file-format] [--skip-file-reference]
-                               [--skip-workflow] [--skip-metaworkflow]
-                               [--skip-cwl] [--skip-ecr] [--cwl-bucket=<cwl_s3_bucket>]
-                               [--account=<account_num>] [--region=<region>]
-                               [--ugrp-unrelated] [--ignore-key-conflict]
+The pipeline starts from analysis ready `bam` files and produces `vcf` files containing calls for SVs as output.
+For more details check [*documentation*](https://cgap-pipeline-master.readthedocs.io/en/latest/Pipelines/Downstream/SV_germline/index-SV_germline.html "SV germline documentation").
 
-# env_name : fourfront-cgapwolf (default), fourfront-cgap
-# cwl_s3_bucket : '' (default); provide s3 cwl bucket name, required for cwl and workflow steps
-# account_num : '' (default); provide aws account number, required for cwl, workflow, and ecr steps
-# region : '' (default); provide aws account region, required for cwl, workflow, and ecr steps
-```
+### Version Updates
 
-### Version updates
+#### v3
+* Changes in repo structure to allow for compatibility with new pipeline organization
+* Pipeline renamed from ``cnv`` to ``sv_germline``
 
 #### v2
-
 * The pipeline has been converted to work on private ECR images which are created from our public Docker images
 * Various updates throughout the CGAP SV Pipeline. The current pipeline is outlined below and updates are indicated. A new version of ``granite`` (v0.1.13) is being used for steps 2-13 of the pipeline.
   * Step 1. Manta-based calling of SVs (**Update**: Manta now uses the `callRegions` flag instead of `regions`. We no longer use get_contigs.py from Parliament2 and have removed the Parliament2 github repo from the `cgap-manta:v2` Dockerfile)
@@ -49,7 +35,6 @@ python post_patch_to_portal.py [--ff-env=<env_name>] [--del-prev-version]
   * Step 13. Granite SVqcVCF is used to count DEL and DUP variants and provide a total number of DEL and DUP variants in each sample (**New Step**)
 
 #### v1
-
 * Created entirely new pipeline - CGAP Structural Variant (SV) Pipeline
   * Step 1. Manta-based SV calling to generate a vcf file containing SVs in proband or trio
   * Step 2. VEP annotation for genes/transcripts and sansa annotation for gnomAD SV population allele frequencies

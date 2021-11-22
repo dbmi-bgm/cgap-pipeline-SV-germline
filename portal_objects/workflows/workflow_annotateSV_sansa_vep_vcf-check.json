@@ -40,16 +40,16 @@
           "qc_type": "quality_metric_vcfcheck"
       }
   ],
-  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "project": "PROJECT_UUID",
   "category": ["processing"],
   "cwl_child_filenames": ["sansa.cwl", "vep-annot_SV.cwl", "combine_sansa_vep.cwl", "vcf-integrity-check.cwl"],
   "cwl_directory_url_v1": "http://CWLBUCKET.s3.amazonaws.com/PIPELINE/VERSION",
   "cwl_main_filename": "workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Annotate SV VCF with Sansa and VEP, then combine results. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/cnv:VERSION",
+  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
   "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
-  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "institution": "INSTITUTION_UUID",
   "name": "workflow_annotateSV_sansa_vep_vcf-check_VERSION",
   "aliases": ["cgap:workflow_annotateSV_sansa_vep_vcf-check_VERSION"],
   "steps": [
@@ -237,7 +237,6 @@
                   "Run combine_sana_vep to generate final annotated VCF"
               ],
               "software_used": [
-                 "/softwares/5d272932-1543-40d0-9089-6e0913aabf8a",
                  "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
               ]
           },
