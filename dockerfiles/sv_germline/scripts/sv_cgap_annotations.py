@@ -41,6 +41,9 @@ VEP_EXON = "EXON"
 VEP_INTRON = "INTRON"
 VEP_EXON_TOTAL_SPLIT = "/"
 VEP_EXON_AFFECTED_SPLIT = "-"
+VEP_CDNA_POSITION = "cDNA_position"
+VEP_CDNA_POSITION_SPLIT = "-"
+VEP_CDNA_NONCODING_END = "?"
 VEP_CANONICAL = "CANONICAL"
 VEP_CANONICAL_TRUE = "YES"
 VEP_BIOTYPE = "BIOTYPE"
@@ -116,6 +119,7 @@ CGAP_LOCATION_UTR_5 = "5_UTR"
 CGAP_LOCATION_UTR_3 = "3_UTR"
 CGAP_LOCATION_UPSTREAM_UTR_5 = "Upstream_or_5_UTR"
 CGAP_LOCATION_UTR_3_DOWNSTREAM = "3_UTR_or_Downstream"
+CGAP_LOCATION_WITHIN_MIRNA = "Within_miRNA"
 CGAP_NEW_FIELDS = [CGAP_MOST_SEVERE, CGAP_VARIANT_5_LOCATION, CGAP_VARIANT_3_LOCATION]
 
 # CGAP permitted transcript biotypes
@@ -186,6 +190,7 @@ class Transcript:
         self.consequence = None
         self.exon = None
         self.intron = None
+        self.cdna_position = None
         self.canonical = None
         self.biotype = None
         self.annotations = self.get_annotations(transcript_annotation)
@@ -215,6 +220,7 @@ class Transcript:
         self.consequence = annotations.get(VEP_CONSEQUENCE)
         self.exon = annotations.get(VEP_EXON)
         self.intron = annotations.get(VEP_INTRON)
+        self.cdna_position = annotations.get(VEP_CDNA_POSITION)
         self.canonical = annotations.get(VEP_CANONICAL)
         self.biotype = annotations.get(VEP_BIOTYPE)
         if not self.gene or not self.consequence or not self.biotype:
@@ -257,6 +263,17 @@ class Transcript:
             affected = exon_or_intron[0].split(VEP_EXON_AFFECTED_SPLIT)
         return total, affected
 
+    def split_cdna_position(self, cdna_position):
+        """Parse cDNA position string.
+
+        :return: Start cDNA position, end cDNA position (may be same).
+        :rtype: (str, str)
+        """
+        cdna_position = cdna_position.split(VEP_CDNA_POSITION_SPLIT)
+        start_cdna = cdna_position[0]
+        end_cdna = cdna_position[-1]
+        return start_cdna, end_cdna
+
     def get_variant_locations(self):
         """Determine SV breakpoint locations relative to transcript.
 
@@ -281,6 +298,7 @@ class Transcript:
         _, exons_affected = self.split_exons_or_introns(exons)
         introns = self.intron
         _, introns_affected = self.split_exons_or_introns(introns)
+        cdna_position = self.cdna_position
         whole_transcript_consequences = [
             VEP_CONSEQUENCE_ABLATION,
             VEP_CONSEQUENCE_AMPLIFICATION,
@@ -316,6 +334,17 @@ class Transcript:
                 five_prime_location = three_prime_location = CGAP_LOCATION_UPSTREAM
             else:
                 five_prime_location = three_prime_location = CGAP_LOCATION_DOWNSTREAM
+        elif (VEP_CONSEQUENCE_MATURE_MIRNA in consequences) and cdna_position:
+            #  Handle miRNAs that haven't been entirely affected
+            cdna_start, cdna_end = self.split_cdna_position(cdna_position)
+            if cdna_start == VEP_CDNA_NONCODING_END:
+                five_prime_location = CGAP_LOCATION_UPSTREAM
+            else:
+                five_prime_location = CGAP_LOCATION_WITHIN_MIRNA
+            if cdna_end == VEP_CDNA_NONCODING_END:
+                three_prime_location = CGAP_LOCATION_DOWNSTREAM
+            else:
+                three_prime_location = CGAP_LOCATION_WITHIN_MIRNA
         else:
             #  Only a portion of the transcript has been impacted by the SV, so utilize
             #  the available info to narrow down relative location.

@@ -19,6 +19,7 @@ EXONS = "1-2/10"
 INTRONS = "1/9"
 CANONICAL = cgap_annotations.VEP_CANONICAL_TRUE
 BIOTYPE = cgap_annotations.VEP_BIOTYPE_PROTEIN_CODING
+CDNA_POSITION = "?-30"
 WORST_CONSEQUENCE = cgap_annotations.VEP_CONSEQUENCE_ABLATION
 VARIANT_LOCATIONS = (
     cgap_annotations.CGAP_LOCATION_UPSTREAM,
@@ -31,6 +32,7 @@ SIMPLE_ANNOTATION_ORDER = [  # Annotation order for simple_transcript result
     cgap_annotations.VEP_INTRON,
     cgap_annotations.VEP_CANONICAL,
     cgap_annotations.VEP_BIOTYPE,
+    cgap_annotations.VEP_CDNA_POSITION,
 ]
 EXTENDED_ANNOTATION_ORDER = SIMPLE_ANNOTATION_ORDER + cgap_annotations.CGAP_NEW_FIELDS
 SIMPLE_VEP_HEADER = (
@@ -64,6 +66,7 @@ def simple_transcript(
     introns=INTRONS,
     canonical=CANONICAL,
     biotype=BIOTYPE,
+    cdna_position=CDNA_POSITION,
     most_severe="",
     variant_5="",
     variant_3="",
@@ -75,7 +78,7 @@ def simple_transcript(
     desired, set extended=True and provide the appropriate kwargs.
     """
     transcript = cgap_annotations.VEP_TRANSCRIPT_SPLIT.join(
-        [gene, consequences, exons, introns, canonical, biotype]
+        [gene, consequences, exons, introns, canonical, biotype, cdna_position]
     )
     if extended:
         new_fields = cgap_annotations.CGAP_NEW_FIELDS
@@ -209,6 +212,7 @@ class TestTranscript:
         assert transcript.intron == INTRONS
         assert transcript.canonical == CANONICAL
         assert transcript.biotype == BIOTYPE
+        assert transcript.cdna_position == CDNA_POSITION
 
     @pytest.mark.parametrize(
         "annotation",
@@ -268,127 +272,196 @@ class TestTranscript:
         )
 
     @pytest.mark.parametrize(
-        "consequences,exons,introns,expected_5_prime,expected_3_prime",
+        "cdna_position,expected",
         [
+            ("5", ("5", "5")),
+            ("2-60", ("2", "60")),
+            ("?-30", ("?", "30")),
+            ("2-?", ("2", "?")),
+        ]
+    )
+    def test_split_cdna_position(self, cdna_position, expected):
+        """Test splitting of cDNA position to start and end
+        coordinates.
+
+        Only expecting to split a non-empty string.
+        """
+        assert cgap_annotations.Transcript.split_cdna_position(None, cdna_position) == expected
+
+    @pytest.mark.parametrize(
+        "consequences,exons,introns,cdna_position,expected_5_prime,expected_3_prime",
+        [
+            #  Start of whole transcript consequences tests
+            (
+                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
+                "",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
+                "1-2/2",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
+                "",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
+                "1-2/2",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
+                "",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
+                "1-2/2",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
+                "",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
+                "1-2/2",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
+                "",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
+                "1-2/2",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
+                "",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
+                "1-2/2",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
+                "",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
+                "1-2/2",
+                "",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
+                "",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
+                "1-2/2",
+                "3-4/4",
+                "",
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_UPSTREAM,
+            ),
+            #  Start of miRNA tests
             (
                 cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
                 "",
                 "",
+                "",
                 cgap_annotations.CGAP_LOCATION_INDETERMINATE,
                 cgap_annotations.CGAP_LOCATION_INDETERMINATE,
             ),
             (
-                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
+                cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
                 "",
                 "",
+                "?-23",
                 cgap_annotations.CGAP_LOCATION_UPSTREAM,
+                cgap_annotations.CGAP_LOCATION_WITHIN_MIRNA,
+            ),
+            (
+                cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
+                "",
+                "",
+                "23-?",
+                cgap_annotations.CGAP_LOCATION_WITHIN_MIRNA,
                 cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
             ),
             (
-                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
-                "1-2/2",
-                "",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
-                "",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_ABLATION,
-                "1-2/2",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
+                cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
                 "",
                 "",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+                "13-73",
+                cgap_annotations.CGAP_LOCATION_WITHIN_MIRNA,
+                cgap_annotations.CGAP_LOCATION_WITHIN_MIRNA,
             ),
             (
-                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
-                "1-2/2",
-                "",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
-                "",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_AMPLIFICATION,
-                "1-2/2",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
+                cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
                 "",
                 "",
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
+                "1",  # Don't think this should ever occur
+                cgap_annotations.CGAP_LOCATION_WITHIN_MIRNA,
+                cgap_annotations.CGAP_LOCATION_WITHIN_MIRNA,
             ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
-                "1-2/2",
-                "",
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
-                "",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_DOWNSTREAM,
-                "1-2/2",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-                cgap_annotations.CGAP_LOCATION_DOWNSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
-                "",
-                "",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
-                "1-2/2",
-                "",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
-                "",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-            ),
-            (
-                cgap_annotations.VEP_CONSEQUENCE_UPSTREAM,
-                "1-2/2",
-                "3-4/4",
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-                cgap_annotations.CGAP_LOCATION_UPSTREAM,
-            ),
+            #  Start of coding transcript partial impact tests
             (
                 cgap_annotations.VEP_CONSEQUENCE_JOIN.join(
                     [
@@ -396,6 +469,7 @@ class TestTranscript:
                         cgap_annotations.VEP_CONSEQUENCE_3_UTR,
                     ]
                 ),
+                "",
                 "",
                 "",
                 cgap_annotations.CGAP_LOCATION_UPSTREAM_UTR_5,
@@ -410,6 +484,7 @@ class TestTranscript:
                 ),
                 "1-2/2",
                 "",
+                "",
                 cgap_annotations.CGAP_LOCATION_UPSTREAM_UTR_5,
                 cgap_annotations.CGAP_LOCATION_UTR_3_DOWNSTREAM,
             ),
@@ -422,6 +497,7 @@ class TestTranscript:
                 ),
                 "",
                 "3-4/4",
+                "",
                 cgap_annotations.CGAP_LOCATION_UPSTREAM_UTR_5,
                 cgap_annotations.CGAP_LOCATION_UTR_3_DOWNSTREAM,
             ),
@@ -434,12 +510,14 @@ class TestTranscript:
                 ),
                 "1-2/2",
                 "3-4/4",
+                "",
                 cgap_annotations.CGAP_LOCATION_UPSTREAM_UTR_5,
                 cgap_annotations.CGAP_LOCATION_UTR_3_DOWNSTREAM,
             ),
             (
                 cgap_annotations.VEP_CONSEQUENCE_CODING_VARIANT,
                 "1-2/2",
+                "",
                 "",
                 cgap_annotations.CGAP_LOCATION_EXONIC,
                 cgap_annotations.CGAP_LOCATION_EXONIC,
@@ -448,6 +526,7 @@ class TestTranscript:
                 cgap_annotations.VEP_CONSEQUENCE_CODING_VARIANT,
                 "1/1",
                 "",
+                "",
                 cgap_annotations.CGAP_LOCATION_EXONIC,
                 cgap_annotations.CGAP_LOCATION_EXONIC,
             ),
@@ -455,6 +534,7 @@ class TestTranscript:
                 cgap_annotations.VEP_CONSEQUENCE_INTRON_VARIANT,
                 "",
                 "3-4/4",
+                "",
                 cgap_annotations.CGAP_LOCATION_INTRONIC,
                 cgap_annotations.CGAP_LOCATION_INTRONIC,
             ),
@@ -467,6 +547,7 @@ class TestTranscript:
                 ),
                 "1-2/2",
                 "1/1",
+                "",
                 cgap_annotations.CGAP_LOCATION_EXONIC,
                 cgap_annotations.CGAP_LOCATION_EXONIC,
             ),
@@ -479,6 +560,7 @@ class TestTranscript:
                 ),
                 "2/2",
                 "1/1",
+                "",
                 cgap_annotations.CGAP_LOCATION_INTRONIC,
                 cgap_annotations.CGAP_LOCATION_EXONIC,
             ),
@@ -491,6 +573,7 @@ class TestTranscript:
                 ),
                 "3/4",
                 "3/3",
+                "",
                 cgap_annotations.CGAP_LOCATION_EXONIC,
                 cgap_annotations.CGAP_LOCATION_INTRONIC,
             ),
@@ -503,12 +586,14 @@ class TestTranscript:
                 ),
                 "3/5",
                 "2-3/4",
+                "",
                 cgap_annotations.CGAP_LOCATION_INTRONIC,
                 cgap_annotations.CGAP_LOCATION_INTRONIC,
             ),
             (
                 cgap_annotations.VEP_CONSEQUENCE_5_UTR,
                 "1-3/5",
+                "",
                 "",
                 cgap_annotations.CGAP_LOCATION_UPSTREAM_UTR_5,
                 cgap_annotations.CGAP_LOCATION_UTR_5,
@@ -517,11 +602,13 @@ class TestTranscript:
                 cgap_annotations.VEP_CONSEQUENCE_3_UTR,
                 "3-5/5",
                 "",
+                "",
                 cgap_annotations.CGAP_LOCATION_UTR_3,
                 cgap_annotations.CGAP_LOCATION_UTR_3_DOWNSTREAM,
             ),
             (
                 cgap_annotations.VEP_CONSEQUENCE_MATURE_MIRNA,
+                "",
                 "",
                 "",
                 cgap_annotations.CGAP_LOCATION_INDETERMINATE,
@@ -530,7 +617,7 @@ class TestTranscript:
         ],
     )
     def test_get_variant_locations(
-        self, consequences, exons, introns, expected_5_prime, expected_3_prime
+        self, consequences, exons, introns, cdna_position, expected_5_prime, expected_3_prime
     ):
         """Test accurate calculation of variant breakpoint locations
         relative to a transcript.
@@ -539,7 +626,8 @@ class TestTranscript:
         transcript annotation dict.
         """
         annotation = simple_transcript(
-            consequences=consequences, exons=exons, introns=introns, extended=True
+            consequences=consequences, exons=exons, introns=introns,
+            cdna_position=cdna_position, extended=True
         )
         annotation_order = EXTENDED_ANNOTATION_ORDER
         vcf_parser = mock_transcript_vcf_parser(annotation_order=annotation_order)
