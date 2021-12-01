@@ -278,7 +278,7 @@ class TestTranscript:
             ("2-60", ("2", "60")),
             ("?-30", ("?", "30")),
             ("2-?", ("2", "?")),
-        ]
+        ],
     )
     def test_split_cdna_position(self, cdna_position, expected):
         """Test splitting of cDNA position to start and end
@@ -286,7 +286,10 @@ class TestTranscript:
 
         Only expecting to split a non-empty string.
         """
-        assert cgap_annotations.Transcript.split_cdna_position(None, cdna_position) == expected
+        assert (
+            cgap_annotations.Transcript.split_cdna_position(None, cdna_position)
+            == expected
+        )
 
     @pytest.mark.parametrize(
         "consequences,exons,introns,cdna_position,expected_5_prime,expected_3_prime",
@@ -617,7 +620,13 @@ class TestTranscript:
         ],
     )
     def test_get_variant_locations(
-        self, consequences, exons, introns, cdna_position, expected_5_prime, expected_3_prime
+        self,
+        consequences,
+        exons,
+        introns,
+        cdna_position,
+        expected_5_prime,
+        expected_3_prime,
     ):
         """Test accurate calculation of variant breakpoint locations
         relative to a transcript.
@@ -626,8 +635,11 @@ class TestTranscript:
         transcript annotation dict.
         """
         annotation = simple_transcript(
-            consequences=consequences, exons=exons, introns=introns,
-            cdna_position=cdna_position, extended=True
+            consequences=consequences,
+            exons=exons,
+            introns=introns,
+            cdna_position=cdna_position,
+            extended=True,
         )
         annotation_order = EXTENDED_ANNOTATION_ORDER
         vcf_parser = mock_transcript_vcf_parser(annotation_order=annotation_order)
