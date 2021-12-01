@@ -26,7 +26,7 @@
   "project": "PROJECT_UUID",
   "category": ["QC"],
   "cwl_child_filenames": ["granite-SVqcVCF.cwl"],
-  "cwl_directory_url_v1": "http://CWLBUCKET.s3.amazonaws.com/PIPELINE/VERSION",
+  "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
   "cwl_main_filename": "workflow_granite-SVqcVCF.cwl",
   "cwl_pointer": "",
   "description": "Run granite SVqcVCF on vcf input file. Produce a json report for quality metrics",
