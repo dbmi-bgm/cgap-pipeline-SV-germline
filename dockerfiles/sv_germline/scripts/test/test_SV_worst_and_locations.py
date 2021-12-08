@@ -5,7 +5,7 @@ from unittest.mock import Mock, call, mock_open, patch
 
 import pytest
 
-from .. import sv_cgap_annotations as cgap_annotations
+from .. import SV_worst_and_locations as cgap_annotations
 
 # Test constants
 GENE = "BRCA"
@@ -178,7 +178,7 @@ def get_vep_header(vcf_parser):
 def update_variant(variant_string):
     """Update variant with all CGAP annotations/filtering."""
     with patch(
-        "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+        "scripts.SV_worst_and_locations.VCFParser.read_vcf",
         return_value=simple_vcf(variants=[variant_string]),
     ):
         parser = cgap_annotations.VCFParser(None, None)
@@ -776,7 +776,7 @@ class TestVariantAnnotator:
             )
             for transcript in expected_transcripts
         ]
-        with patch("scripts.sv_cgap_annotations.VCFParser.read_vcf", return_value=vcf):
+        with patch("scripts.SV_worst_and_locations.VCFParser.read_vcf", return_value=vcf):
             parser = cgap_annotations.VCFParser(None, None)
             variant = list(parser.variants)[0]
             annotator = cgap_annotations.VariantAnnotator(variant, parser)
@@ -939,7 +939,7 @@ class TestVariantAnnotator:
         variant_string = simple_variant(transcripts=transcripts)
         worst_consequence_transcripts_to_classes(expected)
         with patch(
-            "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+            "scripts.SV_worst_and_locations.VCFParser.read_vcf",
             return_value=simple_vcf(variants=[variant_string]),
         ):
             parser = cgap_annotations.VCFParser(None, None)
@@ -1006,7 +1006,7 @@ class TestVariantAnnotator:
         """
         variant_string = simple_variant(transcripts=transcripts)
         with patch(
-            "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+            "scripts.SV_worst_and_locations.VCFParser.read_vcf",
             return_value=simple_vcf(variants=[variant_string]),
         ):
             parser = cgap_annotations.VCFParser(None, None)
@@ -1042,7 +1042,7 @@ class TestVariantAnnotator:
         """
         variant_string = simple_variant(transcripts=transcripts)
         with patch(
-            "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+            "scripts.SV_worst_and_locations.VCFParser.read_vcf",
             return_value=simple_vcf(variants=[variant_string]),
         ):
             parser = cgap_annotations.VCFParser(None, None)
@@ -1085,7 +1085,7 @@ class TestVCFParser:
         VCF and addition of expected new CGAP annotations.
         """
         with patch(
-            "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+            "scripts.SV_worst_and_locations.VCFParser.read_vcf",
             return_value=simple_vcf(),
         ):
             parser = cgap_annotations.VCFParser(None, None)
@@ -1097,7 +1097,7 @@ class TestVCFParser:
         annotation fields.
         """
         with patch(
-            "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+            "scripts.SV_worst_and_locations.VCFParser.read_vcf",
             return_value=simple_vcf(),
         ):
             parser = cgap_annotations.VCFParser(None, None)
@@ -1134,7 +1134,7 @@ class TestVCFParser:
         separately.
         """
         with patch(
-            "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+            "scripts.SV_worst_and_locations.VCFParser.read_vcf",
             return_value=simple_vcf(variants=variants),
         ):
             parser = cgap_annotations.VCFParser(None, None)
@@ -1161,7 +1161,7 @@ class TestVCFParser:
         """
         fake_file_path = "/foo/bar"
         with patch(
-            "scripts.sv_cgap_annotations.VCFParser.read_vcf",
+            "scripts.SV_worst_and_locations.VCFParser.read_vcf",
             return_value=simple_vcf(variants=variants),
         ):
             parser = cgap_annotations.VCFParser(None, fake_file_path)
@@ -1178,7 +1178,7 @@ class TestVCFParser:
             )
 
 
-@patch("scripts.sv_cgap_annotations.argparse", new=mock_argparse())
+@patch("scripts.SV_worst_and_locations.argparse", new=mock_argparse())
 def test_main():
     """Integrated test running main script with actual inputs/outputs.
 

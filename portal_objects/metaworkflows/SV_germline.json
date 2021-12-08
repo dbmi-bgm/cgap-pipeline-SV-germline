@@ -2,13 +2,13 @@
   "name": "SV_germline",
   "title": "SV Germline VERSION",
   "version": "VERSION",
-  "accession": "GAPMWF15HCPD",
+  "accession": "GAPMWFF3NGGB",
   "description": "downstream pipeline for SV for trio, family or proband only",
-  "uuid": "9da76c35-732a-40e8-b55e-7f929a636dc2",
+  "uuid": "f0b87c91-a3f8-487c-a513-64a61cf85ad1",
   "project": "PROJECT_UUID",
   "institution": "INSTITUTION_UUID",
-  "previous_version": ["65d9918d-320a-4ea4-b91d-2e4d43fc33d7"],
-  "version_upgrade_log": "Updated workflows. callRegions in Manta, Canonical transcript in VEP, SVqcVCF, cytoband annotation, UGRP v24 for 20 unrelated",
+  "previous_version": ["9da76c35-732a-40e8-b55e-7f929a636dc2"],
+  "version_upgrade_log": "Changed cytoband annotation step to secondary annotation which now includes cytoband as well as worst transcript consequences, locations of breakpoints as they pertain to transcripts and hg19 breakpoint liftover",
   "input": [
     {
       "argument_name": "input_bams",
@@ -32,6 +32,11 @@
       "argument_name": "cytoband",
       "argument_type": "file",
       "files": [{"file": "3986849e-c96a-4add-82f8-eab605f193fd"}]
+    },
+    {
+      "argument_name": "chainfile",
+      "argument_type": "file",
+      "files": [{"file": "297c872a-5b6b-4fc3-83d3-f4a853f8805c"}]
     },
     {
       "argument_name": "vep",
@@ -322,8 +327,8 @@
       ]
     },
     {
-      "name": "workflow_SV_cytoband_vcf-check",
-      "workflow": "8d3cbd3a-f43a-4b59-b717-16a600ad1078",
+      "name": "workflow_SV_secondary_annotation_vcf-check",
+      "workflow": "a4e12e25-9787-4120-bb1d-ccc685685507",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": 10,
@@ -349,6 +354,10 @@
         {
           "argument_type": "file",
           "argument_name": "cytoband"
+        },
+        {
+          "argument_type": "file",
+          "argument_name": "chainfile"
         }
       ]
     },
