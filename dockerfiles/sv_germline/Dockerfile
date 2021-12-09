@@ -33,7 +33,7 @@ RUN apt-get update -y && apt-get install -y \
 WORKDIR /usr/local/bin
 
 # python and pysam (required for VEP)
-RUN conda install pysam==0.15.3 python=3.6.8 && \
+RUN conda install pysam==0.15.3 python=3.6.8 pyliftover==0.4 && \
     conda clean -a -y -f
 
 # bcftools
