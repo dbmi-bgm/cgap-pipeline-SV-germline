@@ -16,6 +16,7 @@ For more details check [*documentation*](https://cgap-pipeline-master.readthedoc
 #### v3
 * Changes in repo structure to allow for compatibility with new pipeline organization
 * Pipeline renamed from ``cnv`` to ``sv_germline``
+* Step 8 (cytoband annotation) renamed to secondary annotation. Additional annotations added on top of the existing cytoband annotation. Worst consequence and breakpoint location(s) relative to transcripts are now reported as well as liftover of each breakpoint (if present in hg19).
 
 #### v2
 * The pipeline has been converted to work on private ECR images which are created from our public Docker images
