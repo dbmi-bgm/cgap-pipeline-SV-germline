@@ -32,7 +32,7 @@ inputs:
     default: 'liftover.vcf'
     type: string
     inputBinding:
-      position: 2
+      position: 3
       prefix: -o
     doc: base name of output vcf gz file
 
