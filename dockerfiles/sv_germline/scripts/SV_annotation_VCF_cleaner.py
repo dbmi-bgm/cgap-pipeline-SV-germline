@@ -25,6 +25,12 @@ def main(args):
             vnt_obj.REF = "."
             vnt_obj.ALT = "<"+vnt_obj.get_tag_value("SVTYPE")+">"
             vnt_obj.remove_tag_info("CSQ")
+            for tag in ["hg19_chr", "hg19_pos", "hg19_end", "Cyto1", "Cyto2"]:
+                try:
+                    if vnt_obj.get_tag_value(tag):
+                        vnt_obj.remove_tag_info(tag)
+                except:
+                    pass
             vcf.write_variant(fo, vnt_obj)
     subprocess.run(["bgzip", args['outputfile']])
     subprocess.run(["tabix",args['outputfile']+".gz"])

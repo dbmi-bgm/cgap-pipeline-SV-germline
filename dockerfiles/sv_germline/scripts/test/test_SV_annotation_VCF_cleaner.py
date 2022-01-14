@@ -16,7 +16,7 @@ from SV_annotation_VCF_cleaner import (
 
 def test_full_process():
     # Variables and Run
-    args = {'inputVCF': 'test/files/GAPFI1HUPKOC_chr1.vcf.gz','outputfile':'output.vcf'}
+    args = {'inputVCF': 'test/files/GAPFI1HUPKOC_chr1_3.vcf.gz','outputfile':'output.vcf'}
     # Test
     main_SV_annotation_VCF_cleaner(args)
     a = os.popen('bgzip -c -d output.vcf.gz')
