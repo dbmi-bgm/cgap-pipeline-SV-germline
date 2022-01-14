@@ -334,7 +334,7 @@
         "ebs_size": 10,
         "EBS_optimized": true,
         "spot_instance": true,
-        "run_name": "run_workflow_SV_cytoband_vcf-check",
+        "run_name": "run_workflow_SV_secondary_annotation_vcf-check",
         "behavior_on_capacity_limit": "wait_and_retry"
       },
       "custom_pf_fields": {
@@ -376,7 +376,7 @@
         {
           "argument_name": "input_vcf",
           "argument_type": "file",
-          "source": "workflow_SV_cytoband_vcf-check",
+          "source": "workflow_SV_secondary_annotation_vcf-check",
           "source_argument_name": "cytoband_SV_vcf"
         },
         {
@@ -408,7 +408,7 @@
         {
           "argument_name": "input_vcf",
           "argument_type": "file",
-          "source": "workflow_SV_cytoband_vcf-check",
+          "source": "workflow_SV_secondary_annotation_vcf-check",
           "source_argument_name": "cytoband_SV_vcf"
         },
         {
