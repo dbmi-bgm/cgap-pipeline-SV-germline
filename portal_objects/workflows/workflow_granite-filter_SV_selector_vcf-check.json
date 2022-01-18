@@ -58,16 +58,16 @@
           "workflow_argument_name": "SV_types"
       }
   ],
-  "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
+  "project": "PROJECT_UUID",
   "category": ["processing"],
   "cwl_child_filenames": ["granite-geneList_SV.cwl", "granite-whiteList_SV.cwl", "granite-blackList_SV.cwl", "SV_type_selector.cwl", "vcf-integrity-check.cwl"],
-  "cwl_directory_url_v1": "http://CWLBUCKET.s3.amazonaws.com/PIPELINE/VERSION",
+  "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
   "cwl_main_filename": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter the annotated input SV VCF using granite (geneList, whiteList, blackList) and select SV types to be maintained. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/cnv:VERSION",
+  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
   "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
-  "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+  "institution": "INSTITUTION_UUID",
   "name": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_VERSION",
   "aliases": ["cgap:workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_VERSION"],
   "steps": [
@@ -346,7 +346,6 @@
                   "Run SV type selector to filter for SV classes"
               ],
               "software_used": [
-                 "/softwares/2edb3df5-d147-4efe-8c57-8301c9604f5f",
                  "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
               ]
           },

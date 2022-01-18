@@ -1,7 +1,7 @@
 [
     {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
         "name": "manta",
         "software_type": [
             "variant caller"
@@ -12,8 +12,8 @@
         "commit": "1.6.0_cR"
     },
     {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
         "name": "sansa",
         "software_type": [
             "annotator"
@@ -24,80 +24,44 @@
         "commit": "0.0.8"
     },
     {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-        "name": "combine_sansa_and_VEP_vcf",
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "vep",
         "software_type": [
             "annotator"
         ],
-        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "combine_sansa_and_VEP_vcf_395b463",
-        "uuid": "5d272932-1543-40d0-9089-6e0913aabf8a",
-        "commit": "395b463"
+        "source_url": "https://github.com/Ensembl/ensembl-vep",
+        "title": "vep_101",
+        "uuid": "85041e50-a7fc-4633-a83b-983b8ebbc48e",
+        "version": "101"
     },
     {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-        "name": "SV_type_selector",
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "bcftools",
         "software_type": [
-            "annotator"
+            "file format converter"
         ],
-        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "SV_type_selector_395b463",
-        "uuid": "2edb3df5-d147-4efe-8c57-8301c9604f5f",
-        "commit": "395b463"
+        "source_url": "https://github.com/samtools/bcftools",
+        "title": "bcftools_1.11",
+        "uuid": "791a7248-9ba3-44da-bff9-0d9b121eaf5c",
+        "version": "1.11"
     },
     {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-        "name": "20_unrelated_SV_filter",
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "vcf-tools",
         "software_type": [
-            "filter"
+            "quality metric generator"
         ],
-        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "20_unrelated_SV_filter_395b463",
-        "uuid": "50434084-115c-4da7-a5b7-7dae3d658e35",
-        "commit": "395b463"
+        "source_url": "https://github.com/vcftools/vcftools",
+        "title": "vcf-tools_954e607",
+        "uuid": "f7ac2c5f-9203-49fa-b918-cede02bf46f7",
+        "commit": "954e607"
     },
     {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-        "name": "SV_length_filter",
-        "software_type": [
-            "filter"
-        ],
-        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "SV_length_filter_395b463",
-        "uuid": "8933a673-1c0d-4d0c-98d5-eb2aa892cb02",
-        "commit": "395b463"
-    },
-    {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-        "name": "SV_annotation_VCF_cleaner",
-        "software_type": [
-            "filter"
-        ],
-        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "SV_annotation_VCF_cleaner_395b463",
-        "uuid": "c7998aa6-62ae-4e8c-bfa9-1aa9340b8cb0",
-        "commit": "395b463"
-    },
-    {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
-        "name": "SV_cytoband",
-        "software_type": [
-            "annotator"
-        ],
-        "source_url": "https://github.com/dbmi-bgm/cgap-annotations",
-        "title": "SV_cytoband_1703317",
-        "uuid": "dd2f0064-5c35-4883-962d-c6cc5fda25cb",
-        "commit": "1703317"
-    },
-    {
-        "project": "12a92962-8265-4fc0-b2f8-cf14f05db58b",
-        "institution": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc989",
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
         "name": "granite",
         "software_type": [
             "filter"
@@ -106,5 +70,17 @@
         "title": "granite_0.1.13",
         "uuid": "c90c46d8-a981-4f85-9625-92096610d811",
         "commit": "0.1.13"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "liftover_hg19",
+        "software_type": [
+            "annotator"
+        ],
+        "source_url": "https://github.com/dbmi-bgm/cgap-scripts",
+        "title": "liftover_hg19_2eeb9da",
+        "uuid": "affec979-09bd-48b2-b58a-9c54d3c1deb2",
+        "commit": "2eeb9da"
     }
 ]

@@ -9,3 +9,5 @@ _static
 _templates
 **/build
 **/source
+.python-version
+*.swp
