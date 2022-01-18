@@ -33,7 +33,7 @@ RUN apt-get update -y && apt-get install -y \
 WORKDIR /usr/local/bin
 
 # python and pysam (required for VEP)
-RUN conda install pysam==0.15.3 python=3.6.8 && \
+RUN conda install pysam==0.15.3 python=3.6.8 pyliftover==0.4 && \
     conda clean -a -y -f
 
 # bcftools
@@ -87,6 +87,8 @@ COPY scripts/SV_annotation_VCF_cleaner.py .
 RUN chmod +x SV_annotation_VCF_cleaner.py
 COPY scripts/SV_cytoband.py .
 RUN chmod +x SV_cytoband.py
+COPY scripts/SV_worst_and_locations.py .
+RUN chmod +x SV_worst_and_locations.py
 
 # vcf-integrity-check script
 COPY vcf-integrity-check.sh .
@@ -103,6 +105,13 @@ RUN chmod +x vep-annot_SV.sh
 # qc variant line count
 COPY qc_variant_line_count.sh .
 RUN chmod +x qc_variant_line_count.sh
+
+# add cgap-scripts - liftover_hg19
+RUN git clone https://github.com/dbmi-bgm/cgap-scripts/ && \
+    cd cgap-scripts && \
+    git checkout 2eeb9da && \
+    chmod +x liftover_hg19.py && \
+    cd ..
 
 # env paths
 ENV PATH=/usr/local/bin/ensembl-vep/:$PATH

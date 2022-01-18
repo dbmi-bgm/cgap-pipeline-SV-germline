@@ -204,5 +204,15 @@
       "institution": "INSTITUTION_UUID",
       "status": "shared",
       "valid_item_types": ["FileReference"]
+  },
+  {
+      "file_format": "chain",
+      "standard_file_extension": "chain.gz",
+      "description": "chain file for coordinates liftover, compressed",
+      "uuid": "dd1ef82d-da5e-4680-bd5c-cf471a87eb5b",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileReference"]
   }
 ]
