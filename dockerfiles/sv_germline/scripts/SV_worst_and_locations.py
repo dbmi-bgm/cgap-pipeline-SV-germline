@@ -105,7 +105,8 @@ CONSEQUENCE_ORDER = {
     "intergenic_variant": 36,
 }
 
-# CGAP New VEP annotations and constants
+# CGAP New VEP annotations and constants. For locations, attempt to make human readable
+# with underscores similar to VEP consequence names.
 CGAP_MOST_SEVERE = "Most_severe"
 CGAP_MOST_SEVERE_TRUE = "1"
 CGAP_VARIANT_5_LOCATION = "Variant_5_prime_location"
@@ -115,10 +116,10 @@ CGAP_LOCATION_UPSTREAM = "Upstream"
 CGAP_LOCATION_DOWNSTREAM = "Downstream"
 CGAP_LOCATION_INTRONIC = "Intronic"
 CGAP_LOCATION_EXONIC = "Exonic"
-CGAP_LOCATION_UTR_5 = "5_UTR"
-CGAP_LOCATION_UTR_3 = "3_UTR"
-CGAP_LOCATION_UPSTREAM_UTR_5 = "Upstream_or_5_UTR"
-CGAP_LOCATION_UTR_3_DOWNSTREAM = "3_UTR_or_Downstream"
+CGAP_LOCATION_UTR_5 = "5_prime_UTR"
+CGAP_LOCATION_UTR_3 = "3_prime_UTR"
+CGAP_LOCATION_UPSTREAM_UTR_5 = "Upstream_or_5_prime_UTR"
+CGAP_LOCATION_UTR_3_DOWNSTREAM = "3_prime_UTR_or_Downstream"
 CGAP_LOCATION_WITHIN_MIRNA = "Within_miRNA"
 CGAP_NEW_FIELDS = [CGAP_MOST_SEVERE, CGAP_VARIANT_5_LOCATION, CGAP_VARIANT_3_LOCATION]
 
