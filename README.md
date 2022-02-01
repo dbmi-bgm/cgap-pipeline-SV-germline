@@ -9,14 +9,14 @@ This repository contains components for the CGAP pipeline for germline structura
   * ECR (Docker) source files, which allow for creation of public Docker images (using `docker build`) or private dynamically-generated ECR images (using [*cgap pipeline utils*](https://github.com/dbmi-bgm/cgap-pipeline-utils/) `deploy_pipeline`)
 
 The pipeline starts from analysis ready `bam` files and produces `vcf` files containing calls for SVs as output.
-For more details check [*documentation*](https://cgap-pipeline-master.readthedocs.io/en/latest/Pipelines/Downstream/SV_germline/index-SV_germline.html "SV germline documentation").
+For more details check [*documentation*](https://cgap-pipeline-main.readthedocs.io/en/latest/Pipelines/Downstream/SV_germline/index-SV_germline.html "SV germline documentation").
 
 ### Version Updates
 
 #### v3
 * Changes in repo structure to allow for compatibility with new pipeline organization
 * Pipeline renamed from ``cnv`` to ``sv_germline``
-* Step 8 (cytoband annotation) renamed to secondary annotation. Additional annotations added on top of the existing cytoband annotation. Worst consequence and breakpoint location(s) relative to transcripts are now reported as well as liftover of each breakpoint (if present in hg19).
+* Step 8 (cytoband annotation) renamed to secondary annotation. Additional annotations added on top of the existing cytoband annotation. Worst consequence and breakpoint location(s) relative to transcripts are now reported as well as liftover of each breakpoint (if present in hg19). Filtering of transcript by biotype implemented here as well, with variants being dropped if they no longer have any transcripts after this filter. 
 * Updated ``SV_annotation_VCF_cleaner.py`` to remove Cytoband and liftover annotations from the ``HiGlass SV VCF`` for faster loading.
 
 #### v2
