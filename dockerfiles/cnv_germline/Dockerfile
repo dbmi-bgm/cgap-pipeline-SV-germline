@@ -67,7 +67,6 @@ RUN chown -R root:root BICseq2-norm_v0.2.6 && \
     make clean && \
     make
 
-
 # BICseq2 segmentation
 COPY BICseq2-seg_v0.7.3.tar.gz .
 RUN tar -xzf BICseq2-seg_v0.7.3.tar.gz && \
@@ -89,6 +88,17 @@ RUN chmod +x seg.sh
 
 # granite
 RUN pip install granite-suite==0.1.13
+
+# vcftools for vcf-integrity-check script
+RUN git clone https://github.com/vcftools/vcftools.git && \
+    mv vcftools vcftools_tmp && \
+    cd vcftools_tmp && \
+    git checkout 954e607 && \
+    ./autogen.sh && \
+    ./configure && \
+    make && \
+    make install && \
+    cd ..
 
 # vcf-integrity-check script
 COPY vcf-integrity-check.sh .

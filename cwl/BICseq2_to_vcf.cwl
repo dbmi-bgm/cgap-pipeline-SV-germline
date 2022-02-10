@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: cgap/cnv_germline:v1.4
+    dockerPull: ACCOUNT/cnv_germline:VERSION
 
 baseCommand: [python3, /usr/local/bin/bic-seq2_vcf_formatter.py]
 
