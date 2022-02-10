@@ -1,0 +1,71 @@
+{
+  "accession": "GAPMWF8JFK3B",
+  "name": "CNV_germline",
+  "title": "CNV Germline VERSION",
+  "version": "VERSION",
+  "uuid": "0e8c1519-73a9-478c-b90b-94b4705e6f8c",
+  "description": "downstream pipeline for germline CNV",
+  "project": "PROJECT_UUID",
+  "institution": "INSTITUTION_UUID",
+  "input": [
+    {
+      "argument_name": "bam",
+      "argument_type": "file"
+    },
+    {
+      "argument_name": "fasta",
+      "argument_type": "file",
+      "files": [{"file": "1936f246-22e1-45dc-bb5c-9cfd55537fe7"}]
+    },
+    {
+      "argument_name": "mappability",
+      "argument_type": "file",
+      "files": [{"file": "5891340f-b295-4a86-bb6b-161157d2a7c1"}]
+    },
+    {
+      "argument_name": "chrlist",
+      "argument_type": "file",
+      "files": [{"file": "68b7f258-5442-4ab4-99a7-22ee2a28dabf"}]
+    }
+  ],
+  "workflows": [
+    {
+      "name": "workflow_BICseq2_map_norm_seg",
+      "workflow": "4cf3afbd-2592-4a49-9ad0-01e882ecc670",
+      "config": {
+        "instance_type": "t3.large",
+        "ebs_size": "3x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_BICseq2_map_norm_seg",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "custom_pf_fields": {
+          "BICseq2_out": {
+              "file_type": "txt",
+              "variant_type": "SV",
+              "description": "BIC-seq2 output file"
+          }
+      },
+      "input": [
+        {
+          "argument_name": "bam",
+          "argument_type": "file",
+          "scatter": 1
+        },
+        {
+          "argument_name": "fasta",
+          "argument_type": "file"
+        },
+        {
+          "argument_name": "mappability",
+          "argument_type": "file"
+        },
+        {
+          "argument_name": "chrlist",
+          "argument_type": "file"
+        }
+      ]
+    }
+  ]
+}

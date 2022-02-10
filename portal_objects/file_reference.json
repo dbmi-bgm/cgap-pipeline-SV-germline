@@ -119,5 +119,15 @@
       ],
       "status": "uploading",
       "accession": "GAPFIYPTSAU8"
+  },
+  {
+    "uuid": "92476266-f32a-45f3-b097-5a8e299c654e",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "vcf_gz",
+    "description": "vcf SV CNV header reference",
+    "aliases": ["cgap:vcf_SV_CNV_header_reference"],
+    "status": "uploading",
+    "accession": "GAPFIX59VJT5"
   }
 ]

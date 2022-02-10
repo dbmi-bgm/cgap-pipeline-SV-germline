@@ -82,5 +82,65 @@
         "title": "liftover_hg19_2eeb9da",
         "uuid": "affec979-09bd-48b2-b58a-9c54d3c1deb2",
         "commit": "2eeb9da"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "samtools",
+        "software_type": [
+            "file format converter"
+        ],
+        "source_url": "https://github.com/samtools/samtools",
+        "title": "samtools_1.9",
+        "uuid": "3f2d3b0e-0365-4212-9468-c16ad9531c4d",
+        "version": "1.9"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "picard",
+        "software_type": [
+            "filter"
+        ],
+        "source_url": "https://broadinstitute.github.io/picard/",
+        "title": "picard_2.20.2",
+        "uuid": "586cef39-6505-4bf6-920a-4b26a500d210",
+        "version": "2.20.2"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "BICseq2-norm_0.2.6",
+        "software_type": [
+            "variant caller"
+        ],
+        "source_url": "https://www.math.pku.edu.cn/teachers/xirb/downloads/software/BICseq2/BICseq2.html",
+        "title": "BICseq2-norm",
+        "uuid": "e6718602-72a3-4bbf-b57a-84f69b0b11b9",
+        "version": "0.2.6"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "BICseq2-seg",
+        "software_type": [
+            "variant caller"
+        ],
+        "source_url": "https://www.math.pku.edu.cn/teachers/xirb/downloads/software/BICseq2/BICseq2.html",
+        "title": "BICseq2-seg_0.7.3",
+        "uuid": "84c6b93f-3292-45c8-bf9e-e2c3d0cf986e",
+        "version": "0.7.3"
+    },
+    {
+        "project": "PROJECT_UUID",
+        "institution": "INSTITUTION_UUID",
+        "name": "R",
+        "software_type": [
+            "statistics"
+        ],
+        "source_url": "https://cran.r-project.org/",
+        "title": "R_3.2.3",
+        "uuid": "cc5e8b16-4eda-4047-a8cc-23fe1972b51f",
+        "version": "3.2.3"
     }
 ]
