@@ -87,13 +87,16 @@ RUN chmod +x norm.sh
 COPY seg.sh .
 RUN chmod +x seg.sh
 
+# granite
+RUN pip install granite-suite==0.1.13
+
 # vcf-integrity-check script
 COPY vcf-integrity-check.sh .
 RUN chmod +x vcf-integrity-check.sh
 
 # BIC-seq2-specific python scripts: bic-seq2_vcf_formatter.py
 COPY scripts/bic-seq2_vcf_formatter.py .
-RUN chmod +x
+RUN chmod +x bic-seq2_vcf_formatter.py
 
 #env paths
 ENV PATH=/usr/local/bin/BICseq2-norm_v0.2.6/:$PATH

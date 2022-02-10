@@ -75,9 +75,9 @@ def main(args):
         vcf.write_header(fo)
 
         log2_min_del = -float(args['log2_min_del'])
-        log2_min_homo_del = -float(args['log2_min_homo_del'])
+        log2_min_homo_del = -float(args['log2_min_hom_del'])
         log2_min_dup = float(args['log2_min_dup'])
-        log2_min_homo_dup = float(args['log2_min_homo_dup'])
+        log2_min_homo_dup = float(args['log2_min_hom_dup'])
 
         reader = csv.reader(open(args['inputBICseq2']), delimiter="\t")
         header = next(reader)

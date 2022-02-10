@@ -6,8 +6,6 @@ requirements:
   MultipleInputFeatureRequirement: {}
 
 inputs:
-
-inputs:
   - id: vcfheader
     type: File
     doc: expect path to vcf.gz of SV/CNV vcf header file
@@ -19,6 +17,8 @@ inputs:
 
   - id: fastaref
     type: File
+    secondaryFiles:
+      - .fai
     doc: expect the path to hg38 fasta file and index
 
   - id: samplename
@@ -89,7 +89,7 @@ steps:
         source: outputfile
     out: [output]
 
-  integrity-check:
+  integrity-check-cnv:
     run: vcf-integrity-check-cnv.cwl
     in:
       input:
