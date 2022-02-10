@@ -23,9 +23,18 @@
       "files": [{"file": "5891340f-b295-4a86-bb6b-161157d2a7c1"}]
     },
     {
+      "argument_name": "vcfheader",
+      "argument_type": "file",
+      "files": [{"file": "92476266-f32a-45f3-b097-5a8e299c654e"}]
+    },
+    {
       "argument_name": "chrlist",
       "argument_type": "file",
       "files": [{"file": "68b7f258-5442-4ab4-99a7-22ee2a28dabf"}]
+    },
+    {
+      "argument_name": "samplename",
+      "argument_type": "parameter"
     }
   ],
   "workflows": [
@@ -64,6 +73,46 @@
         {
           "argument_name": "chrlist",
           "argument_type": "file"
+        }
+      ]
+    },
+    {
+      "name": "workflow_BICseq2_vcf_convert_vcf-check",
+      "workflow": "1872cb89-e937-41e5-986b-ce3644237ae5",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "1x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_BICseq2_vcf_convert_vcf-check",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "custom_pf_fields": {
+          "BICseq2_CNV_vcf": {
+              "file_type": "BIC-seq2 vcf",
+              "variant_type": "SV",
+              "description": "BIC-seq2 vcf file"
+          }
+      },
+      "input": [
+        {
+          "argument_name": "inputbicseq2",
+          "argument_type": "file",
+          "source": "workflow_BICseq2_map_norm_seg",
+          "source_argument_name": "BICseq2_out"
+        },
+        {
+          "argument_name": "fastaref",
+          "argument_type": "file",
+          "source_argument_name": "fasta"
+        },
+        {
+          "argument_name": "vcfheader",
+          "argument_type": "file"
+        },
+        {
+          "argument_name": "samplename",
+          "argument_type": "parameter"
         }
       ]
     }
