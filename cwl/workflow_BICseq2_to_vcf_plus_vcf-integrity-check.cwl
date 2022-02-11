@@ -55,7 +55,7 @@ inputs:
     doc: expect string for name of output vcf file
 
 outputs:
-  BIC-seq2_CNV_vcf:
+  BICseq2_CNV_vcf:
     type: File
     outputSource: BICseq2_to_vcf/output
 
