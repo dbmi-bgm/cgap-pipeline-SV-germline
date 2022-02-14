@@ -81,6 +81,8 @@ outputs:
     type: File
     outputBinding:
       glob: $(inputs.outputfile + ".gz")
+    secondaryFiles:
+      - .tbi
 
 doc: |
   run bic-seq2_vcf_formatter.py to convert BIC-seq2 output txt to genotyped vcf
