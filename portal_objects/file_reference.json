@@ -121,6 +121,26 @@
       "accession": "GAPFIYPTSAU8"
   },
   {
+    "uuid": "68b7f258-5442-4ab4-99a7-22ee2a28dabf",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "txt",
+    "description": "hg38_main_chromosomes",
+    "aliases": ["cgap:hg38_main_chromosomes"],
+    "status": "uploading",
+    "accession": "GAPFIU8HBMP2"
+  },
+  {
+    "uuid": "5891340f-b295-4a86-bb6b-161157d2a7c1",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "tar_gz",
+    "description": "hg38_150bp_mappability_no_centromeres",
+    "aliases": ["cgap:hg38_150bp_mappability_no_centromeres"],
+    "status": "uploading",
+    "accession": "GAPFIO588XWQ"
+  },
+  {
     "uuid": "92476266-f32a-45f3-b097-5a8e299c654e",
     "institution": "INSTITUTION_UUID",
     "project": "PROJECT_UUID",
