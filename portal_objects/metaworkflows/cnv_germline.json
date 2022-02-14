@@ -9,11 +9,15 @@
   "institution": "INSTITUTION_UUID",
   "input": [
     {
-      "argument_name": "bam",
+      "argument_name": "input_bams",
       "argument_type": "file"
     },
     {
-      "argument_name": "fasta",
+      "argument_name": "sample_names",
+      "argument_type": "parameter"
+    },
+    {
+      "argument_name": "reference_fa",
       "argument_type": "file",
       "files": [{"file": "1936f246-22e1-45dc-bb5c-9cfd55537fe7"}]
     },
@@ -31,10 +35,6 @@
       "argument_name": "chrlist",
       "argument_type": "file",
       "files": [{"file": "68b7f258-5442-4ab4-99a7-22ee2a28dabf"}]
-    },
-    {
-      "argument_name": "samplename",
-      "argument_type": "parameter"
     }
   ],
   "workflows": [
@@ -60,11 +60,13 @@
         {
           "argument_name": "bam",
           "argument_type": "file",
+          "source_argument_name": "input_bams",
           "scatter": 1
         },
         {
           "argument_name": "fasta",
-          "argument_type": "file"
+          "argument_type": "file",
+          "source_argument_name": "reference_fa"
         },
         {
           "argument_name": "mappability",
@@ -112,7 +114,8 @@
         },
         {
           "argument_name": "samplename",
-          "argument_type": "parameter"
+          "argument_type": "parameter",
+          "source_argument_name": "sample_names"
         }
       ]
     }

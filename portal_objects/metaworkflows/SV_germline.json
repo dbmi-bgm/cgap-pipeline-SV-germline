@@ -15,6 +15,10 @@
       "argument_type": "file"
     },
     {
+      "argument_name": "sample_names",
+      "argument_type": "parameter"
+    },
+    {
       "argument_name": "ref_fasta",
       "argument_type": "file",
       "files": [{"file": "1936f246-22e1-45dc-bb5c-9cfd55537fe7"}]
@@ -53,10 +57,6 @@
       "argument_name": "dirPath20vcf",
       "argument_type": "file",
       "files": [{"file": "cd647c0c-ac11-46db-9c51-bfe238e9ac13"}]
-    },
-    {
-      "argument_name": "sample_names_proband_first_if_trio",
-      "argument_type": "parameter"
     },
     {
       "argument_name": "recip",
@@ -146,7 +146,7 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
@@ -211,7 +211,7 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
@@ -318,7 +318,7 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
@@ -378,7 +378,7 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
@@ -435,7 +435,7 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
@@ -492,7 +492,7 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     }
