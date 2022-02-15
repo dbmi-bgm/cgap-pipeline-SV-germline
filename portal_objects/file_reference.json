@@ -54,6 +54,17 @@
     "accession": "GAPFIH794KXC"
   },
   {
+    "uuid": "318788cd-661f-4327-b571-d58a9b7c301e",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "vcf_tar",
+    "description": "tar archive of 20 unrelated CNV UGRP (v27) vcf_gz files from BIC-seq2",
+    "aliases": ["cgap:CNV-20-unrelated-UGRP-v27-BICseq2-tar"],
+    "extra_files": [],
+    "status": "uploading",
+    "accession": "GAPFICPW2884"
+  },
+  {
       "uuid": "1936f246-22e1-45dc-bb5c-9cfd55537fe7",
       "institution": "INSTITUTION_UUID",
       "project": "PROJECT_UUID",
