@@ -166,7 +166,7 @@
         {
           "argument_name": "fastaref",
           "argument_type": "file",
-          "source_argument_name": "fasta"
+          "source_argument_name": "reference_fa"
         },
         {
           "argument_name": "vcfheader",
