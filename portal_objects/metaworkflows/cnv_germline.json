@@ -207,7 +207,7 @@
         {
           "argument_name": "reference",
           "argument_type": "file",
-          "source_argument_name": "ref_fasta"
+          "source_argument_name": "reference_fa"
         },
         {
           "argument_name": "vep",
