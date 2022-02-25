@@ -136,8 +136,8 @@
     "institution": "INSTITUTION_UUID",
     "project": "PROJECT_UUID",
     "file_format": "txt",
-    "description": "hg38_main_chromosomes",
-    "aliases": ["cgap:hg38_main_chromosomes"],
+    "description": "hg38_main_chromosomes_noXY",
+    "aliases": ["cgap:hg38_main_chromosomes_noXY"],
     "status": "uploading",
     "accession": "GAPFIU8HBMP2"
   },
