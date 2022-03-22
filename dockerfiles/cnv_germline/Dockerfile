@@ -1,42 +1,23 @@
-FROM 4dndcic/ubuntu16.04-miniconda-python36:v1
+FROM cgap/cgap-ubuntu2004-py-38:0.0.1
+
 MAINTAINER Phil Grayson (phil.d.grayson@gmail.com), Michele Berselli (berselli.michele@gmail.com)
 # original Dockerfile copied from https://github.com/dbmi-bgm/BIC-seq2 created by Tiziana Sanavia (tiziana.sanavia@gmail.com)
 
-# general updates & installing necessary Linux components
+#######################################################################
+#     General updates & installing necessary Linux components
+#       - autoconf, pkg-config used by vcftools
+#       - libbz2-dev liblzma-dev libncurses-dev used by samtools
+#       - tabix brings in bgzip and tabix
+#       - locales for UTF-8
+#######################################################################
 RUN apt-get update && apt-get install -y \
-    nano \
-    htop \
-    bzip2 \
-    gcc \
-    g++ \
-    git \
-    less \
     libncurses-dev \
-    make \
-    time \
-    zip \
-    unzip \
-    vim \
-    wget \
-    zlib1g-dev \
-    liblz4-tool \
     libbz2-dev \
     liblzma-dev \
     locales \
-    parallel \
     autoconf \
-    autogen \
-    autotools-dev \
-    automake \
     pkg-config \
-    tabix \
-    yasm \
-    libdbi-perl \
-    libmodule-build-perl \
-    libarchive-zip-perl \
-    libmysqlclient-dev \
-    libpng-dev \
-    libexpat1-dev
+    tabix
 
 WORKDIR /usr/local/bin
 
