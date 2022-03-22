@@ -175,7 +175,8 @@
         {
           "argument_name": "samplename",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names"
+          "source_argument_name": "sample_names",
+          "scatter": 1
         }
       ]
     },
