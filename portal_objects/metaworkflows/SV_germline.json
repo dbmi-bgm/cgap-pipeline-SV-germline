@@ -12,11 +12,13 @@
   "input": [
     {
       "argument_name": "input_bams",
-      "argument_type": "file"
+      "argument_type": "file",
+      "dimensionality": 1
     },
     {
       "argument_name": "sample_names",
-      "argument_type": "parameter"
+      "argument_type": "parameter",
+      "value_type": "json"
     },
     {
       "argument_name": "ref_fasta",
@@ -398,7 +400,7 @@
               "variant_type": "SV",
               "file_type": "full-annotated vcf",
               "description": "fully annotated output in vcf format",
-              "linkto_location": "SampleProcessing"
+              "linkto_location": ["SampleProcessing"]
           }
       },
       "input": [
@@ -455,7 +457,7 @@
               "variant_type": "SV",
               "file_type": "HiGlass vcf",
               "description": "fully annotated output in vcf format with reduced annotation for HiGlass",
-              "linkto_location": "SampleProcessing"
+              "linkto_location": ["SampleProcessing"]
           }
       },
       "input": [

@@ -1,20 +1,22 @@
 {
-  "accession": "GAPMWF8JFK3B",
   "name": "CNV_germline",
   "title": "CNV Germline VERSION",
   "version": "VERSION",
+  "accession": "GAPMWF8JFK3B",
   "uuid": "0e8c1519-73a9-478c-b90b-94b4705e6f8c",
-  "description": "downstream pipeline for germline CNV",
+  "description": "Downstream pipeline for CNV for single sample",
   "project": "PROJECT_UUID",
   "institution": "INSTITUTION_UUID",
   "input": [
     {
       "argument_name": "input_bams",
-      "argument_type": "file"
+      "argument_type": "file",
+      "dimensionality": 1
     },
     {
       "argument_name": "sample_names",
-      "argument_type": "parameter"
+      "argument_type": "parameter",
+      "value_type": "json"
     },
     {
       "argument_name": "reference_fa",
@@ -111,9 +113,9 @@
       },
       "custom_pf_fields": {
           "BICseq2_out": {
-              "file_type": "txt",
+              "file_type": "BIC-seq2 tsv",
               "variant_type": "SV",
-              "description": "BIC-seq2 output file"
+              "description": "output from BIC-seq2 in tsv format"
           }
       },
       "input": [
@@ -153,7 +155,7 @@
           "BICseq2_CNV_vcf": {
               "file_type": "BIC-seq2 vcf",
               "variant_type": "SV",
-              "description": "BIC-seq2 vcf file"
+              "description": "output from BIC-seq2 converted in vcf format"
           }
       },
       "input": [
@@ -352,7 +354,7 @@
               "variant_type": "SV",
               "file_type": "full-annotated vcf",
               "description": "fully annotated output in vcf format",
-              "linkto_location": "SampleProcessing"
+              "linkto_location": ["SampleProcessing"]
           }
       },
       "input": [
@@ -384,7 +386,7 @@
               "variant_type": "SV",
               "file_type": "HiGlass vcf",
               "description": "fully annotated output in vcf format with reduced annotation for HiGlass",
-              "linkto_location": "SampleProcessing"
+              "linkto_location": ["SampleProcessing"]
           }
       },
       "input": [
