@@ -36,8 +36,6 @@
   "cwl_main_filename": "workflow_BICseq2_map_norm_seg.cwl",
   "cwl_pointer": "",
   "description": "Run BIC-seq2 to call germline CNVs",
-  "docker_image_name": "ACCOUNT/cnv_germline:VERSION",
-  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_BICseq2_map_norm_seg_VERSION",
   "aliases": ["cgap:workflow_BICseq2_map_norm_seg_VERSION"],

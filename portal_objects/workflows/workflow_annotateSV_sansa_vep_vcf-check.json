@@ -47,8 +47,6 @@
   "cwl_main_filename": "workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Annotate SV VCF with Sansa and VEP, then combine results. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
-  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_annotateSV_sansa_vep_vcf-check_VERSION",
   "aliases": ["cgap:workflow_annotateSV_sansa_vep_vcf-check_VERSION"],

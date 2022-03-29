@@ -54,8 +54,6 @@
   "cwl_main_filename": "workflow_20_unrelated_SV_filter_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter out common and artefactual SVs through comparison to 20 unrelated files. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
-  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_20_unrelated_SV_filter_vcf-check_VERSION",
   "aliases": ["cgap:workflow_20_unrelated_SV_filter_vcf-check_VERSION"],

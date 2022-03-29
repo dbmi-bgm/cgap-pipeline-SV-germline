@@ -67,8 +67,6 @@
   "cwl_main_filename": "workflow_BICseq2_to_vcf_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Convert BIC-seq2 txt output table to genotyped vcf file. output is checked for integrity",
-  "docker_image_name": "ACCOUNT/cnv_germline:VERSION",
-  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_BICseq2_vcf_convert_vcf-check_VERSION",
   "aliases": ["cgap:workflow_BICseq2_vcf_convert_vcf-check_VERSION"],

@@ -42,8 +42,6 @@
   "cwl_main_filename": "workflow_SV_secondary_annotation_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Annotate SV breakpoints with hg19 liftover, cytobands, worst consequences and locations relative to transcripts. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
-  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_SV_secondary_annotation_plus_vcf-integrity-check_VERSION",
   "aliases": ["cgap:workflow_SV_csecondary_annotation_plus_vcf-integrity-check_VERSION"],
