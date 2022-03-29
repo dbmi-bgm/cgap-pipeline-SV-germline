@@ -77,21 +77,6 @@ ENV DYLD_LIBRARY_PATH=/usr/lib/root/lib
 ENV HTSLIB_LIBRARY_DIR=/usr/local/lib
 ENV HTSLIB_INCLUDE_DIR=/usr/local/include
 
-# vcf-integrity-check script
-COPY vcf-integrity-check.sh .
-RUN chmod +x vcf-integrity-check.sh
-
-# vcf tools
-RUN git clone https://github.com/vcftools/vcftools.git && \
-    mv vcftools vcftools_tmp && \
-    cd vcftools_tmp && \
-    git checkout 954e607 && \
-    ./autogen.sh && \
-    ./configure && \
-    make && \
-    make install && \
-    cd ..
-
 # manta script
 COPY manta.sh .
 RUN chmod +x manta.sh

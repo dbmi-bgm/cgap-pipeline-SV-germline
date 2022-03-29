@@ -9,7 +9,6 @@ MAINTAINER Phil Grayson (phil.d.grayson@gmail.com), Michele Berselli (berselli.m
 
 #######################################################################
 #     General updates & installing necessary Linux components
-#       - autoconf, pkg-config used by vcftools
 #       - libbz2-dev liblzma-dev libncurses-dev used by samtools
 #       - tabix brings in bgzip and tabix
 #       - locales for UTF-8
@@ -19,9 +18,7 @@ RUN apt-get update && apt-get install -y \
     tabix \
     libncurses-dev \
     libbz2-dev \
-    liblzma-dev \
-    autoconf \
-    pkg-config
+    liblzma-dev
 
 #######################################################################
 #     Setting working env
@@ -41,19 +38,8 @@ RUN wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9
     cd .. && \
     ln -s samtools-1.9 samtools
 
-## vcftools
-RUN git clone https://github.com/vcftools/vcftools.git && \
-    mv vcftools vcftools_tmp && \
-    cd vcftools_tmp && \
-    git checkout 954e607 && \
-    ./autogen.sh && \
-    ./configure && \
-    make && \
-    make install && \
-    cd ..
-
 ## picard
-RUN conda install -c bioconda -y picard==2.20.2
+RUN conda install -c bioconda -y picard==2.26.11
 
 ## R
 RUN apt-get install r-base -y
@@ -97,10 +83,6 @@ RUN chmod +x norm.sh
 ## seg
 COPY seg.sh .
 RUN chmod +x seg.sh
-
-## vcf-integrity-check
-COPY vcf-integrity-check.sh .
-RUN chmod +x vcf-integrity-check.sh
 
 ## BIC-seq2-specific python scripts: bic-seq2_vcf_formatter.py
 COPY scripts/bic-seq2_vcf_formatter.py .

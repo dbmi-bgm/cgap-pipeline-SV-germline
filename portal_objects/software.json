@@ -103,9 +103,9 @@
             "filter"
         ],
         "source_url": "https://broadinstitute.github.io/picard/",
-        "title": "picard_2.20.2",
-        "uuid": "586cef39-6505-4bf6-920a-4b26a500d210",
-        "version": "2.20.2"
+        "title": "picard_2.26.11",
+        "uuid": "0c17c344-5949-4fe9-a494-8283724152c1",
+        "version": "2.26.11"
     },
     {
         "project": "PROJECT_UUID",
