@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWFTK55PJV",
+  "accession": "GAPWFTK55PJK",
   "app_name": "workflow_20_unrelated_SV_filter_vcf-check",
   "app_version": "VERSION",
   "arguments": [
@@ -213,7 +213,7 @@
       }
   ],
   "title": "20 unrelated SV filter, plus output integrity-check",
-  "uuid": "4238e5e7-57aa-4f98-a411-616816bf89a7",
-  "previous_version": ["e8da9016-b459-42ce-b92e-ebc4760a3a07"],
-  "version_upgrade_log": "upgrade granite"
+  "uuid": "dcfe1a4e-b210-4d6a-b102-edd9c7bff660",
+  "previous_version": ["4238e5e7-57aa-4f98-a411-616816bf89a7"],
+  "version_upgrade_log": "docker update"
 }

@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWFBU491CD",
+  "accession": "GAPWFBU4911D",
   "app_name": "workflow_annotateSV_sansa_vep_vcf-check",
   "app_version": "VERSION",
   "arguments": [
@@ -302,7 +302,7 @@
       }
   ],
   "title": "Run annotation with sansa and VEP, combine output, plus output integrity-check",
-  "uuid": "e81aab17-6b79-4fa9-a0b7-b8f883af55f3",
-  "previous_version": ["ff568408-056c-4450-86d4-2037b3e01bfb"],
-  "version_upgrade_log": "added canonical option to vep-annot_SV.sh. upgrade granite."
+  "uuid": "86dce20a-a5fb-4344-8438-da92934bd2d0",
+  "previous_version": ["e81aab17-6b79-4fa9-a0b7-b8f883af55f3"],
+  "version_upgrade_log": "docker update"
 }

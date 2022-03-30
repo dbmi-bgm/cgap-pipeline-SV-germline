@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWF449FGYC",
+  "accession": "GAPWF449FGYZ",
   "app_name": "workflow_SV_annotation_cleaner_vcf-check",
   "app_version": "VERSION",
   "arguments": [
@@ -125,7 +125,7 @@
       }
   ],
   "title": "SV annotation VCF cleaner plus output integrity-check",
-  "uuid": "ab285b9c-bc69-4ed0-bb8c-808210269e58",
-  "previous_version": ["6aacb350-323f-4f3c-abf5-bc82cbe0779e"],
-  "version_upgrade_log": "upgrade granite"
+  "uuid": "ccceb5e9-7fc5-4f81-805a-6bbe5a6d8518",
+  "previous_version": ["ab285b9c-bc69-4ed0-bb8c-808210269e58"],
+  "version_upgrade_log": "docker update"
 }

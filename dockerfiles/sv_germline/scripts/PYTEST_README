@@ -1,2 +1,0 @@
-#to run pytest for these scripts, execute the following from this directory:
-python -m pytest -v

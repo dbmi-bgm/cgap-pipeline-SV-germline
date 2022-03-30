@@ -16,6 +16,7 @@ For more details check [*documentation*](https://cgap-pipeline-main.readthedocs.
 #### v1.0.0
 * v3 -> v1.0.0, we are starting a new more comprehensive versioning system
 * Added some change in metaworkflows to accomodate the changes in foursight
+* Updated docker images
 
 #### v3
 * Changes in repo structure to allow for compatibility with new pipeline organization

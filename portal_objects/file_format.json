@@ -27,7 +27,7 @@
       "project": "PROJECT_UUID",
       "institution": "INSTITUTION_UUID",
       "status": "shared",
-      "valid_item_types": ["FileReference","FileProcessed"]
+      "valid_item_types": ["FileReference", "FileProcessed"]
   },
   {
       "file_format": "bed_gz",

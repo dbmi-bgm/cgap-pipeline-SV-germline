@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWFR8V3KNG",
+  "accession": "GAPWFR8V3KN2",
   "app_name": "workflow_granite-SVqcVCF",
   "app_version": "VERSION",
   "arguments": [
@@ -91,5 +91,7 @@
       }
   ],
   "title": "Run granite SVqcVCF",
-  "uuid": "56e70cab-6a4f-4501-9827-b87c751af8fd"
+  "uuid": "bc4abfee-842a-4d2a-81a3-f67ddd6f4dec",
+  "previous_version": ["56e70cab-6a4f-4501-9827-b87c751af8fd"],
+  "version_upgrade_log": "docker update"
 }

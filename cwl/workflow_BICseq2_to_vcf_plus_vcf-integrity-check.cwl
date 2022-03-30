@@ -90,7 +90,7 @@ steps:
     out: [output]
 
   integrity-check-cnv:
-    run: vcf-integrity-check-cnv.cwl
+    run: vcf-integrity-check.cwl
     in:
       input:
         source: BICseq2_to_vcf/output

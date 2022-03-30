@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWFU878JDQ",
+  "accession": "GAPWFU878JD2",
   "app_name": "workflow_granite-filter_SV_selector_vcf-check",
   "app_version": "VERSION",
   "arguments": [
@@ -411,7 +411,7 @@
       }
   ],
   "title": "SV filtering run granite geneList, whiteList and blackList, select SV variant types, plus output integrity-check",
-  "uuid": "43cfb08f-e9fe-444e-a6a0-4c8832f2267b",
-  "previous_version": ["6970f75a-6836-4e8e-a487-96ad158d21cf"],
-  "version_upgrade_log": "upgrade granite"
+  "uuid": "83286621-abfe-415b-b77d-a6a6b5e212d5",
+  "previous_version": ["43cfb08f-e9fe-444e-a6a0-4c8832f2267b"],
+  "version_upgrade_log": "docker update"
 }

@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWFOK282BB",
+  "accession": "GAPWFOK282B1",
   "app_name": "workflow_SV_length_filter_vcf-check",
   "app_version": "VERSION",
   "arguments": [
@@ -142,7 +142,7 @@
       }
   ],
   "title": "SV length filtering plus output integrity-check",
-  "uuid": "aa63c831-f9cc-42b7-bb48-30cfe8592ad6",
-  "previous_version": ["5913925a-9f34-4df2-b44a-2865482e8fad"],
-  "version_upgrade_log": "upgrade granite"
+  "uuid": "be68554c-4d15-405b-8983-bcf8f416893b",
+  "previous_version": ["aa63c831-f9cc-42b7-bb48-30cfe8592ad6"],
+  "version_upgrade_log": "docker update"
 }

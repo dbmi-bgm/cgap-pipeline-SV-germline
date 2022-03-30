@@ -62,7 +62,7 @@
   ],
   "project": "PROJECT_UUID",
   "category": ["processing"],
-  "cwl_child_filenames": ["BICseq2_to_vcf.cwl", "vcf-integrity-check-cnv.cwl"],
+  "cwl_child_filenames": ["BICseq2_to_vcf.cwl", "vcf-integrity-check.cwl"],
   "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
   "cwl_main_filename": "workflow_BICseq2_to_vcf_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
