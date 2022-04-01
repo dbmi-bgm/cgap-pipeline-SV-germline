@@ -38,11 +38,8 @@ RUN wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9
     cd .. && \
     ln -s samtools-1.9 samtools
 
-## picard
-RUN conda install -c bioconda -y picard==2.26.11
-
-## R
-RUN apt-get install r-base -y
+## Picard and R
+RUN conda install -c bioconda -y r-base==4.1.0 picard==2.26.11
 
 ## BIC-seq2 normalization
 COPY BICseq2-norm_v0.2.6.tar.gz BICseq2-norm_v0.2.6.tar.gz
