@@ -400,7 +400,8 @@
               "variant_type": "SV",
               "file_type": "full-annotated vcf",
               "description": "fully annotated output in vcf format",
-              "linkto_location": ["SampleProcessing"]
+              "linkto_location": ["SampleProcessing"],
+              "vcf_to_be_ingested": true
           }
       },
       "input": [
@@ -457,7 +458,8 @@
               "variant_type": "SV",
               "file_type": "HiGlass vcf",
               "description": "fully annotated output in vcf format with reduced annotation for HiGlass",
-              "linkto_location": ["SampleProcessing"]
+              "linkto_location": ["SampleProcessing"],
+              "higlass_file": true
           }
       },
       "input": [

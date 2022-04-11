@@ -114,7 +114,7 @@
       "custom_pf_fields": {
           "BICseq2_out": {
               "file_type": "BIC-seq2 tsv",
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "description": "output from BIC-seq2 in tsv format"
           }
       },
@@ -154,7 +154,7 @@
       "custom_pf_fields": {
           "BICseq2_CNV_vcf": {
               "file_type": "BIC-seq2 vcf",
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "description": "output from BIC-seq2 converted in vcf format"
           }
       },
@@ -195,7 +195,7 @@
       },
       "custom_pf_fields": {
           "annotated_SV_vcf": {
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "file_type": "vep-sansa vcf",
               "description": "intermediate file"
           }
@@ -235,7 +235,7 @@
       },
       "custom_pf_fields": {
           "granite_filtered_SV_vcf": {
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "file_type": "filtered vcf",
               "description": "intermediate file"
           }
@@ -270,7 +270,7 @@
       },
       "custom_pf_fields": {
           "20_unrelated_filtered_SV_vcf": {
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "file_type": "filtered vcf",
               "description": "intermediate file"
           }
@@ -317,7 +317,7 @@
       },
       "custom_pf_fields": {
           "cytoband_SV_vcf": {
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "file_type": "cytoband vcf",
               "description": "intermediate file"
           }
@@ -352,10 +352,11 @@
       },
       "custom_pf_fields": {
           "length_filtered_SV_vcf": {
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "file_type": "full-annotated vcf",
               "description": "fully annotated output in vcf format",
-              "linkto_location": ["SampleProcessing"]
+              "linkto_location": ["SampleProcessing"],
+              "vcf_to_be_ingested": true
           }
       },
       "input": [
@@ -384,10 +385,11 @@
       },
       "custom_pf_fields": {
           "higlass_SV_vcf": {
-              "variant_type": "SV",
+              "variant_type": "CNV",
               "file_type": "HiGlass vcf",
               "description": "fully annotated output in vcf format with reduced annotation for HiGlass",
-              "linkto_location": ["SampleProcessing"]
+              "linkto_location": ["SampleProcessing"],
+              "higlass_file": true
           }
       },
       "input": [
