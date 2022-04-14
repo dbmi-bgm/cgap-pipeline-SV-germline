@@ -11,7 +11,8 @@
     {
       "argument_name": "input_bams",
       "argument_type": "file",
-      "dimensionality": 1
+      "dimensionality": 1,
+      "proband_only": true
     },
     {
       "argument_name": "sample_names",
