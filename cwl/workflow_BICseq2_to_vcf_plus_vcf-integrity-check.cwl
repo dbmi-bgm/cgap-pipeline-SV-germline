@@ -97,5 +97,5 @@ steps:
     out: [output]
 
 doc: |
-  run bic-seq2_vcf_formatter.py to convert BIC-seq2 output txt to genotyped vcf |
+  run bic_seq2_vcf_formatter.py to convert BIC-seq2 output txt to genotyped vcf |
   run an integrity check on the output vcf gz

@@ -11,7 +11,7 @@ hints:
   - class: DockerRequirement
     dockerPull: ACCOUNT/cnv_germline:VERSION
 
-baseCommand: [python3, /usr/local/bin/bic-seq2_vcf_formatter.py]
+baseCommand: [python3, /usr/local/bin/bic_seq2_vcf_formatter.py]
 
 inputs:
   - id: vcfheader
@@ -85,4 +85,4 @@ outputs:
       - .tbi
 
 doc: |
-  run bic-seq2_vcf_formatter.py to convert BIC-seq2 output txt to genotyped vcf
+  run bic_seq2_vcf_formatter.py to convert BIC-seq2 output txt to genotyped vcf
