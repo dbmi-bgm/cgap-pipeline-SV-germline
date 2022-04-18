@@ -118,7 +118,7 @@
                   "Run geneList SV"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "geneList_SV",
@@ -215,7 +215,7 @@
                   "Run whiteList_SV"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "whiteList_SV",
@@ -286,7 +286,7 @@
                   "Run blackList_SV"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "blackList_SV",
@@ -344,7 +344,7 @@
                   "Run SV type selector to filter for SV classes"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "SV_type_selector",

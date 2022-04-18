@@ -24,7 +24,7 @@ RUN conda install -y pyliftover==0.4 && \
     conda clean -a -y -f
 
 ## granite
-RUN pip install granite-suite==0.1.13
+RUN pip install granite-suite==0.2.0
 
 #######################################################################
 #     Scripts

@@ -66,7 +66,7 @@ RUN chown -R root:root BICseq2-seg_v0.7.3 && \
     make
 
 ## granite
-RUN pip install granite-suite==0.1.13
+RUN pip install granite-suite==0.2.0
 
 #######################################################################
 #     Scripts
