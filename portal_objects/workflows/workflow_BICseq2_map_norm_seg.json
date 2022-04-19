@@ -1,0 +1,281 @@
+{
+  "accession": "GAPWFC4NK2FX",
+  "app_name": "workflow_BICseq2_map_norm_seg",
+  "app_version": "VERSION",
+  "arguments": [
+      {
+          "argument_format": "bam",
+          "argument_type": "Input file",
+          "workflow_argument_name": "bam"
+      },
+      {
+          "argument_format": "tar_gz",
+          "argument_type": "Input file",
+          "workflow_argument_name": "mappability"
+      },
+      {
+          "argument_format": "txt",
+          "argument_type": "Input file",
+          "workflow_argument_name": "chrlist"
+      },
+      {
+          "argument_format": "fa",
+          "argument_type": "Input file",
+          "workflow_argument_name": "fasta"
+      },
+      {
+          "argument_format": "txt",
+          "argument_type": "Output processed file",
+          "workflow_argument_name": "BICseq2_out"
+      }
+  ],
+  "project": "PROJECT_UUID",
+  "category": ["processing"],
+  "cwl_child_filenames": ["BICseq2_map.cwl", "BICseq2_norm.cwl", "BICseq2_seg.cwl"],
+  "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
+  "cwl_main_filename": "workflow_BICseq2_map_norm_seg.cwl",
+  "cwl_pointer": "",
+  "description": "Run BIC-seq2 to call germline CNVs",
+  "institution": "INSTITUTION_UUID",
+  "name": "workflow_BICseq2_map_norm_seg_VERSION",
+  "aliases": ["cgap:workflow_BICseq2_map_norm_seg_VERSION"],
+  "steps": [
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "bam",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "bam",
+                  "source": [
+                      {
+                          "name": "bam"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "reference file"
+                  },
+                  "name": "chrlist",
+                  "source": [
+                      {
+                          "name": "chrlist"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run map.sh for BIC-seq2"
+              ],
+              "software_used": [
+                 "/softwares/3f2d3b0e-0365-4212-9468-c16ad9531c4d",
+                 "/softwares/0c17c344-5949-4fe9-a494-8283724152c1"
+              ]
+          },
+          "name": "BICseq2_map",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "tar_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "BIQ-seq2_seq_files",
+                  "target": [
+                      {
+                          "name": "BIQ-seq2_seq_files",
+                          "step": "BICseq2_norm"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "insert_size_file",
+                  "target": [
+                      {
+                          "name": "insert_size_file",
+                          "step": "BICseq2_norm"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "tar_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "BIQ-seq2_seq_files",
+                  "source": [
+                      {
+                          "name": "BIQ-seq2_seq_files",
+                          "step": "BICseq2_map"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "insert_size_file",
+                  "source": [
+                      {
+                          "name": "insert_size_file",
+                          "step": "BICseq2_map"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "tar_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "mappability",
+                  "source": [
+                      {
+                          "name": "mappability"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "chrlist",
+                  "source": [
+                      {
+                          "name": "chrlist"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "fa",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "fasta",
+                  "source": [
+                      {
+                          "name": "fasta"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run norm.sh for BIC-seq2"
+              ],
+              "software_used": [
+                 "/softwares/3f2d3b0e-0365-4212-9468-c16ad9531c4d",
+                "/softwares/e6718602-72a3-4bbf-b57a-84f69b0b11b9"
+              ]
+          },
+          "name": "BICseq2_norm",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "tar_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "BIQ-seq2_bin_files",
+                  "target": [
+                      {
+                          "name": "BIQ-seq2_bin_files",
+                          "step": "BICseq2_seg"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "inputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "tar_gz",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "BIQ-seq2_bin_files",
+                  "source": [
+                      {
+                          "name": "BIQ-seq2_bin_files",
+                          "step": "BICseq2_norm"
+                      }
+                  ]
+              },
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "reference file"
+                  },
+                  "name": "chrlist",
+                  "source": [
+                      {
+                          "name": "chrlist"
+                      }
+                  ]
+              }
+          ],
+          "meta": {
+              "analysis_step_types": [
+                  "Run seg.sh for BIC-seq2"
+              ],
+              "software_used": [
+                 "/softwares/84c6b93f-3292-45c8-bf9e-e2c3d0cf986e"
+              ]
+          },
+          "name": "BICseq2_seg",
+          "outputs": [
+              {
+                  "meta": {
+                      "cardinality": "single",
+                      "file_format": "txt",
+                      "global": true,
+                      "type": "data file"
+                  },
+                  "name": "BICseq2_out",
+                  "target": [
+                      {
+                          "name": "BICseq2_out"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "title": "BIC-Seq2 map, norm, and seg",
+  "uuid": "4cf3afbd-2592-4a49-9ad0-01e882ecc670"
+}

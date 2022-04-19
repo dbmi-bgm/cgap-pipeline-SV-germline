@@ -10,6 +10,16 @@
     "valid_item_types": ["FileReference"]
   },
   {
+      "file_format": "tar_gz",
+      "standard_file_extension": "tar.gz",
+      "description": "files archive, compressed",
+      "uuid": "f2ec3b9f-a898-4e6c-8da5-734a7a6410b8",
+      "project": "PROJECT_UUID",
+      "institution": "INSTITUTION_UUID",
+      "status": "shared",
+      "valid_item_types": ["FileProcessed", "FileReference"]
+  },
+  {
       "file_format": "bed_gz_tbi",
       "standard_file_extension": "bed.gz.tbi",
       "description": "tabix index file for bed, compressed",
@@ -17,7 +27,7 @@
       "project": "PROJECT_UUID",
       "institution": "INSTITUTION_UUID",
       "status": "shared",
-      "valid_item_types": ["FileReference","FileProcessed"]
+      "valid_item_types": ["FileReference", "FileProcessed"]
   },
   {
       "file_format": "bed_gz",

@@ -54,7 +54,7 @@ steps:
     out: [result, variants]
 
   integrity-check:
-    run: vcf-integrity-check-manta.cwl
+    run: vcf-integrity-check.cwl
     in:
       input:
         source: manta/variants

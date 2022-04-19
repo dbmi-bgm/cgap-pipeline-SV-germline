@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWFU878JDQ",
+  "accession": "GAPWFU878JD2",
   "app_name": "workflow_granite-filter_SV_selector_vcf-check",
   "app_version": "VERSION",
   "arguments": [
@@ -65,8 +65,6 @@
   "cwl_main_filename": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Filter the annotated input SV VCF using granite (geneList, whiteList, blackList) and select SV types to be maintained. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
-  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_VERSION",
   "aliases": ["cgap:workflow_granite-filtering_SV_selector_plus_vcf-integrity-check_VERSION"],
@@ -120,7 +118,7 @@
                   "Run geneList SV"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "geneList_SV",
@@ -217,7 +215,7 @@
                   "Run whiteList_SV"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "whiteList_SV",
@@ -288,7 +286,7 @@
                   "Run blackList_SV"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "blackList_SV",
@@ -346,7 +344,7 @@
                   "Run SV type selector to filter for SV classes"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "SV_type_selector",
@@ -413,7 +411,7 @@
       }
   ],
   "title": "SV filtering run granite geneList, whiteList and blackList, select SV variant types, plus output integrity-check",
-  "uuid": "43cfb08f-e9fe-444e-a6a0-4c8832f2267b",
-  "previous_version": ["6970f75a-6836-4e8e-a487-96ad158d21cf"],
-  "version_upgrade_log": "upgrade granite"
+  "uuid": "83286621-abfe-415b-b77d-a6a6b5e212d5",
+  "previous_version": ["43cfb08f-e9fe-444e-a6a0-4c8832f2267b"],
+  "version_upgrade_log": "docker update"
 }

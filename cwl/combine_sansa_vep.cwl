@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: ACCOUNT/sv_germline:VERSION
+    dockerPull: ACCOUNT/sv_germline_granite:VERSION
 
 baseCommand: [combine_sansa_and_VEP_vcf.py]
 

@@ -1,5 +1,5 @@
 {
-  "accession": "GAPWF8GENE61",
+  "accession": "GAPWF8GENE6A",
   "app_name": "workflow_SV_secondary_annotation_vcf-check",
   "app_version": "VERSION",
   "arguments": [
@@ -42,8 +42,6 @@
   "cwl_main_filename": "workflow_SV_secondary_annotation_plus_vcf-integrity-check.cwl",
   "cwl_pointer": "",
   "description": "Annotate SV breakpoints with hg19 liftover, cytobands, worst consequences and locations relative to transcripts. An integrity check is performed on the output file",
-  "docker_image_name": "ACCOUNT/sv_germline:VERSION",
-  "docker_registry_url": "https://console.aws.amazon.com/ecr/repositories/",
   "institution": "INSTITUTION_UUID",
   "name": "workflow_SV_secondary_annotation_plus_vcf-integrity-check_VERSION",
   "aliases": ["cgap:workflow_SV_csecondary_annotation_plus_vcf-integrity-check_VERSION"],
@@ -84,7 +82,7 @@
                   "Run SV hg19 liftover"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811",
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219",
                  "/softwares/affec979-09bd-48b2-b58a-9c54d3c1deb2"
               ]
           },
@@ -130,7 +128,7 @@
                   "Run SV worst and locations"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "SV_worst_and_locations",
@@ -189,7 +187,7 @@
                   "Run SV cytoband annotation"
               ],
               "software_used": [
-                 "/softwares/c90c46d8-a981-4f85-9625-92096610d811"
+                 "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
               ]
           },
           "name": "SV_cytoband",
@@ -256,7 +254,7 @@
       }
   ],
   "title": "SV secondary annotation plus output integrity-check",
-  "uuid": "a4e12e25-9787-4120-bb1d-ccc685685507",
-  "previous_version": ["8d3cbd3a-f43a-4b59-b717-16a600ad1078"],
-  "version_upgrade_log": "added liftover and worst_and_locations - changed wf name from SV_cytoband_vcf-check"
+  "uuid": "a110b401-bbac-4cbd-b436-a55680304e69",
+  "previous_version": ["a4e12e25-9787-4120-bb1d-ccc685685507"],
+  "version_upgrade_log": "docker update"
 }

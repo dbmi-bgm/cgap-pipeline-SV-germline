@@ -54,6 +54,17 @@
     "accession": "GAPFIH794KXC"
   },
   {
+    "uuid": "318788cd-661f-4327-b571-d58a9b7c301e",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "vcf_tar",
+    "description": "tar archive of 20 unrelated CNV UGRP (v27) vcf_gz files from BIC-seq2",
+    "aliases": ["cgap:CNV-20-unrelated-UGRP-v27-BICseq2-tar"],
+    "extra_files": [],
+    "status": "uploading",
+    "accession": "GAPFICPW2884"
+  },
+  {
       "uuid": "1936f246-22e1-45dc-bb5c-9cfd55537fe7",
       "institution": "INSTITUTION_UUID",
       "project": "PROJECT_UUID",
@@ -119,5 +130,35 @@
       ],
       "status": "uploading",
       "accession": "GAPFIYPTSAU8"
+  },
+  {
+    "uuid": "68b7f258-5442-4ab4-99a7-22ee2a28dabf",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "txt",
+    "description": "hg38_main_chromosomes_noXY",
+    "aliases": ["cgap:hg38_main_chromosomes_noXY"],
+    "status": "uploading",
+    "accession": "GAPFIU8HBMP2"
+  },
+  {
+    "uuid": "5891340f-b295-4a86-bb6b-161157d2a7c1",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "tar_gz",
+    "description": "hg38_150bp_mappability_no_centromeres",
+    "aliases": ["cgap:hg38_150bp_mappability_no_centromeres"],
+    "status": "uploading",
+    "accession": "GAPFIO588XWQ"
+  },
+  {
+    "uuid": "92476266-f32a-45f3-b097-5a8e299c654e",
+    "institution": "INSTITUTION_UUID",
+    "project": "PROJECT_UUID",
+    "file_format": "vcf_gz",
+    "description": "vcf SV CNV header reference",
+    "aliases": ["cgap:vcf_SV_CNV_header_reference"],
+    "status": "uploading",
+    "accession": "GAPFIX59VJT5"
   }
 ]

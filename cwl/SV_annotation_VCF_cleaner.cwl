@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: ACCOUNT/sv_germline:VERSION
+    dockerPull: ACCOUNT/sv_germline_granite:VERSION
 
 baseCommand: [python3, /usr/local/bin/SV_annotation_VCF_cleaner.py]
 

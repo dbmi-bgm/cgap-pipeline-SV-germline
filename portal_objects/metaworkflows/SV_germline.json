@@ -12,7 +12,13 @@
   "input": [
     {
       "argument_name": "input_bams",
-      "argument_type": "file"
+      "argument_type": "file",
+      "dimensionality": 1
+    },
+    {
+      "argument_name": "sample_names",
+      "argument_type": "parameter",
+      "value_type": "json"
     },
     {
       "argument_name": "ref_fasta",
@@ -55,10 +61,6 @@
       "files": [{"file": "cd647c0c-ac11-46db-9c51-bfe238e9ac13"}]
     },
     {
-      "argument_name": "sample_names_proband_first_if_trio",
-      "argument_type": "parameter"
-    },
-    {
       "argument_name": "recip",
       "argument_type": "parameter",
       "value": "0.8",
@@ -92,7 +94,7 @@
   "workflows": [
     {
       "name": "workflow_manta_vcf-check",
-      "workflow": "10c6c057-07f3-4c3f-974c-e280add5af58",
+      "workflow": "65c3726c-95ca-4f9f-9e7c-97a2713123f4",
       "config": {
         "instance_type": "c5.4xlarge",
         "ebs_size": "1.2x",
@@ -127,7 +129,7 @@
     },
     {
       "name": "workflow_granite-SVqcVCF",
-      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "workflow": "bc4abfee-842a-4d2a-81a3-f67ddd6f4dec",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": "2x",
@@ -146,13 +148,13 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
     {
       "name": "workflow_annotateSV_sansa_vep_vcf-check",
-      "workflow": "e81aab17-6b79-4fa9-a0b7-b8f883af55f3",
+      "workflow": "86dce20a-a5fb-4344-8438-da92934bd2d0",
       "config": {
         "instance_type": "t3.large",
         "ebs_size": "2x",
@@ -192,7 +194,7 @@
     },
     {
       "name": "workflow_granite-SVqcVCF-1",
-      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "workflow": "bc4abfee-842a-4d2a-81a3-f67ddd6f4dec",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": "2x",
@@ -211,13 +213,13 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
     {
       "name": "workflow_granite-filter_SV_selector_vcf-check",
-      "workflow": "43cfb08f-e9fe-444e-a6a0-4c8832f2267b",
+      "workflow": "83286621-abfe-415b-b77d-a6a6b5e212d5",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": 10,
@@ -252,7 +254,7 @@
     },
     {
       "name": "workflow_20_unrelated_SV_filter_vcf-check",
-      "workflow": "4238e5e7-57aa-4f98-a411-616816bf89a7",
+      "workflow": "dcfe1a4e-b210-4d6a-b102-edd9c7bff660",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": 10,
@@ -299,7 +301,7 @@
     },
     {
       "name": "workflow_granite-SVqcVCF-2",
-      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "workflow": "bc4abfee-842a-4d2a-81a3-f67ddd6f4dec",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": "2x",
@@ -318,13 +320,13 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
     {
       "name": "workflow_SV_secondary_annotation_vcf-check",
-      "workflow": "a4e12e25-9787-4120-bb1d-ccc685685507",
+      "workflow": "a110b401-bbac-4cbd-b436-a55680304e69",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": 10,
@@ -359,7 +361,7 @@
     },
     {
       "name": "workflow_granite-SVqcVCF-3",
-      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "workflow": "bc4abfee-842a-4d2a-81a3-f67ddd6f4dec",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": "2x",
@@ -378,13 +380,13 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
     {
       "name": "workflow_SV_length_filter_vcf-check",
-      "workflow": "aa63c831-f9cc-42b7-bb48-30cfe8592ad6",
+      "workflow": "be68554c-4d15-405b-8983-bcf8f416893b",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": 10,
@@ -398,7 +400,8 @@
               "variant_type": "SV",
               "file_type": "full-annotated vcf",
               "description": "fully annotated output in vcf format",
-              "linkto_location": "SampleProcessing"
+              "linkto_location": ["SampleProcessing"],
+              "vcf_to_be_ingested": true
           }
       },
       "input": [
@@ -416,7 +419,7 @@
     },
     {
       "name": "workflow_granite-SVqcVCF-4",
-      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "workflow": "bc4abfee-842a-4d2a-81a3-f67ddd6f4dec",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": "2x",
@@ -435,13 +438,13 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     },
     {
       "name": "workflow_SV_annotation_cleaner_vcf-check",
-      "workflow": "ab285b9c-bc69-4ed0-bb8c-808210269e58",
+      "workflow": "ccceb5e9-7fc5-4f81-805a-6bbe5a6d8518",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": 10,
@@ -455,7 +458,8 @@
               "variant_type": "SV",
               "file_type": "HiGlass vcf",
               "description": "fully annotated output in vcf format with reduced annotation for HiGlass",
-              "linkto_location": "SampleProcessing"
+              "linkto_location": ["SampleProcessing"],
+              "higlass_file": true
           }
       },
       "input": [
@@ -473,7 +477,7 @@
     },
     {
       "name": "workflow_granite-SVqcVCF-5",
-      "workflow": "56e70cab-6a4f-4501-9827-b87c751af8fd",
+      "workflow": "bc4abfee-842a-4d2a-81a3-f67ddd6f4dec",
       "config": {
         "instance_type": "t3.small",
         "ebs_size": "2x",
@@ -492,7 +496,7 @@
         {
           "argument_name": "samples",
           "argument_type": "parameter",
-          "source_argument_name": "sample_names_proband_first_if_trio"
+          "source_argument_name": "sample_names"
         }
       ]
     }
