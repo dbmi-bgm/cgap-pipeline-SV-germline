@@ -401,7 +401,7 @@
               "file_type": "full-annotated vcf",
               "description": "fully annotated output in vcf format",
               "linkto_location": ["SampleProcessing"],
-              "vcf_to_be_ingested": true
+              "vcf_to_ingest": true
           }
       },
       "input": [
