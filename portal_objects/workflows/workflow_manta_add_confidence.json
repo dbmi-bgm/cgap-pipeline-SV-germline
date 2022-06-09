@@ -1,6 +1,6 @@
 {
     "accession": "GAPWFR8V3KN3",
-    "app_name": "workflow_manta_confidence_filters",
+    "app_name": "workflow_manta_add_confidence",
     "app_version": "VERSION",
     "arguments": [
         {
@@ -13,12 +13,12 @@
     "category": ["processing"],
     "cwl_child_filenames": ["manta_confidence_filters.cwl"],
     "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
-    "cwl_main_filename": "workflow_manta_confidence_filters.cwl",
+    "cwl_main_filename": "workflow_manta_add_confidence.cwl",
     "cwl_pointer": "",
     "description": "Infer confidence classes of germline CNVs from Manta",
     "institution": "INSTITUTION_UUID",
-    "name": "workflow_manta_confidence_filters_VERSION",
-    "aliases": ["cgap:workflow_manta_confidence_filters_VERSION"],
+    "name": "workflow_manta_add_confidence_VERSION",
+    "aliases": ["cgap:workflow_manta_add_confidence_VERSION"],
     "steps": [
         {
             "inputs": [
@@ -45,7 +45,7 @@
                     "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
                 ]
             },
-            "name": "granite",
+            "name": "sv-manta-confidence",
             "outputs": [
                 {
                     "meta": {
@@ -53,10 +53,10 @@
                         "global": true,
                         "type": "data file"
                     },
-                    "name": "output_vcf",
+                    "name": "vcf_sv_confidence",
                     "target": [
                         {
-                            "name": "output_vcf"
+                            "name": "vcf_sv_confidence"
                         }
                     ]
                 }
