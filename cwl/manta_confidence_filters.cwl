@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: b3rse/granite:v0.1.12
+    dockerPull: granite:0.2.0
 
 baseCommand: [python3, /usr/local/bin/SV_manta_filters.py]
 
@@ -20,7 +20,7 @@ inputs:
       prefix: -i
     doc: expect the path to the sample vcf gz file
 
-  - id: output
+  - id: outputfile
     type: string
     inputBinding:
       prefix: -o
@@ -35,4 +35,4 @@ outputs:
       - .tbi
 
 doc: |
-  run SV_manta_filters.py to calculate a confidence class for variants
+  run SV_manta_filters.py to calculate a confidence class of variants

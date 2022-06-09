@@ -26,8 +26,10 @@ steps:
     in:
       input:
         source: input_vcf
-      output:
+      outputfile:
         source: output_vcf
+    out: 
+        [output]
 
 doc: |
-  run SV_manta_filters.py to calculate a confidence class for variants
+  run SV_manta_filters.py to calculate confidence classes of CNV variants from Manta
