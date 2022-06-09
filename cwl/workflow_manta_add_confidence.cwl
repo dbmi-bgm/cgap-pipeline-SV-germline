@@ -16,13 +16,13 @@ inputs:
     doc: base name of output vcf gz file
 
 outputs:
-  SV_confidence:
+  vcf_sv_confidence:
     type: File
-    outputSource: manta_confidence_filters/output
+    outputSource: manta_add_confidence/output
 
 steps:
-  manta_confidence_filters:
-    run: manta_confidence_filters.cwl
+  manta_add_confidence:
+    run: manta_add_confidence.cwl
     in:
       input:
         source: input_vcf
@@ -32,4 +32,4 @@ steps:
         [output]
 
 doc: |
-  run SV_manta_filters.py to calculate confidence classes of CNV variants from Manta
+  run SV_manta_confidence.py to calculate confidence classes of CNV variants from Manta

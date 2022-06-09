@@ -11,7 +11,7 @@ hints:
   - class: DockerRequirement
     dockerPull: granite:0.2.0
 
-baseCommand: [python3, /usr/local/bin/SV_manta_filters.py]
+baseCommand: [python3, /usr/local/bin/SV_manta_confidence.py]
 
 inputs:
   - id: input
@@ -35,4 +35,4 @@ outputs:
       - .tbi
 
 doc: |
-  run SV_manta_filters.py to calculate a confidence class of variants
+  run SV_manta_confidence.py to calculate a confidence class of variants
