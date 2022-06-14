@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: granite:0.2.0
+    dockerPull: ACCOUNT/sv_germline_granite:VERSION
 
 baseCommand: [python3, /usr/local/bin/SV_manta_confidence.py]
 
@@ -30,7 +30,7 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: $(inputs.output + ".gz")
+      glob: $(inputs.outputfile + ".gz")
     secondaryFiles:
       - .tbi
 
