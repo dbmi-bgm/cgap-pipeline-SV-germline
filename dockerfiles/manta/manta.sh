@@ -100,7 +100,7 @@ else
     cp manta/results/variants/diploidSV.vcf.gz /tmp/output/sv_caller_results/"${prefix}".manta.diploidSV.vcf.gz
     mv manta/results/variants/diploidSV.vcf.gz .
     gunzip diploidSV.vcf.gz
-    python /miniconda/share/manta-1.6.0-1/libexec/convertInversion.py /samtools/samtools ${ref_fasta} diploidSV.vcf > diploidSV_inv.vcf || exit 1
+    python /miniconda/bin/convertInversion.py /samtools/samtools ${ref_fasta} diploidSV.vcf > diploidSV_inv.vcf || exit 1
     bgzip -c diploidSV_inv.vcf > diploidSV_inv.vcf.gz || exit 1
     cp diploidSV_inv.vcf.gz /tmp/output/sv_caller_results/"${prefix}".manta.diploidSV.convertedInv.vcf.gz
     cp manta/results/stats/alignmentStatsSummary.txt /tmp/output/sv_caller_results/"${prefix}".manta.alignmentStatsSummary.txt
