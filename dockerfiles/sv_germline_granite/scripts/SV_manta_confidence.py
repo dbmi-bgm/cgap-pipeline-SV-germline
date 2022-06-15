@@ -2,7 +2,7 @@
 
 #####################################################
 #
-#  Script to add confidence filters to SVs from Manta
+#  Script to add confidence classes of SVs from Manta
 #
 #####################################################
 
@@ -41,11 +41,11 @@ def calculate_confidence(vnt_obj):
         svlen = abs(int(vnt_obj.get_tag_value("SVLEN")))
     vnt_obj.add_tag_format(CONFIDENCE_TAG)
 
-    confidence = LOW_CONFIDENCE
 
     # iterate over each sample
     for genotype_id in vnt_obj.IDs_genotypes:
 
+        confidence = LOW_CONFIDENCE
         # find ref and alt spanning reads
         try:
             spanning_read = vnt_obj.get_genotype_value(genotype_id, "PR")
