@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
-#####################################################
+#######################################################
 #
-#  Script to add confidence filters to SVs from Manta
+#  Script to add confidence filters to SVs from BIC-seq2
 #
-#####################################################
+#######################################################
 
-#####################################################
+#######################################################
 #   Libraries
-#####################################################
+#######################################################
 import argparse, subprocess
 from granite.lib import vcf_parser
 
@@ -26,9 +26,7 @@ CONFIDENCE_TAG = "CF"
 #####################################################
 
 
-def calculate_confidence(vnt_obj):
-
-    svtype = vnt_obj.get_tag_value("SVTYPE")
+def calculate_confidence_bicseq2(vnt_obj):
 
     # difference in length between REF and ALT alleles
     svlen = 0
@@ -54,18 +52,13 @@ def calculate_confidence(vnt_obj):
     return vnt_obj
 
 
-def main(args):
-
-    input_file = args["input"]
-    output_file = args["output"]
+def add_confidence_bicseq2(input_file, output_file):
 
     vcf_obj = vcf_parser.Vcf(input_file)
 
     # create FORMAT entries for vcf header
     FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class length and copy ratio">'
     vcf_obj.header.add_tag_definition(FORMAT_cf, tag_type="FORMAT")
-
-    genotypes_ids = vcf_obj.header.IDs_genotypes
 
     # write output file with confidence format
     with open(output_file, "w") as output:
@@ -74,13 +67,21 @@ def main(args):
 
         for vnt_obj in vcf_obj.parse_variants():
 
-            calculate_confidence(vnt_obj)
+            calculate_confidence_bicseq2(vnt_obj)
 
             # write variant
             vcf_obj.write_variant(output, vnt_obj)
+
+
+def main(args):
+
+    input_file = args["input"]
+    output_file = args["output"]
+
+    add_confidence_bicseq2(input_file, output_file)
     
-    subprocess.run(["bgzip", args['output']])
-    subprocess.run(["tabix",args['output']+".gz"])
+    subprocess.run(["bgzip", output_file])
+    subprocess.run(["tabix", f"{output_file}.gz"])
 
 
 #####################################################
@@ -94,7 +95,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o", "--output", help="output VCF file with confidence filters", required=True
     )
+    parser.add_argument(
+        "-t", "--tool", help="tool that produced the input VCF", required=True, choices = ['bicseq2', 'manta'])
 
     args = vars(parser.parse_args())
 
     main(args)
+
