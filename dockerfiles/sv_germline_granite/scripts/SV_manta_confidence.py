@@ -16,8 +16,8 @@ from granite.lib import vcf_parser
 #   Constants
 #####################################################
 
-TRANSLOCATION_SVTYPE = "BND"
-INSERTION_SVTYPE = "INS"
+TRANSLOCATION_SVTYPE_MANTA = "BND"
+INSERTION_SVTYPE_MANTA = "INS"
 
 HIGH_CONFIDENCE = "HIGH"
 MEDIUM_CONFIDENCE = "MEDIUM"
@@ -30,14 +30,14 @@ CONFIDENCE_TAG = "CF"
 #####################################################
 
 
-def calculate_confidence(vnt_obj):
+def calculate_confidence_manta(vnt_obj):
 
     svtype = vnt_obj.get_tag_value("SVTYPE")
 
     # difference in length between REF and ALT alleles
     svlen = 0
     # the length condition is not applicable to translocations and insertions
-    if svtype not in [TRANSLOCATION_SVTYPE, INSERTION_SVTYPE]:
+    if svtype not in [TRANSLOCATION_SVTYPE_MANTA, INSERTION_SVTYPE_MANTA]:
         svlen = abs(int(vnt_obj.get_tag_value("SVLEN")))
     vnt_obj.add_tag_format(CONFIDENCE_TAG)
 
@@ -77,11 +77,11 @@ def calculate_confidence(vnt_obj):
             prop_split_reads = 0
 
         # we do not assign confidence to insertions at this moment
-        if svtype == INSERTION_SVTYPE:
+        if svtype == INSERTION_SVTYPE_MANTA:
             confidence = NA
 
         elif (
-            (svlen > 250 or svtype == TRANSLOCATION_SVTYPE)
+            (svlen > 250 or svtype == TRANSLOCATION_SVTYPE_MANTA)
             and (
                 SR_alt >= 5
                 and PR_alt >= 5
@@ -90,7 +90,7 @@ def calculate_confidence(vnt_obj):
             )
         ) or (
             svlen <= 250
-            and svtype != TRANSLOCATION_SVTYPE
+            and svtype != TRANSLOCATION_SVTYPE_MANTA
             and SR_alt > 5
             and prop_split_reads > 0.3
         ):
@@ -98,7 +98,7 @@ def calculate_confidence(vnt_obj):
             confidence = HIGH_CONFIDENCE
 
         elif (
-            (svlen > 250 or svtype == TRANSLOCATION_SVTYPE)
+            (svlen > 250 or svtype == TRANSLOCATION_SVTYPE_MANTA)
             and (
                 SR_alt >= 3
                 and PR_alt >= 3
@@ -107,7 +107,7 @@ def calculate_confidence(vnt_obj):
             )
         ) or (
             svlen <= 250
-            and svtype != TRANSLOCATION_SVTYPE
+            and svtype != TRANSLOCATION_SVTYPE_MANTA
             and SR_alt > 3
             and prop_split_reads > 0.3
         ):
@@ -122,12 +122,7 @@ def calculate_confidence(vnt_obj):
 
     return vnt_obj
 
-
-def main(args):
-
-    input_file = args["input"]
-    output_file = args["output"]
-
+def add_confidence_manta(input_file, output_file):
     vcf_obj = vcf_parser.Vcf(input_file)
 
     # create FORMAT entries for vcf header
@@ -143,10 +138,18 @@ def main(args):
 
         for vnt_obj in vcf_obj.parse_variants():
 
-            calculate_confidence(vnt_obj)
+            calculate_confidence_manta(vnt_obj)
 
             # write variant
             vcf_obj.write_variant(output, vnt_obj)
+
+
+def main(args):
+
+    input_file = args["input"]
+    output_file = args["output"]
+
+    add_confidence_manta(input_file, output_file)
     
     subprocess.run(["bgzip", args['output']])
     subprocess.run(["tabix",args['output']+".gz"])

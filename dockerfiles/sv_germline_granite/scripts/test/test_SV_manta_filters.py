@@ -8,7 +8,7 @@ from subprocess import Popen
 from granite.lib import vcf_parser
 
 
-filters = __import__('SV_manta_filters')
+filters = __import__('SV_manta_confidence')
 
 def test_filters(tmp_path):
     # Variables and Run
