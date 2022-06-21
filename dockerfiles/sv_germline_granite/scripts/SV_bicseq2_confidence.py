@@ -30,7 +30,6 @@ def calculate_confidence_bicseq2(vnt_obj):
 
     # difference in length between REF and ALT alleles
     svlen = 0
-    # the length condition is not applicable to translocations and insertions
     
     svlen = abs(int(vnt_obj.get_tag_value("SVLEN")))
     logr = float(vnt_obj.get_tag_value("BICseq2_log2_copyRatio")) 
