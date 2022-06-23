@@ -32,4 +32,4 @@ steps:
         [output]
 
 doc: |
-  run SV_manta_confidence.py to calculate confidence classes of CNV variants from Manta
+  run SV_confidence.py to calculate confidence classes of CNV variants from Manta

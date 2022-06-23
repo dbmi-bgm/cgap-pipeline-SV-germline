@@ -11,8 +11,9 @@ hints:
   - class: DockerRequirement
     dockerPull: ACCOUNT/sv_germline_granite:VERSION
 
-baseCommand: [python3, /usr/local/bin/SV_bicseq2_confidence.py]
+baseCommand: [python3, /usr/local/bin/SV_confidence.py]
 
+arguments: ["--tool", "bicseq2"]
 inputs:
   - id: input
     type: File
@@ -35,4 +36,4 @@ outputs:
       - .tbi
 
 doc: |
-  run SV_bicseq2_confidence.py to calculate a confidence class of variants
+  run SV_confidence.py to calculate a confidence class of variants from BIC-Seq2 

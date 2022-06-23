@@ -11,7 +11,9 @@ hints:
   - class: DockerRequirement
     dockerPull: ACCOUNT/sv_germline_granite:VERSION
 
-baseCommand: [python3, /usr/local/bin/SV_manta_confidence.py]
+baseCommand: [python3, /usr/local/bin/SV_confidence.py]
+
+arguments: ["--tool", "manta"]
 
 inputs:
   - id: input
@@ -35,4 +37,4 @@ outputs:
       - .tbi
 
 doc: |
-  run SV_manta_confidence.py to calculate a confidence class of variants
+  run SV_confidence.py to calculate a confidence class of variants from Manta

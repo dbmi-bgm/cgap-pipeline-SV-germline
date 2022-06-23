@@ -223,6 +223,29 @@
         }
       ]
     },
+
+    {
+      "name": "workflow_BICseq2_add_confidence",
+      "workflow": "dcee73e2-66b2-4f9c-8bd7-43243b7d84fe",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_bicseq2_add_confidence",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_annotateSV_sansa_vep_vcf-check",
+          "source_argument_name": "annotated_SV_vcf"
+        }
+      ]
+    },
+
+
     {
       "name": "workflow_granite-filter_SV_selector_vcf-check",
       "workflow": "83286621-abfe-415b-b77d-a6a6b5e212d5",
@@ -245,8 +268,8 @@
         {
           "argument_name": "input_vcf",
           "argument_type": "file",
-          "source": "workflow_annotateSV_sansa_vep_vcf-check",
-          "source_argument_name": "annotated_SV_vcf"
+          "source": "workflow_bicseq2_add_confidence",
+          "source_argument_name": "vcf_sv_confidence"
         },
         {
           "argument_name": "genes",
