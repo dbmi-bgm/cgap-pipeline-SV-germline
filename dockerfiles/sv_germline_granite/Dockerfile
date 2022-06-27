@@ -44,8 +44,8 @@ COPY scripts/SV_cytoband.py .
 RUN chmod +x SV_cytoband.py
 COPY scripts/SV_worst_and_locations.py .
 RUN chmod +x SV_worst_and_locations.py
-COPY scripts/SV_manta_confidence.py .
-RUN chmod +x SV_manta_confidence.py
+COPY scripts/SV_confidence.py .
+RUN chmod +x SV_confidence.py
 
 ## add cgap-scripts - liftover_hg19
 RUN git clone https://github.com/dbmi-bgm/cgap-scripts/ && \

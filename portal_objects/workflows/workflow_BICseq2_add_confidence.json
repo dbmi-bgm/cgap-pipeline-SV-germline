@@ -16,7 +16,7 @@
     ],
     "project": "PROJECT_UUID",
     "category": ["processing"],
-    "cwl_child_filenames": ["BICse_add_confidence.cwl"],
+    "cwl_child_filenames": ["BICseq2_add_confidence.cwl"],
     "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
     "cwl_main_filename": "workflow_BICseq2_add_confidence.cwl",
     "cwl_pointer": "",
