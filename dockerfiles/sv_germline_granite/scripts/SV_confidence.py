@@ -218,7 +218,7 @@ if __name__ == "__main__":
 
     parser.add_argument("-i", "--input", help="input sample vcf", required=True)
     parser.add_argument(
-        "-o", "--output", help="output VCF file with confidence filters", required=True
+        "-o", "--output", help="output VCF file with confidence classes", required=True
     )
     parser.add_argument(
         "-t",
