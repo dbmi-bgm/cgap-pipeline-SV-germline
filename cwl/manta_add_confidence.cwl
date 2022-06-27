@@ -37,4 +37,4 @@ outputs:
       - .tbi
 
 doc: |
-  run SV_confidence.py to calculate a confidence class of variants from Manta
+  run SV_confidence.py to infer confidence classes of germline SVs from Manta

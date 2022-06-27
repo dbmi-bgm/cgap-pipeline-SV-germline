@@ -36,4 +36,4 @@ outputs:
       - .tbi
 
 doc: |
-  run SV_confidence.py to calculate a confidence class of variants from BIC-Seq2 
+  run SV_confidence.py to infer confidence classes of germline CNVs from BIC-Seq2

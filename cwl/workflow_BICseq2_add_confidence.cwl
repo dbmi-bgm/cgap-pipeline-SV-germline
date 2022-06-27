@@ -32,4 +32,4 @@ steps:
         [output]
 
 doc: |
-  run SV_confidence.py to calculate confidence classes of CNV variants from BIC-Seq2
+  run SV_confidence.py to calculate confidence classes of CNVs from BIC-Seq2
