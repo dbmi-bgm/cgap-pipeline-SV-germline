@@ -29,6 +29,8 @@ BICSEQ2 = "bicseq2"
 MANTA = "manta"
 
 CONFIDENCE_TAG = "CF"
+
+MEGA_B = pow(10, 6)
 #####################################################
 #   Functions
 #####################################################
@@ -190,7 +192,7 @@ def calculate_confidence_bicseq2(vnt_obj):
 
         confidence = LOW_CONFIDENCE
 
-        if (svlen > pow(10, 6)) and (logr > 0.4 or logr < -0.8):
+        if (svlen > MEGA_B) and (logr > 0.4 or logr < -0.8):
 
             confidence = HIGH_CONFIDENCE
 
