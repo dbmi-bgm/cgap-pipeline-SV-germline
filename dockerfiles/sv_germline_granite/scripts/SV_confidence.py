@@ -35,7 +35,16 @@ CONFIDENCE_TAG = "CF"
 
 
 def calculate_confidence_manta(vnt_obj):
+    """
+    This function calculates confidence classes of the variant for each sample
 
+    Args:
+        vnt_obj (Variant class): a single variant record from the output vcf file from Manta
+
+    Returns:
+        Variant class: a single variant record with the calculated confidence class
+
+    """
     svtype = vnt_obj.get_tag_value("SVTYPE")
 
     # difference in length between REF and ALT alleles
@@ -127,6 +136,14 @@ def calculate_confidence_manta(vnt_obj):
 
 
 def add_confidence_manta(input_file, output_file):
+    """
+    This function infers confidence classes of SVs from Manta and saved the results to a new VCF file
+
+    Args:
+        input_file (string): path to the input VCF file
+        output_file (string): path to the output VCF file
+
+    """
     vcf_obj = vcf_parser.Vcf(input_file)
 
     # create FORMAT entries for vcf header
@@ -149,6 +166,16 @@ def add_confidence_manta(input_file, output_file):
 
 
 def calculate_confidence_bicseq2(vnt_obj):
+    """
+    This function calculates confidence classes of the variant for each sample
+
+    Args:
+        vnt_obj (Variant class): a single variant record from the output vcf file from BIC-Seq2
+
+    Returns:
+        Variant class: a single variant record with the calculated confidence class
+
+    """
 
     # difference in length between REF and ALT alleles
     svlen = 0
@@ -173,7 +200,14 @@ def calculate_confidence_bicseq2(vnt_obj):
 
 
 def add_confidence_bicseq2(input_file, output_file):
+    """
+    This function infers confidence classes of SVs from BIC-Seq2 and saved the results to a new VCF file
 
+    Args:
+        input_file (string): path to the input VCF file
+        output_file (string): path to the output VCF file
+
+    """
     vcf_obj = vcf_parser.Vcf(input_file)
 
     # create FORMAT entries for vcf header
