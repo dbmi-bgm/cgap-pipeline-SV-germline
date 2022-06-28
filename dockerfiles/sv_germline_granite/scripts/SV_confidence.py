@@ -177,7 +177,7 @@ def add_confidence_bicseq2(input_file, output_file):
     vcf_obj = vcf_parser.Vcf(input_file)
 
     # create FORMAT entries for vcf header
-    FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class length and copy ratio">'
+    FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class based on length and copy ratio (HIGH, LOW)">'
     vcf_obj.header.add_tag_definition(FORMAT_cf, tag_type="FORMAT")
 
     # write output file with confidence format
