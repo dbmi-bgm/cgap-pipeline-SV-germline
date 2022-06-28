@@ -42,7 +42,7 @@ def calculate_confidence_manta(vnt_obj):
         vnt_obj (Variant class): a single variant record from the output vcf file from Manta
 
     Returns:
-        Variant class: a single variant record with the calculated confidence class
+        Variant class: a single variant record with the calculated confidence classes
 
     """
     svtype = vnt_obj.get_tag_value("SVTYPE")
@@ -173,7 +173,7 @@ def calculate_confidence_bicseq2(vnt_obj):
         vnt_obj (Variant class): a single variant record from the output vcf file from BIC-Seq2
 
     Returns:
-        Variant class: a single variant record with the calculated confidence class
+        Variant class: a single variant record with the calculated confidence classes
 
     """
 
