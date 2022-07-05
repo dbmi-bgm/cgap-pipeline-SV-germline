@@ -2,7 +2,8 @@
 
 #####################################################
 #
-#  Script to add confidence classes of SVs from Manta
+#  Script to add confidence classes of SVs (manta) and
+#  CNVs (BIC-Seq2)
 #
 #####################################################
 
@@ -90,7 +91,7 @@ def calculate_confidence_manta(vnt_obj):
             SR_ref = 0
             prop_split_reads = 0
 
-        # we do not assign confidence to insertions at this moment
+        # currently we do not assign confidence to insertions
         if svtype == INSERTION_SVTYPE_MANTA:
             confidence = NA
 
@@ -154,7 +155,7 @@ def add_confidence_manta(input_file, output_file):
 
     genotypes_ids = vcf_obj.header.IDs_genotypes
 
-    # write output file with confidence format
+    # write output file with the confidence format
     with open(output_file, "w") as output:
 
         vcf_obj.write_header(output)
@@ -216,7 +217,7 @@ def add_confidence_bicseq2(input_file, output_file):
     FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class based on length and copy ratio (HIGH, LOW)">'
     vcf_obj.header.add_tag_definition(FORMAT_cf, tag_type="FORMAT")
 
-    # write output file with confidence format
+    # write output file with the confidence format
     with open(output_file, "w") as output:
 
         vcf_obj.write_header(output)
@@ -254,7 +255,7 @@ if __name__ == "__main__":
 
     parser.add_argument("-i", "--input", help="input sample vcf", required=True)
     parser.add_argument(
-        "-o", "--output", help="output VCF file with confidence classes", required=True
+        "-o", "--output", help="output VCF file with the confidence classes", required=True
     )
     parser.add_argument(
         "-t",
