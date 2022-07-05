@@ -15,23 +15,24 @@ baseCommand: [python3, /usr/local/bin/SV_confidence.py]
 
 arguments: ["--tool", "bicseq2"]
 inputs:
-  - id: input
+  - id: input_vcf
     type: File
     inputBinding:
       prefix: -i
     doc: expect the path to the sample vcf gz file
 
-  - id: outputfile
+  - id: output_vcf
     type: string
+    default: "output.vcf"
     inputBinding:
       prefix: -o
     doc: base name of output vcf gz file
 
 outputs:
-  - id: output
+  - id: vcf_sv_confidence
     type: File
     outputBinding:
-      glob: $(inputs.outputfile + ".gz")
+      glob: $(inputs.output_vcf + ".gz")
     secondaryFiles:
       - .tbi
 

@@ -16,13 +16,13 @@
     ],
     "project": "PROJECT_UUID",
     "category": ["processing"],
-    "cwl_child_filenames": ["BICseq2_add_confidence.cwl"],
+    "cwl_child_filenames": [],
     "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
-    "cwl_main_filename": "workflow_BICseq2_add_confidence.cwl",
+    "cwl_main_filename": "BICseq2_add_confidence.cwl",
     "cwl_pointer": "",
     "description": "Infer confidence classes of germline CNVs from BIC-seq2",
     "institution": "INSTITUTION_UUID",
-    "name": "workflow_manta_add_confidence_VERSION",
+    "name": "workflow_BICseq2_add_confidence_VERSION",
     "aliases": ["cgap:workflow_BICseq2_add_confidence_VERSION"],
     "steps": [
         {
