@@ -11,7 +11,8 @@
         {
             "argument_format": "vcf_gz",
             "argument_type": "Output processed file",
-            "workflow_argument_name": "vcf_sv_confidence"
+            "workflow_argument_name": "vcf_sv_confidence",
+            "secondary_file_formats": ["vcf_gz_tbi"]
         }
     ],
     "project": "PROJECT_UUID",

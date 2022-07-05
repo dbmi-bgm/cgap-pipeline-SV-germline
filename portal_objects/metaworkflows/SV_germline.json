@@ -229,6 +229,13 @@
         "run_name": "run_workflow_manta_add_confidence",
         "behavior_on_capacity_limit": "wait_and_retry"
       },
+      "custom_pf_fields": {
+        "vcf_sv_confidence": {
+            "variant_type": "SV",
+            "file_type": "confidence vcf",
+            "description": "intermediate file"
+        }
+      },
       "input": [
         {
           "argument_name": "input_vcf",
