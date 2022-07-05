@@ -37,6 +37,46 @@ MEGA_B = pow(10, 6)
 #####################################################
 
 
+def add_confidence(input_file, output_file, tool):
+    """
+    This function infers confidence classes of variants and saves the results to a new VCF file
+
+    Args:
+        input_file (string): path to the input VCF file
+        output_file (string): path to the output VCF file
+        tool (string): tool name [manta or bicseq2]
+
+    """
+    vcf_obj = vcf_parser.Vcf(input_file)
+
+    # create FORMAT entries for vcf header
+    if tool == MANTA:
+
+        FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class based on split and spanning reads (HIGH, MEDIUM, LOW)">'
+        calculate_confidence = calculate_confidence_manta
+
+    elif tool == BICSEQ2:
+
+        FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class based on length and copy ratio (HIGH, LOW)">'
+        calculate_confidence = calculate_confidence_bicseq2
+
+    vcf_obj.header.add_tag_definition(FORMAT_cf, tag_type="FORMAT")
+
+    genotypes_ids = vcf_obj.header.IDs_genotypes
+
+    # write output file with the confidence format
+    with open(output_file, "w") as output:
+
+        vcf_obj.write_header(output)
+
+        for vnt_obj in vcf_obj.parse_variants():
+
+            calculate_confidence(vnt_obj)
+
+            # write variant
+            vcf_obj.write_variant(output, vnt_obj)
+
+
 def calculate_confidence_manta(vnt_obj):
     """
     This function calculates confidence classes of the variant for each sample
@@ -138,36 +178,6 @@ def calculate_confidence_manta(vnt_obj):
     return vnt_obj
 
 
-def add_confidence_manta(input_file, output_file):
-    """
-    This function infers confidence classes of SVs from Manta and saved the results to a new VCF file
-
-    Args:
-        input_file (string): path to the input VCF file
-        output_file (string): path to the output VCF file
-
-    """
-    vcf_obj = vcf_parser.Vcf(input_file)
-
-    # create FORMAT entries for vcf header
-    FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class based on split and spanning reads (HIGH, MEDIUM, LOW)">'
-    vcf_obj.header.add_tag_definition(FORMAT_cf, tag_type="FORMAT")
-
-    genotypes_ids = vcf_obj.header.IDs_genotypes
-
-    # write output file with the confidence format
-    with open(output_file, "w") as output:
-
-        vcf_obj.write_header(output)
-
-        for vnt_obj in vcf_obj.parse_variants():
-
-            calculate_confidence_manta(vnt_obj)
-
-            # write variant
-            vcf_obj.write_variant(output, vnt_obj)
-
-
 def calculate_confidence_bicseq2(vnt_obj):
     """
     This function calculates confidence classes of the variant for each sample
@@ -202,48 +212,16 @@ def calculate_confidence_bicseq2(vnt_obj):
     return vnt_obj
 
 
-def add_confidence_bicseq2(input_file, output_file):
-    """
-    This function infers confidence classes of SVs from BIC-Seq2 and saved the results to a new VCF file
-
-    Args:
-        input_file (string): path to the input VCF file
-        output_file (string): path to the output VCF file
-
-    """
-    vcf_obj = vcf_parser.Vcf(input_file)
-
-    # create FORMAT entries for vcf header
-    FORMAT_cf = f'##FORMAT=<ID={CONFIDENCE_TAG},Number=.,Type=String,Description="Confidence class based on length and copy ratio (HIGH, LOW)">'
-    vcf_obj.header.add_tag_definition(FORMAT_cf, tag_type="FORMAT")
-
-    # write output file with the confidence format
-    with open(output_file, "w") as output:
-
-        vcf_obj.write_header(output)
-
-        for vnt_obj in vcf_obj.parse_variants():
-
-            calculate_confidence_bicseq2(vnt_obj)
-
-            # write variant
-            vcf_obj.write_variant(output, vnt_obj)
-
-
 def main(args):
 
     input_file = args["input"]
     output_file = args["output"]
-
     tool = args["tool"]
 
-    if tool == MANTA:
-        add_confidence_manta(input_file, output_file)
-    elif tool == BICSEQ2:
-        add_confidence_bicseq2(input_file, output_file)
+    add_confidence(input_file, output_file, tool)
 
-    subprocess.run(["bgzip", args["output"]])
-    subprocess.run(["tabix", args["output"] + ".gz"])
+    subprocess.run(["bgzip", output_file])
+    subprocess.run(["tabix", f"{output_file}.gz"])
 
 
 #####################################################
@@ -255,7 +233,10 @@ if __name__ == "__main__":
 
     parser.add_argument("-i", "--input", help="input sample vcf", required=True)
     parser.add_argument(
-        "-o", "--output", help="output VCF file with the confidence classes", required=True
+        "-o",
+        "--output",
+        help="output VCF file with the confidence classes",
+        required=True,
     )
     parser.add_argument(
         "-t",
