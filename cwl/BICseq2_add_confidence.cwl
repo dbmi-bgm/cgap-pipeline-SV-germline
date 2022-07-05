@@ -26,7 +26,7 @@ inputs:
     default: "output.vcf"
     inputBinding:
       prefix: -o
-    doc: base name of output vcf gz file
+    doc: base name of output vcf file
 
 outputs:
   - id: vcf_sv_confidence
