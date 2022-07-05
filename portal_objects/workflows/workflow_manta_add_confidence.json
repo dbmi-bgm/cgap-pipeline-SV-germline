@@ -4,7 +4,7 @@
     "app_version": "VERSION",
     "arguments": [
         {
-            "argument_format": "vcf",
+            "argument_format": "vcf_gz",
             "argument_type": "Input file",
             "workflow_argument_name": "input_vcf"
         },
