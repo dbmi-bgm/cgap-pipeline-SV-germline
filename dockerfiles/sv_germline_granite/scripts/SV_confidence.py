@@ -62,8 +62,6 @@ def add_confidence(input_file, output_file, tool):
 
     vcf_obj.header.add_tag_definition(FORMAT_cf, tag_type="FORMAT")
 
-    genotypes_ids = vcf_obj.header.IDs_genotypes
-
     # write output file with the confidence format
     with open(output_file, "w") as output:
 
