@@ -230,7 +230,7 @@
         "behavior_on_capacity_limit": "wait_and_retry"
       },
       "custom_pf_fields": {
-        "vcf_sv_confidence": {
+        "confidence_SV_vcf": {
             "variant_type": "SV",
             "file_type": "confidence vcf",
             "description": "intermediate file"
@@ -270,7 +270,7 @@
           "argument_name": "input_vcf",
           "argument_type": "file",
           "source": "workflow_manta_add_confidence",
-          "source_argument_name": "vcf_sv_confidence"
+          "source_argument_name": "confidence_SV_vcf"
         },
         {
           "argument_name": "genes",

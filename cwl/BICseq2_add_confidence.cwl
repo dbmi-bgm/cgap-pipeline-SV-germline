@@ -29,7 +29,7 @@ inputs:
     doc: base name of output vcf file
 
 outputs:
-  - id: vcf_sv_confidence
+  - id: confidence_SV_vcf
     type: File
     outputBinding:
       glob: $(inputs.output_vcf + ".gz")
