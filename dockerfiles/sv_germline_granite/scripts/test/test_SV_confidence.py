@@ -12,6 +12,10 @@ confidence = __import__("SV_confidence")
 
 
 def test_manta(tmp_path):
+    """
+    This test checks various combinations of possible SV confidence class values (Manta)
+    """
+
     # Variables and Run
     args = {
         "input": "test/files/confidence_classes_manta_in.vcf.gz",
@@ -28,6 +32,10 @@ def test_manta(tmp_path):
 
 
 def test_manta_multiple_gentype_ids(tmp_path):
+    """
+    This test checks if confidence classes would be calculated for more than one sample stored in a VCF file (SVs from Manta)
+    """
+
     # Variables and Run
     args = {
         "input": "test/files/confidence_classes_manta_3_genotype_ids_in.vcf.gz",
@@ -47,6 +55,10 @@ def test_manta_multiple_gentype_ids(tmp_path):
 
 
 def test_bicseq2(tmp_path):
+    """
+    This test checks various combinations of possible CNV confidence class values (BIC-Seq2)
+    """
+
     # Variables and Run
     args = {
         "input": "test/files/confidence_classes_bicseq2_in.vcf.gz",
@@ -64,6 +76,10 @@ def test_bicseq2(tmp_path):
 
 
 def test_bicseq2_multiple_gentype_ids(tmp_path):
+    """
+    This test checks if confidence classes would be calculated for more than one sample stored in a VCF file (CNVs from BIC-Seq2)
+    """
+
     # Variables and Run
     args = {
         "input": "test/files/confidence_classes_bicseq2_3_genotype_ids_in.vcf.gz",
