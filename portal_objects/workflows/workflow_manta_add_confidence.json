@@ -1,0 +1,75 @@
+{
+    "accession": "GAPWFR8V3KN3",
+    "app_name": "workflow_manta_add_confidence",
+    "app_version": "VERSION",
+    "arguments": [
+        {
+            "argument_format": "vcf_gz",
+            "argument_type": "Input file",
+            "workflow_argument_name": "input_vcf"
+        },
+        {
+            "argument_format": "vcf_gz",
+            "argument_type": "Output processed file",
+            "workflow_argument_name": "confidence_SV_vcf",
+            "secondary_file_formats": ["vcf_gz_tbi"]
+        }
+    ],
+    "project": "PROJECT_UUID",
+    "category": ["processing"],
+    "cwl_child_filenames": [],
+    "cwl_directory_url_v1": "s3://CWLBUCKET/PIPELINE/VERSION",
+    "cwl_main_filename": "manta_add_confidence.cwl",
+    "cwl_pointer": "",
+    "description": "Infer confidence classes of germline SVs from Manta",
+    "institution": "INSTITUTION_UUID",
+    "name": "workflow_manta_add_confidence_VERSION",
+    "aliases": ["cgap:workflow_manta_add_confidence_VERSION"],
+    "steps": [
+        {
+            "inputs": [
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "file_format": "vcf_gz",
+                        "global": true,
+                        "type": "data file"
+                    },
+                    "name": "input_vcf",
+                    "source": [
+                        {
+                            "name": "input_vcf"
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "analysis_step_types": [
+                    "Infer confidence classes of germline SVs from Manta"
+                ],
+                "software_used": [
+                    "/softwares/04e57a90-471b-431d-a5ec-b94b3dacf219"
+                ]
+            },
+            "name": "sv-manta-confidence",
+            "outputs": [
+                {
+                    "meta": {
+                        "cardinality": "single",
+                        "global": true,
+                        "type": "data file"
+                    },
+                    "name": "confidence_SV_vcf",
+                    "target": [
+                        {
+                            "name": "confidence_SV_vcf"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "title": "Confidence classes of germline SVs from Manta",
+    "uuid": "0020ca8d-f826-480f-a78a-e34fb7961dde"
+  }
+  

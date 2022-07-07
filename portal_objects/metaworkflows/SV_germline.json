@@ -217,6 +217,36 @@
         }
       ]
     },
+
+    {
+      "name": "workflow_manta_add_confidence",
+      "workflow": "0020ca8d-f826-480f-a78a-e34fb7961dde",
+      "config": {
+        "instance_type": "t3.small",
+        "ebs_size": "2x",
+        "EBS_optimized": true,
+        "spot_instance": true,
+        "run_name": "run_workflow_manta_add_confidence",
+        "behavior_on_capacity_limit": "wait_and_retry"
+      },
+      "custom_pf_fields": {
+        "confidence_SV_vcf": {
+            "variant_type": "SV",
+            "file_type": "confidence vcf",
+            "description": "intermediate file"
+        }
+      },
+      "input": [
+        {
+          "argument_name": "input_vcf",
+          "argument_type": "file",
+          "source": "workflow_annotateSV_sansa_vep_vcf-check",
+          "source_argument_name": "annotated_SV_vcf"
+        }
+      ]
+    },
+
+
     {
       "name": "workflow_granite-filter_SV_selector_vcf-check",
       "workflow": "83286621-abfe-415b-b77d-a6a6b5e212d5",
@@ -239,8 +269,8 @@
         {
           "argument_name": "input_vcf",
           "argument_type": "file",
-          "source": "workflow_annotateSV_sansa_vep_vcf-check",
-          "source_argument_name": "annotated_SV_vcf"
+          "source": "workflow_manta_add_confidence",
+          "source_argument_name": "confidence_SV_vcf"
         },
         {
           "argument_name": "genes",
