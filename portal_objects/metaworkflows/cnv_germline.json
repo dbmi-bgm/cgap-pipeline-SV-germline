@@ -7,12 +7,12 @@
   "description": "Downstream pipeline for CNV for single sample",
   "project": "PROJECT_UUID",
   "institution": "INSTITUTION_UUID",
+  "proband_only": true,
   "input": [
     {
       "argument_name": "input_bams",
       "argument_type": "file",
-      "dimensionality": 1,
-      "proband_only": true
+      "dimensionality": 1
     },
     {
       "argument_name": "sample_names",
