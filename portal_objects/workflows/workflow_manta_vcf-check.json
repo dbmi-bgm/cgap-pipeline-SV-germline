@@ -89,7 +89,7 @@
                 {
                     "meta": {
                         "cardinality": "single",
-                        "file_format": "fa",
+                        "file_format": "bed_gz",
                         "global": true,
                         "type": "reference file"
                     },
