@@ -47,10 +47,8 @@ def main(args):
         for vnt_obj in vcf.parse_variants():
             #get start and end coordinates for the SV
             start = vnt_obj.POS
-            if vnt_obj.INFO.split(";")[0].split("=")[0] == "END":
-                end = int(vnt_obj.INFO.split(";")[0].split("=")[1])
-            else:
-                raise Exception('Unexpected variant format found - END not in 0th position of INFO. Quitting')
+            end = int(vnt_obj.get_tag_value("END"))
+
 
             start_cyto=''
             end_cyto=''
