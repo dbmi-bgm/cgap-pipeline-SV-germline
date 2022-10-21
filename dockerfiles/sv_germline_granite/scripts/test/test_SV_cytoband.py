@@ -54,7 +54,7 @@ def test_end_not_found():
     #Variables
     args = {'inputvcf': 'test/files/cytoband_test_fail2.vcf.gz','outputfile':'output.vcf','cytoband':'test/files/cytoBand.txt'}
     # Run and Tests
-    with pytest.raises(Exception, match="Unexpected variant format found - END not in 0th position of INFO. Quitting"):
+    with pytest.raises(Exception, match="ERROR in variant INFO field, END tag is missing"):
         main_SV_cytoband(args)
 
 def test_multiple_start_cytobands():

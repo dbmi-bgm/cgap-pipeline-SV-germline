@@ -132,37 +132,20 @@ def calculate_confidence_manta(vnt_obj):
         # currently we do not assign confidence to insertions
         if svtype == INSERTION_SVTYPE_MANTA:
             confidence = NA
-
-        elif (
-            (svlen > 250 or svtype == TRANSLOCATION_SVTYPE_MANTA)
-            and (
-                SR_alt >= 5
-                and PR_alt >= 5
-                and prop_spanning_reads >= 0.3
-                and prop_split_reads >= 0.3
-            )
-        ) or (
-            svlen <= 250
-            and svtype != TRANSLOCATION_SVTYPE_MANTA
-            and SR_alt > 5
-            and prop_split_reads > 0.3
+        elif (svlen > 250 or svtype == TRANSLOCATION_SVTYPE_MANTA) and (
+            SR_alt >= 5
+            and PR_alt >= 5
+            and prop_spanning_reads >= 0.3
+            and prop_split_reads >= 0.3
         ):
 
             confidence = HIGH_CONFIDENCE
 
-        elif (
-            (svlen > 250 or svtype == TRANSLOCATION_SVTYPE_MANTA)
-            and (
-                SR_alt >= 3
-                and PR_alt >= 3
-                and prop_spanning_reads >= 0.3
-                and prop_split_reads >= 0.3
-            )
-        ) or (
-            svlen <= 250
-            and svtype != TRANSLOCATION_SVTYPE_MANTA
-            and SR_alt > 3
-            and prop_split_reads > 0.3
+        elif (svlen > 250 or svtype == TRANSLOCATION_SVTYPE_MANTA) and (
+            SR_alt >= 3
+            and PR_alt >= 3
+            and prop_spanning_reads >= 0.3
+            and prop_split_reads >= 0.3
         ):
 
             confidence = MEDIUM_CONFIDENCE
