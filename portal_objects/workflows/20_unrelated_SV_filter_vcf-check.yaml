@@ -1,0 +1,59 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: 20_unrelated_SV_filter_vcf-check
+description: Filter out common and artefactual SV calls through comparison to 20 unrelated files. |
+             An integrity check is performed on the output file.
+
+runner:
+  language: cwl
+  main: workflow_20_unrelated_SV_filter_plus_vcf-integrity-check.cwl
+  child:
+    - 20_unrelated_SV_filter.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - granite@0.2.0
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+  dirPath20vcf:
+    argument_type: file.vcf_tar
+
+  # Parameter argument
+  max_unrelated:
+    argument_type: parameter.integer
+
+  wiggle:
+    argument_type: parameter.integer
+
+  recip:
+    argument_type: parameter.float
+
+  SV_types:
+    argument_type: parameter.json
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  20_unrelated_filtered_SV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: 20_unrelated_filtered_SV_vcf
+    table: True

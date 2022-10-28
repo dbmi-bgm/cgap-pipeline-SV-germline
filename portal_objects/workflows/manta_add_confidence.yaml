@@ -1,0 +1,32 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: manta_add_confidence
+description: Assign confidence classes to SV calls from Manta.
+
+runner:
+  language: cwl
+  main: manta_add_confidence.cwl
+
+software:
+  - granite@0.2.0
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  confidence_SV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi

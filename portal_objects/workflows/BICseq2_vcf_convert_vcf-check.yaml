@@ -1,0 +1,68 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: BICseq2_vcf_convert_vcf-check
+description: Convert BIC-seq2 output table to a genotyped VCF file. |
+             Output is checked for integrity.
+
+runner:
+  language: cwl
+  main: workflow_BICseq2_to_vcf_plus_vcf-integrity-check.cwl
+  child:
+    - BICseq2_to_vcf.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - granite@0.2.0
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  vcfheader:
+    argument_type: file.vcf_gz
+
+  inputbicseq2:
+    argument_type: file.txt
+
+  fastaref:
+    argument_type: file.fa
+
+  # Parameter argument
+  pvalue:
+    argument_type: parameter.float
+
+  samplename:
+    argument_type: parameter.string
+
+  log2_min_dup:
+    argument_type: parameter.float
+
+  log2_min_hom_dup:
+    argument_type: parameter.float
+
+  log2_min_del:
+    argument_type: parameter.float
+
+  log2_min_hom_del:
+    argument_type: parameter.float
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  BICseq2_CNV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: BICseq2_CNV_vcf
+    table: True

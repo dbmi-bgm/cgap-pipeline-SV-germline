@@ -1,0 +1,55 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: manta_vcf-check
+description: Run Manta to call SV from input BAM file. |
+             An integrity check is performed on the output file.
+
+runner:
+  language: cwl
+  main: workflow_manta_integrity-check.cwl
+  child:
+    - manta.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - manta@1.6.0_cR
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_bams:
+    argument_type: file.bam
+
+  ref_fasta:
+    argument_type: file.fa
+
+  callRegions:
+    argument_type: file.bed_gz
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  manta_vcf:
+    argument_type: file.vcf_gz
+    # we may want to add secondary_files if manta creates the index
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: manta_vcf
+    table: True
+
+  final_zip:
+    argument_type: qc.none
+    argument_to_be_attached_to: input_bams
+    zipped: True
+    qc_acl: private
+    qc_unzip_from_ec2: False

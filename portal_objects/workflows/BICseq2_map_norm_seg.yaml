@@ -1,0 +1,46 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: BICseq2_map_norm_seg
+description: Run BIC-seq2 to call CNV from input BAM file.
+
+runner:
+  language: cwl
+  main: workflow_BICseq2_map_norm_seg.cwl
+  child:
+    - BICseq2_map.cwl
+    - BICseq2_norm.cwl
+    - BICseq2_seg.cwl
+
+software:
+  - samtools@1.9
+  - Picard@2.26.11
+  - BICseq2-norm@0.2.6
+  - BICseq2-seg@0.7.3
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  bam:
+    argument_type: file.bam
+
+  mappability:
+    argument_type: file.tar_gz
+
+  chrlist:
+    argument_type: file.txt
+
+  fasta:
+    argument_type: file.fa
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  BICseq2_out:
+    argument_type: file.txt

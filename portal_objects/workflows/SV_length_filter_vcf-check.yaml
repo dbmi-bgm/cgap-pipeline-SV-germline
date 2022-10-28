@@ -1,0 +1,47 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: SV_length_filter_vcf-check
+description: Filter the input VCF file to remove SV calls larger than specified threshold. |
+             An integrity check is performed on the output file.
+
+runner:
+  language: cwl
+  main: workflow_SV_length_filter_plus_vcf-integrity-check.cwl
+  child:
+    - SV_length_filter.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - granite@0.2.0
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+  # Parameter argument
+  max_length:
+    argument_type: parameter.integer
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  length_filtered_SV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: length_filtered_SV_vcf
+    table: True

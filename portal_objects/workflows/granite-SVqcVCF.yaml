@@ -1,0 +1,39 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: granite-SVqcVCF
+description: Run granite SVqcVCF on input VCF file. |
+             Produce a JSON report for quality metrics.
+
+runner:
+  language: cwl
+  main: workflow_granite-SVqcVCF.cwl
+  child:
+    - granite-SVqcVCF.cwl
+
+software:
+  - granite@0.2.0
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+  # Parameter argument
+  samples:
+    argument_type: parameter.json
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # QC output
+  qc_json:
+    argument_type: qc.quality_metric_vcfqc
+    argument_to_be_attached_to: input_vcf
+    json: True
