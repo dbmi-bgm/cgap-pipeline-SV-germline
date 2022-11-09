@@ -1,0 +1,494 @@
+## Pipeline information #####################################
+#     General information for the pipeline
+#############################################################
+name: CNV_germline
+description: Downstream pipeline to call CNV for Whole Genome Sequencing. |
+             Single sample.
+
+proband_only: True
+
+## General arguments ########################################
+#     Pipeline input, reference files, and general arguments
+#       define all arguments for the pipeline here
+#############################################################
+input:
+
+  # File argument
+  input_bams:
+    argument_type: file.bam
+    dimensionality: 1
+
+  reference_fa:
+    argument_type: file.fa
+    files:
+      - complete-reference-fasta@hg38
+
+  mappability:
+    argument_type: file.tar_gz
+    files:
+      - 150bp-mappability-no-centromeres@hg38
+
+  vcfheader:
+    argument_type: file.vcf_gz
+    files:
+      - sv-cnv-vcf-header@v1.0.0
+
+  chrlist:
+    argument_type: file.txt
+    files:
+      - chromosomes-list-noXY@hg38
+
+  cytoband:
+    argument_type: file.txt
+    files:
+      - sv-cytoband-ucsc@hg38
+
+  chainfile:
+    argument_type: file.chain
+    files:
+      - liftover-chain@hg38to19
+
+  vep:
+    argument_type: file.vep_tar
+    files:
+      - vep@101b
+
+  gnomAD_SV:
+    argument_type: file.vcf_gz
+    files:
+      - gnomad-sv-nstd166@hg38
+
+  genes:
+    argument_type: file.txt
+    files:
+      - genes-list-ensid@0.4.6
+
+  dirPath20vcf:
+    argument_type: file.vcf_tar
+    files:
+      - unrelated-cnv-ugrp-bicseq2-gatk@v27
+
+  # Parameter argument
+  sample_names:
+    argument_type: parameter.json
+
+  recip:
+    argument_type: parameter.float
+    value: "0.8"
+
+  max_unrelated:
+    argument_type: parameter.integer
+    value: "1"
+
+  wiggle:
+    argument_type: parameter.integer
+    value: "50"
+
+  max_length:
+    argument_type: parameter.integer
+    value: "250000000"
+
+  SV_types:
+    argument_type: parameter.json
+    value: "[\"DEL\", \"DUP\"]"
+
+## Workflows and dependencies ###############################
+#     Information for the workflows and their dependencies
+#############################################################
+workflows:
+
+  ## Workflow definition #####################
+  #   BICseq2_map_norm_seg
+  ############################################
+  BICseq2_map_norm_seg:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      bam:
+        argument_type: file.bam
+        source_argument_name: input_bams
+        input_dimension: 1
+
+      fasta:
+        argument_type: file.fa
+        source_argument_name: reference_fa
+
+      mappability:
+        argument_type: file.tar_gz
+
+      chrlist:
+        argument_type: file.txt
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      BICseq2_out:
+        file_type: raw TSV
+        description: output from BIC-seq2 in TSV format
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.large
+      ebs_size: "3x"
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_BICseq2_map_norm_seg
+      behavior_on_capacity_limit: wait_and_retry
+
+  ## Workflow definition #####################
+  #   BICseq2_vcf_convert_vcf-check
+  ############################################
+  BICseq2_vcf_convert_vcf-check:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      inputbicseq2:
+        argument_type: file.tsv
+        source: BICseq2_map_norm_seg
+        source_argument_name: BICseq2_out
+
+      fastaref:
+        argument_type: file.fa
+        source_argument_name: reference_fa
+
+      vcfheader:
+        argument_type: file.vcf_gz
+
+      # Parameter argument
+      samplename:
+        argument_type: parameter.json
+        source_argument_name: sample_names
+        input_dimension: 1
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      BICseq2_CNV_vcf:
+        file_type: raw VCF
+        description: output from BIC-seq2 converted in VCF format
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.large
+      ebs_size: "1x"
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_BICseq2_vcf_convert_vcf-check
+      behavior_on_capacity_limit: wait_and_retry
+
+  ## Workflow definition #####################
+  #   annotateSV_sansa_vep_vcf-check
+  ############################################
+  annotateSV_sansa_vep_vcf-check:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      input_vcf:
+        argument_type: file.vcf_gz
+        source: BICseq2_vcf_convert_vcf-check
+        source_argument_name: BICseq2_CNV_vcf
+
+      reference:
+        argument_type: file.fa
+        source_argument_name: reference_fa
+
+      vep:
+        argument_type: file.vep_tar
+
+      gnomAD_SV:
+        argument_type: file.vcf_gz
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      annotated_SV_vcf:
+        file_type: annotated VCF
+        description: output from VEP and sansa in VCF format
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.large
+      ebs_size: "2x"
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_annotateSV_sansa_vep_vcf-check
+      behavior_on_capacity_limit: wait_and_retry
+
+  ## Workflow definition #####################
+  #   BICseq2_add_confidence
+  ############################################
+  BICseq2_add_confidence:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      input_vcf:
+        argument_type: file.vcf_gz
+        source: annotateSV_sansa_vep_vcf-check
+        source_argument_name: annotated_SV_vcf
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      confidence_SV_vcf:
+        file_type: intermediate VCF
+        description: output from add confidence step in VCF format
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.small
+      ebs_size: "2x"
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_BICseq2_add_confidence
+      behavior_on_capacity_limit: wait_and_retry
+
+  ## Workflow definition #####################
+  #   granite-filter_SV_selector_vcf-check
+  ############################################
+  granite-filter_SV_selector_vcf-check:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      input_vcf:
+        argument_type: file.vcf_gz
+        source: BICseq2_add_confidence
+        source_argument_name: confidence_SV_vcf
+
+      genes:
+        argument_type: file.txt
+
+      # Parameter argument
+      SV_types:
+        argument_type: parameter.json
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      granite_filtered_SV_vcf:
+        file_type: intermediate VCF
+        description: output from type filtering step in VCF format
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.small
+      ebs_size: 10
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_granite-filter_SV_selector_vcf-check
+      behavior_on_capacity_limit": wait_and_retry
+
+  ## Workflow definition #####################
+  #   20_unrelated_SV_filter_vcf-check
+  ############################################
+  20_unrelated_SV_filter_vcf-check:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      input_vcf:
+        argument_type: file.vcf_gz
+        source: granite-filter_SV_selector_vcf-check
+        source_argument_name: granite_filtered_SV_vcf
+
+      dirPath20vcf:
+        argument_type: file.vcf_tar
+
+      # Parameter argument
+      recip:
+        argument_type: parameter.float
+
+      max_unrelated:
+        argument_type: parameter.integer
+
+      wiggle:
+        argument_type: parameter.integer
+
+      SV_types:
+        argument_type: parameter.json
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      20_unrelated_filtered_SV_vcf:
+        file_type: intermediate VCF
+        description: output from unrelated filtering step in VCF format
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.small
+      ebs_size: 10
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_20_unrelated_SV_filter_vcf-check
+      behavior_on_capacity_limit: wait_and_retry
+
+  ## Workflow definition #####################
+  #   SV_secondary_annotation_vcf-check
+  ############################################
+  SV_secondary_annotation_vcf-check:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      input_vcf:
+        argument_type: file.vcf_gz
+        source: 20_unrelated_SV_filter_vcf-check
+        source_argument_name: 20_unrelated_filtered_SV_vcf
+
+      cytoband:
+        argument_type: file.txt
+
+      chainfile:
+        argument_type: file.chain
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      cytoband_SV_vcf:
+        file_type: intermediate VCF
+        description: output from secondary annotation step in VCF format
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.small
+      ebs_size: 10
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_SV_secondary_annotation_vcf-check
+      behavior_on_capacity_limit: wait_and_retry
+
+  ## Workflow definition #####################
+  #   SV_length_filter_vcf-check
+  ############################################
+  SV_length_filter_vcf-check:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      input_vcf:
+        argument_type: file.vcf_gz
+        source: SV_secondary_annotation_vcf-check
+        source_argument_name: cytoband_SV_vcf
+
+      # Parameter argument
+      max_length:
+        argument_type: parameter.integer
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      length_filtered_SV_vcf:
+        file_type: final VCF
+        description: final output in VCF format
+        linkto_location:
+          - SampleProcessing
+        variant_type: CNV
+        vcf_to_ingest: True
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.small
+      ebs_size: 10
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_SV_length_filter_vcf-check
+      behavior_on_capacity_limit: wait_and_retry
+
+  ## Workflow definition #####################
+  #   SV_annotation_cleaner_vcf-check
+  ############################################
+  SV_annotation_cleaner_vcf-check:
+
+    ## Specific arguments ##############
+    ####################################
+    input:
+
+      # File argument
+      input_vcf:
+        argument_type: file.vcf_gz
+        source: SV_length_filter_vcf-check
+        source_argument_name: length_filtered_SV_vcf
+
+    ## Output ##########################
+    #     Output files for the workflow
+    ####################################
+    output:
+
+      # File output
+      higlass_SV_vcf:
+        file_type: visualization VCF
+        description: final output for visualization in VCF format
+        linkto_location:
+          - SampleProcessing
+        higlass_file: True
+        variant_type: CNV
+
+    ## EC2 Configuration to use ########
+    ####################################
+    config:
+      instance_type: t3.small
+      ebs_size: 10
+      EBS_optimized: True
+      spot_instance: True
+      run_name: run_SV_annotation_cleaner_vcf-check
+      behavior_on_capacity_limit: wait_and_retry
