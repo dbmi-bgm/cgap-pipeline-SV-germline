@@ -2,7 +2,7 @@
 #     General information for the workflow
 #############################################################
 name: 20_unrelated_SV_filter_vcf-check
-description: Filter out common and artefactual SV calls through comparison to 20 unrelated files. |
+description: Filter out common and artifactual SV calls through comparison to 20 unrelated files. |
              An integrity check is performed on the output file.
 
 runner:
