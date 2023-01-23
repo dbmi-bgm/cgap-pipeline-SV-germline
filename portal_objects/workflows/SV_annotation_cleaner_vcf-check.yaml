@@ -1,0 +1,43 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: SV_annotation_cleaner_vcf-check
+description: Clean unnecessary annotation from input VCF file for faster visualization. |
+             An integrity check is performed on the output file.
+
+runner:
+  language: cwl
+  main: workflow_SV_annotation_VCF_cleaner_plus_vcf-integrity-check.cwl
+  child:
+    - SV_annotation_VCF_cleaner.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - granite@0.2.0
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  higlass_SV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: higlass_SV_vcf
+    table: True

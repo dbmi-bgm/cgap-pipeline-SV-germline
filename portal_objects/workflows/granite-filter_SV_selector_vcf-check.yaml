@@ -1,0 +1,54 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: granite-filter_SV_selector_vcf-check
+description: Filter the input VCF file using granite (geneList, whiteList, blackList) and select SV types to keep. |
+             The input file must be annotated. |
+             An integrity check is performed on the output file.
+
+runner:
+  language: cwl
+  main: workflow_granite-filtering_SV_selector_plus_vcf-integrity-check.cwl
+  child:
+    - granite-geneList_SV.cwl
+    - granite-whiteList_SV.cwl
+    - granite-blackList_SV.cwl
+    - SV_type_selector.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - granite@0.2.0
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+  genes:
+    argument_type: file.txt
+
+  # Parameter argument
+  SV_types:
+    argument_type: parameter.json
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  granite_filtered_SV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: granite_filtered_SV_vcf
+    table: True

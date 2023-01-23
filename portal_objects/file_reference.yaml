@@ -1,0 +1,129 @@
+#***************************************************************
+# ANNOTATION SOURCE
+#***************************************************************
+################################################################
+# VEP (Variant Effect Predictor) datasource plus plugins, 101b
+#   Include a modified dbNSFP plugin to annotate non-missense variants
+################################################################
+name: vep
+description: Datasource for VEP version 101. |
+             Incude a modified dbNSFP plugin to annotate non-missense variants (101b).
+format: vep_tar
+version: "101b"
+secondary_files:
+  - plugins_tar
+# Required to enable sync with a reference bucket
+uuid: ea103486-b65a-4439-9d0b-1186f8e59388
+accession: GAPFIL8XMTIV
+
+---
+
+################################################################
+# gnomAD SV (nstd166), liftover to build hg38/GRCh38
+################################################################
+name: gnomad-sv-nstd166
+description: Datasource for gnomAD SV (nstd166). |
+             Liftover to build hg38/GRCh38.
+format: vcf_gz
+version: hg38
+secondary_files:
+  - vcf_gz_tbi
+# Required to enable sync with a reference bucket
+uuid: 07ed6afe-b9e4-44c5-a9ca-99b99c93cbdf
+accession: GAPFISOK6J2J
+
+---
+
+################################################################
+# SV Cytoband (UCSC), hg38/GRCh38
+################################################################
+name: sv-cytoband-ucsc
+description: UCSC Cytoband reference file. |
+             Build hg38/GRCh38.
+format: txt
+version: hg38
+# Required to enable sync with a reference bucket
+uuid: 3986849e-c96a-4add-82f8-eab605f193fd
+accession: GAPFIMKD2V9W
+
+---
+
+#***************************************************************
+# GENOME
+#***************************************************************
+################################################################
+# Datasource for Manta callRegions option, hg38/GRCh38
+#   Main chromosomes, no mitochondria
+################################################################
+name: manta-callregions-nomito
+description: Datasource for Manta callRegions option (no mitochondria). |
+             Build hg38/GRCh38.
+format: bed_gz
+version: hg38
+secondary_files:
+  - bed_gz_tbi
+# Required to enable sync with a reference bucket
+uuid: 6512e951-8fd6-4e58-8de4-135e814de175
+accession: GAPFICK59SC3
+
+---
+
+#***************************************************************
+# PANEL OF NORMAL
+#***************************************************************
+################################################################
+# Unrelated Manta VCF files from UGRP (GATK), v24
+################################################################
+name: unrelated-sv-ugrp-manta-gatk
+description: Archive of 20 unrelated compressed VCF files from UGRP. |
+             Calls with Manta, .alt index, alignment with GATK.
+format: vcf_tar
+version: "v24"
+# Required to enable sync with a reference bucket
+uuid: cd647c0c-ac11-46db-9c51-bfe238e9ac13
+accession: GAPFIH794KXC
+
+---
+
+################################################################
+# Unrelated BIC-seq2 VCF files from UGRP (GATK), v27
+################################################################
+name: unrelated-cnv-ugrp-bicseq2-gatk
+description: Archive of 20 unrelated compressed VCF files from UGRP. |
+             Calls with BIC-seq2, .alt index, alignment with GATK.
+format: vcf_tar
+version: "v27"
+# Required to enable sync with a reference bucket
+uuid: 318788cd-661f-4327-b571-d58a9b7c301e
+accession: GAPFICPW2884
+
+---
+
+#***************************************************************
+# OTHER
+#***************************************************************
+################################################################
+# SV and CNV VCF file header template, v1.0.0
+################################################################
+name: sv-cnv-vcf-header
+description: Header template for SV and CNV VCF files.
+format: vcf_gz
+version: v1.0.0
+# Required to enable sync with a reference bucket
+uuid: 92476266-f32a-45f3-b097-5a8e299c654e
+accession: GAPFIX59VJT5
+
+---
+
+################################################################
+# Mappability 150bp k-mers, hg38/GRCh38
+#   Excluding centromeres
+################################################################
+name: 150bp-mappability-no-centromeres
+description: Mappability file for 150bp k-mers, excluding centromeres. |
+             Build hg38/GRCh38.
+format: tar_gz
+version: hg38
+# Required to enable sync with a reference bucket
+uuid: 5891340f-b295-4a86-bb6b-161157d2a7c1
+accession: GAPFIO588XWQ

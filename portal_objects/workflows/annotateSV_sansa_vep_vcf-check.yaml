@@ -1,0 +1,56 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: annotateSV_sansa_vep_vcf-check
+description: Annotate SV calls with Sansa and VEP, then combine results. |
+             An integrity check is performed on the output file.
+
+runner:
+  language: cwl
+  main: workflow_sansa_vep_combined_annotation_plus_vcf-integrity-check.cwl
+  child:
+    - sansa.cwl
+    - vep-annot_SV.cwl
+    - combine_sansa_vep.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - sansa@0.0.8
+  - VEP@101
+  - granite@0.2.0
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+  gnomAD_SV:
+    argument_type: file.vcf_gz
+
+  reference:
+    argument_type: file.fa
+
+  vep:
+    argument_type: file.vep_tar
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  annotated_SV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: annotated_SV_vcf
+    table: True

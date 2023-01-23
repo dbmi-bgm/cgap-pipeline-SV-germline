@@ -1,0 +1,52 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: SV_secondary_annotation_vcf-check
+description: Annotate SV breakpoints with hg19 liftover, Cytobands, worst consequences and locations relative to transcripts. |
+             An integrity check is performed on the output file.
+
+runner:
+  language: cwl
+  main: workflow_SV_secondary_annotation_plus_vcf-integrity-check.cwl
+  child:
+    - SV_liftover_hg19.cwl
+    - SV_worst_and_locations.cwl
+    - SV_cytoband.cwl
+    - vcf-integrity-check.cwl
+
+software:
+  - granite@0.2.0
+  - liftover_hg19@2eeb9da
+  - VCFtools@954e607
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # File argument
+  input_vcf:
+    argument_type: file.vcf_gz
+
+  cytoband:
+    argument_type: file.txt
+
+  chainfile:
+    argument_type: file.chain
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  cytoband_SV_vcf:
+    argument_type: file.vcf_gz
+    secondary_files:
+      - vcf_gz_tbi
+
+  # QC output
+  vcf-check:
+    argument_type: qc.quality_metric_vcfcheck
+    argument_to_be_attached_to: cytoband_SV_vcf
+    table: True
