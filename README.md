@@ -10,4 +10,5 @@ This repository contains components for the CGAP pipeline for Structural Variant
   * ECR (Docker) source files, which allow for creation of public Docker images (using `docker build`) or private dynamically-generated ECR images (using [*cgap pipeline utils*](https://github.com/dbmi-bgm/cgap-pipeline-utils/) `pipeline_deploy`)
 
 The pipeline starts from analysis-ready `bam` files and produces `vcf` files containing calls for SVs as output.
-For more details check [*documentation*](https://cgap-pipeline-main.readthedocs.io/en/latest/Pipelines/Downstream/SV_germline/index-SV_germline.html "SV germline").
+Documentation for all CGAP Pipelines can now be found here:
+https://cgap-pipeline-main.readthedocs.io/en/latest/

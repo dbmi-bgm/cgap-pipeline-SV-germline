@@ -2,23 +2,6 @@
 # ANNOTATION SOURCE
 #***************************************************************
 ################################################################
-# VEP (Variant Effect Predictor) datasource plus plugins, 101b
-#   Include a modified dbNSFP plugin to annotate non-missense variants
-################################################################
-name: vep
-description: Datasource for VEP version 101. |
-             Incude a modified dbNSFP plugin to annotate non-missense variants (101b).
-format: vep_tar
-version: "101b"
-secondary_files:
-  - plugins_tar
-# Required to enable sync with a reference bucket
-uuid: ea103486-b65a-4439-9d0b-1186f8e59388
-accession: GAPFIL8XMTIV
-
----
-
-################################################################
 # gnomAD SV (nstd166), liftover to build hg38/GRCh38
 ################################################################
 name: gnomad-sv-nstd166
