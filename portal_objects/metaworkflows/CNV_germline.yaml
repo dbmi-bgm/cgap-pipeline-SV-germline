@@ -132,6 +132,7 @@ workflows:
         file_type: raw TSV
         description: output from BIC-seq2 in TSV format
         variant_type: CNV
+        s3_lifecycle_category: long_term_archive
 
     ## EC2 Configuration to use ########
     ####################################
@@ -181,6 +182,7 @@ workflows:
         file_type: raw VCF
         description: output from BIC-seq2 converted in VCF format
         variant_type: CNV
+        s3_lifecycle_category: long_term_archive
 
     ## EC2 Configuration to use ########
     ####################################
@@ -227,6 +229,7 @@ workflows:
         file_type: annotated VCF
         description: output from VEP and sansa in VCF format
         variant_type: CNV
+        s3_lifecycle_category: no_storage
 
     ## EC2 Configuration to use ########
     ####################################
@@ -263,6 +266,7 @@ workflows:
         file_type: intermediate VCF
         description: output from add confidence step in VCF format
         variant_type: CNV
+        s3_lifecycle_category: no_storage
 
     ## EC2 Configuration to use ########
     ####################################
@@ -306,6 +310,7 @@ workflows:
         file_type: intermediate VCF
         description: output from type filtering step in VCF format
         variant_type: CNV
+        s3_lifecycle_category: no_storage
 
     ## EC2 Configuration to use ########
     ####################################
@@ -358,6 +363,7 @@ workflows:
         file_type: intermediate VCF
         description: output from unrelated filtering step in VCF format
         variant_type: CNV
+        s3_lifecycle_category: no_storage
 
     ## EC2 Configuration to use ########
     ####################################
@@ -400,6 +406,7 @@ workflows:
         file_type: intermediate VCF
         description: output from secondary annotation step in VCF format
         variant_type: CNV
+        s3_lifecycle_category: no_storage
 
     ## EC2 Configuration to use ########
     ####################################
@@ -443,6 +450,7 @@ workflows:
           - SampleProcessing
         variant_type: CNV
         vcf_to_ingest: True
+        s3_lifecycle_category: long_term_archive
 
     ## EC2 Configuration to use ########
     ####################################
@@ -482,6 +490,7 @@ workflows:
           - SampleProcessing
         higlass_file: True
         variant_type: CNV
+        s3_lifecycle_category: long_term_access
 
     ## EC2 Configuration to use ########
     ####################################
