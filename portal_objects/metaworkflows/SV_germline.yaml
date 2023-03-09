@@ -383,7 +383,7 @@ workflows:
           - SampleProcessing
         variant_type: SV
         vcf_to_ingest: True
-        s3_lifecycle_category: long_term_access_long_term_archive
+        s3_lifecycle_category: long_term_access
 
     ## EC2 Configuration to use ########
     ####################################
